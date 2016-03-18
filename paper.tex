@@ -71,11 +71,11 @@ two expressions are equal to one another as expression trees.
 
 Python allows classes to overload operators. The Python interpreter translates
 above \texttt{x*y + 2} to, roughly,
-\texttt{(x.\_\_mul\_\_(y)).\_\_add\_\_(2)}. \texttt{x} and \texttt{y}, returned from
+\verb|(x.__mul__(y)).__add__(2)|. \texttt{x} and \texttt{y}, returned from
 the \texttt{symbols} function, are \texttt{Symbol} instances. The \texttt{2}
 in the expression is processed by Python as a literal, and is stored as
 Python's builtin \texttt{int} type. When \texttt{2} is called by the
-\texttt{\_\_add\_\_}, it is converted to the SymPy type \texttt{Integer(2)}. In
+\verb|__add__|, it is converted to the SymPy type \texttt{Integer(2)}. In
 this way, SymPy expressions can be built in the natural way using Python
 operators and numeric literals.
 

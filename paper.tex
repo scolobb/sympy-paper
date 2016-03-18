@@ -20,7 +20,11 @@ Every symbolic expression in SymPy is an instance of a Python class.
 Expressions are represented by expression trees. The operators is represented
 by the type of an expression and the child nodes are stored in the
 \texttt{args} attribute. A leaf node in the expression tree has an empty
-\texttt{args}. For example, take the expression $xy + 2$.
+\texttt{args}.
+The \texttt{args} attribute is provided by the class \texttt{Basic},
+which is a superclass of all SymPy objects and
+provides common methods to all SymPy tree-elements.
+For example, take the expression $xy + 2$.
 
 \begin{verbatim}
 >>> from sympy import *
@@ -98,6 +102,8 @@ to be worth it for the advantages listed above.
 %% Assumptions
 %%
 %% Extensibility
+
+Mathematical functions are implemented as Python classes.
 
 \section{Algorithms}
 

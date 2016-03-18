@@ -52,6 +52,14 @@ indicating that it is a leaf node
 ()
 \end{verbatim}
 
+The function \texttt{srepr} give a string representing a valid Python code,
+containing all the nested class constructor calls to create the given expression:
+
+\begin{verbatim}
+>>> srepr(expr)
+"Add(Mul(Symbol('x'), Symbol('y')), Integer(2))"
+\end{verbatim}
+
 Every SymPy expression satisfies a key invariant, namely,
 \texttt{expr.func(*expr.args) == expr}. This means that expressions are
 rebuildable from their \texttt{args}\footnote{\texttt{expr.func} is used

@@ -18,8 +18,8 @@
 
 Every symbolic expression in SymPy is an instance of a Python class.
 Expressions are represented by expression trees. The operators is represented
-by the type of and expression and the child nodes are stored in the \tt{args}
-attribute. A child node in the expression tree has an empty \tt{args}. For
+by the type of and expression and the child nodes are stored in the \texttt{args}
+attribute. A child node in the expression tree has an empty \texttt{args}. For
 example, take the expression $xy + 1$.
 
 \begin{verbatim}
@@ -29,8 +29,8 @@ example, take the expression $xy + 1$.
 >>> expr = x*y + 1
 \end{verbatim}
 
-The expression \tt{expr} is an addition, so it is of type \tt{Add}. The child
-nodes of \tt{expr} are \tt{x*y} and \tt{1}.
+The expression \texttt{expr} is an addition, so it is of type \texttt{Add}. The child
+nodes of \texttt{expr} are \texttt{x*y} and \texttt{1}.
 
 \begin{verbatim}
 >>> type(expr)
@@ -40,8 +40,8 @@ nodes of \tt{expr} are \tt{x*y} and \tt{1}.
 \end{verbatim}
 
 We can dig further into the expression tree to see the full expression. For
-example, the first child, given by \tt{expr.args[0]} is \tt{1}. Its class is
-\tt{Integer}, and it has empty \tt{args}, indicating that it is a child node
+example, the first child, given by \texttt{expr.args[0]} is \texttt{1}. Its class is
+\texttt{Integer}, and it has empty \texttt{args}, indicating that it is a child node
 
 \begin{verbatim}
 >>> expr.args[0]
@@ -53,11 +53,11 @@ example, the first child, given by \tt{expr.args[0]} is \tt{1}. Its class is
 \end{verbatim}
 
 Every SymPy expression satisfies a key invariant, namely,
-\tt{expr.func(*expr.args) == expr}. This means that expressions rebuildable
-from their \tt{args}. \footnote{\tt{expr.func} is used instead of
-  \tt{type(expr)} to allow the function of an expression to be distinct from
+\texttt{expr.func(*expr.args) == expr}. This means that expressions rebuildable
+from their \texttt{args}. \footnote{\texttt{expr.func} is used instead of
+  \texttt{type(expr)} to allow the function of an expression to be distinct from
   its actual Python class. In most cases the two are the same.} Here, we note
-that in SymPy, the \tt{==} operator represents exact structural equality, not
+that in SymPy, the \texttt{==} operator represents exact structural equality, not
 mathematical equality. This allows us to test if any two expressions are equal
 to one another as expression trees.
 

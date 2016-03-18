@@ -20,34 +20,34 @@ Every symbolic expression in SymPy is an instance of a Python class.
 Expressions are represented by expression trees. The operators is represented
 by the type of an expression and the child nodes are stored in the
 \texttt{args} attribute. A leaf node in the expression tree has an empty
-\texttt{args}. For example, take the expression $xy + 1$.
+\texttt{args}. For example, take the expression $xy + 2$.
 
 \begin{verbatim}
 >>> from sympy import *
 >>> x, y = symbols('x y')
->>> expr = x*y + 1
+>>> expr = x*y + 2
 \end{verbatim}
 
 The expression \texttt{expr} is an addition, so it is of type \texttt{Add}. The child
-nodes of \texttt{expr} are \texttt{x*y} and \texttt{1}.
+nodes of \texttt{expr} are \texttt{x*y} and \texttt{2}.
 
 \begin{verbatim}
 >>> type(expr)
 <class 'sympy.core.add.Add'>
 >>> expr.args
-(1, x*y)
+(2, x*y)
 \end{verbatim}
 
 We can dig further into the expression tree to see the full expression. For
 example, the first child node, given by \texttt{expr.args[0]} is
-\texttt{1}. Its class is \texttt{Integer}, and it has empty \texttt{args},
+\texttt{2}. Its class is \texttt{Integer}, and it has empty \texttt{args},
 indicating that it is a leaf node
 
 \begin{verbatim}
 >>> expr.args[0]
-1
+2
 >>> type(expr.args[0])
-<class 'sympy.core.numbers.One'>
+<class 'sympy.core.numbers.Integer'>
 >>> expr.args[0].args
 ()
 \end{verbatim}

@@ -15,6 +15,53 @@
 %% I volunteer to write this section. --Aaron
 %%
 %% Representing symbolic expressions using Python objects
+
+Every symbolic expression in SymPy is an instance of a Python class.
+Expressions are represented by expression trees. The operators is represented
+by the type of and expression and the child nodes are stored in the \tt{args}
+attribute. A child node in the expression tree has an empty \tt{args}. For
+example, take the expression $xy + 1$.
+
+\begin{verbatim}
+>>> from sympy import *
+>>> x, y = symbols('x y')
+
+>>> expr = x*y + 1
+\end{verbatim}
+
+The expression \tt{expr} is an addition, so it is of type \tt{Add}. The child
+nodes of \tt{expr} are \tt{x*y} and \tt{1}.
+
+\begin{verbatim}
+>>> type(expr)
+<class 'sympy.core.add.Add'>
+>>> expr.args
+(1, x*y)
+\end{verbatim}
+
+We can dig further into the expression tree to see the full expression. For
+example, the first child, given by \tt{expr.args[0]} is \tt{1}. Its class is
+\tt{Integer}, and it has empty \tt{args}, indicating that it is a child node
+
+\begin{verbatim}
+>>> expr.args[0]
+1
+>>> type(expr.args[0])
+<class 'sympy.core.numbers.One'>
+>>> expr.args[0].args
+()
+\end{verbatim}
+
+Every SymPy expression satisfies a key invariant, namely,
+\tt{expr.func(*expr.args) == expr}. This means that expressions rebuildable
+from their \tt{args}. \footnote{\tt{expr.func} is used instead of
+  \tt{type(expr)} to allow the function of an expression to be distinct from
+  its actual Python class. In most cases the two are the same.} Here, we note
+that in SymPy, the \tt{==} operator represents exact structural equality, not
+mathematical equality. This allows us to test if any two expressions are equal
+to one another as expression trees.
+
+
 %%
 %% Assumptions
 %%

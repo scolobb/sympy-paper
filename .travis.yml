@@ -4,3 +4,5 @@ script:
 - pdflatex --halt-on-error paper.tex
 # TODO: Add bibtex
 # TODO: Deploy the built file somewhere (see for instance https://harshjv.github.io/blog/setup-latex-pdf-build-using-travis-ci/)
+notifications:
+  email: false

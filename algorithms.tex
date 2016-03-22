@@ -15,6 +15,19 @@
 
 \subsection{The Gruntz Algorithm}
 
+The limit modules implements the Gruntz algorithm %\cite{Gruntz}
+.
+
+Examples:
+\begin{verbatim}
+In [1]: limit(sin(x)/x, x, 0)
+Out[1]: 1
+
+In [2]: limit((2*E**((1-cos(x))/sin(x))-1)**(sinh(x)/atan(x)**2), x, 0)
+Out[2]: E
+\end{verbatim}
+
+
 \subsection{Logic}
 
 \subsection{Other}

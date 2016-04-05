@@ -1,7 +1,7 @@
 \subsection{SymPy Gamma}\label{sympy-gamma}
 
-SymPy Gamma is a simple web application based on Google App Engine that 
-executes and displays the results of SymPy expressions as well as
+SymPy Gamma is a simple web application that runs on Google App Engine 
+that executes and displays the results of SymPy expressions as well as
 additional related computations, in a fashion similar to that of
 Wolfram\textbar{}Alpha. For instance, entering an integer will display
 prime factors, digits in the base-10 expansion, and a factorization
@@ -15,12 +15,20 @@ results using SymPy.
 \begin{itemize}
 \item
   It displays integration steps, differentiation steps in detail, which
-  can be viewed through this
-  \href{http://www.sympygamma.com/input/?i=integrate\%281\%20/\%28\%28x\%2B1\%29\%28x\%2B3\%29\%28x\%2B5\%29\%29\%29}{Link}.
+  can be viewed below:\par
+\begin{minipage}{\textwidth}
+    \centering
+    \includegraphics[width=0.7\textwidth]{der_steps-min.png}
+    \captionof{figure}{Derivative steps of $\frac{\mathrm{d}}{\mathrm{d} x}\left (\frac{-log(x + 3)}{4} + \frac{log(x^2 + 6x + 5)}{8}\right)$}
+\end{minipage}
 \item
   It also displays the factor tree diagrams for numbers, which is also
-  illustrated through this
-  \href{http://www.sympygamma.com/input/?i=112}{link}.
+  illustrated through this image:\par
+\begin{minipage}{\textwidth}
+    \centering
+    \includegraphics[width=0.7\textwidth]{factor_tree_diagram.png}
+    \captionof{figure}{Factor Tree Diagram of \textbf{112}}
+\end{minipage}
 \item
   SymPy Gamma also saves user search queries, and offers many such 
   similar features for free, which Wolfram\textbar{}Alpha only offers 

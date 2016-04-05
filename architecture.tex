@@ -91,6 +91,53 @@ to be worth it for the advantages listed above.
 %% Assumptions
 \subsection{Assumptions}
 
+A important feature of the SymPy core is the assumptions system. The
+assumptions system allows users to specify that symbols have certain common
+mathematical properties, such as being positive, imaginary, or integer. SymPy
+is careful to never perform simplifications on an expression unless the
+assumptions allow them. For instance, the identity $\sqrt{x^2} = x$ holds if
+$x$ is nonnegative ($x>=0$). If $x$ is real, the identity $\sqrt{x^2}=|x|$
+holds. However, for general complex $x$, no such identity holds.
+
+By default, SymPy performs all calculations assuming that variables are
+complex valued. This assumption makes it easier to treat mathematical problems
+in full generality.
+
+\begin{verbatim}
+>>> x = Symbol('x')
+>>> sqrt(x**2)
+sqrt(x**2)
+\end{verbatim}
+
+By assuming symbols are complex by default, SymPy avoids performing
+mathematically invalid operations. However, in many cases users will wish to
+simplify expressions containing terms like $\sqrt{x^2}$.
+
+Assumptions are set on \texttt{Symbol} objects when they are created. For
+instance \texttt{Symbol('x', positive=True} will create a symbol named
+\texttt{x} that is assumed to be positive.
+
+\begin{verbatim}
+>>> x = Symbol('x', positive=True)
+>>> sqrt(x**2)
+x
+\end{verbatim}
+
+Some common assumptions that SymPy allows are \texttt{positive},
+\texttt{negative}, \texttt{real}, \texttt{nonpositive}, \texttt{nonnegative},
+\texttt{real}, \texttt{integer}, and \texttt{commutative}\footnote{If $A$ and
+  $B$ are Symbols created with \texttt{commutative=False} then SymPy will keep
+  $AB$ and $BA$ distinct.}.
+
+Assumptions are needed only to restrict a domain so that certain
+simplifications can be performed. It is not required to make the domain match
+the input of a function. For instance, one can create the object
+$\sum_{n=0}^m f(n)$ as \texttt{Sum(f(n), (n, 0, m))} without setting
+\texttt{integer=True} when creating the Symbol object \texttt{n}.
+
+The assumptions system additionally has deductive capabilities, which are
+described in detail below. % logic section
+
 %%
 %% Extensibility
 \subsection{Extensibility}

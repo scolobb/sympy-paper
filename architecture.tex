@@ -3,6 +3,8 @@
 %%
 %% Representing symbolic expressions using Python objects
 
+\subsection{The Core}
+
 Every symbolic expression in SymPy is an instance of a Python class.
 Expressions are represented by expression trees. The operators is represented
 by the type of an expression and the child nodes are stored in the
@@ -84,8 +86,6 @@ one can wrap one of the integers with \texttt{Integer}, like \texttt{x +
   Integer(1)/2}, or using \texttt{x + Rational(1, 2)}. This gotcha is a small
 downside to using Python directly instead of a custom DSL, and we consider it
 to be worth it for the advantages listed above.
-
-\subsection{The Core}
 
 %%
 %% Assumptions

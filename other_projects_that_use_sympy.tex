@@ -39,19 +39,18 @@ results using SymPy.
 Every input query from the user on SymPy Gamma is first, parsed by its
 own parser, which handles several different forms of function names,
 which SymPy as a library doesn't support. For instance, SymPy Gamma
-supports queries like - \texttt{sin\ x}, whereas SymPy doesn't support
+supports queries like \texttt{sin\ x}, whereas SymPy doesn't support
 this, and supports only \texttt{sin(x)}.
 
-This parser, then converts the input query to the resultant SymPy
-readable code, which is then eventually processed by SymPy and the
-result is finally formatted in LaTeX and displayed on the SymPy Gamma
-web-app.
+This parser converts the input query to the resultant SymPy readable 
+code, which is then eventually processed by SymPy and the result is 
+finally formatted in LaTeX and displayed on the SymPy Gamma web-app.
 
 \subsection{SymPy Live}\label{sympy-live}
 
-Sympy Live, an online shell for SymPy is a simple web application that
-runs on Google App Engine, which allows to evaluate Python code with
-SymPy in web browsers.
+SymPy Live is an online web-based Python shell, which runs on Google
+App Engine, that executes SymPy code. It is integrated in the SymPy
+documentation examples, located at this \href{http://docs.sympy.org/latest/index.html}{link}.
 
 This is accomplished by providing a HTML/JavaScript GUI for entering
 source code and visualization of output, and a server part which
@@ -70,9 +69,8 @@ Certain Features of SymPy Live-:
   tasks, as an interactive way to try out APIs, or as a debugging aid
   during development.
 \item
-  It can also be used to plot figures (
-  \href{http://live.sympy.org/?evaluate=from\%20sympy\%20import\%20symbols\%0Afrom\%20sympy.plotting\%20import\%20textplot\%0Ax\%20\%3D\%20symbols(\%27x\%27)\%0Atextplot(x**2\%2C0\%2C5)\%0A\%23--\%0A}{link}
-  ), and execute all kinds of expressions that SymPy can evaluate.
+  It can also be used to plot figures (\href{http://live.sympy.org/?evaluate=from\%20sympy\%20import\%20symbols\%0Afrom\%20sympy.plotting\%20import\%20textplot\%0Ax\%20\%3D\%20symbols(\%27x\%27)\%0Atextplot(x**2\%2C0\%2C5)\%0A\%23--\%0A}{link}), 
+  and execute all kinds of expressions that SymPy can evaluate.
 \end{itemize}
 
 SymPy Live also formats the output in LaTeX for pretty-printing the

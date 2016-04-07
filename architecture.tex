@@ -77,7 +77,7 @@ rational literal type. Given a fraction of integers in \texttt{1/2}, Python
 will perform floating point division and produce \texttt{0.5}\footnote{This is
   the behavior in Python 3. In Python 2, \texttt{1/2} will perform integer
   division and produce \texttt{0}, unless one uses \texttt{from \_\_future\_\_
-    import division}}. Because Python uses eager evaluation, expressions like
+    import division}.}. Because Python uses eager evaluation, expressions like
 \texttt{x + 1/2} will produce \texttt{x + 0.5}, because by the time a SymPy
 function sees the \texttt{1/2} it has already been converted to \texttt{0.5}
 by Python. However, for a CAS like SymPy, we typically want to work with exact

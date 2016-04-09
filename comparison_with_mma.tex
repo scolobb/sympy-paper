@@ -32,12 +32,12 @@ to that data structure.
 
 % Products and commutativity
 
-Product in Mathematica are determined by some builtin node types,
+Products in Mathematica are determined by some builtin node types,
 such as \texttt{Times}, \texttt{Dot}, and others.
 \texttt{Times} is overloaded by the * operator,
 and is always meant to represent a commutative operator.
 The other notable product is \texttt{Dot}, overloaded by the . operator.
-This products represents matrix multiplication,
+This product represents matrix multiplication,
 it is not commutative.
 SymPy uses the same node for both scalar and matrix multiplication,
 the only exception being with abstract matrix symbols.

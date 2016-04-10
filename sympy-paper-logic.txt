@@ -2,8 +2,8 @@ Logic module
 ============
 
 SymPy symbols can be used as propositional variables and can be
-subsituted as `true` or `false`. Good number of manipulation
-features has been implemented in the SymPy Logic module.
+substituted as `true` or `false`. Good number of manipulation
+features have been implemented in the SymPy Logic module.
 
 Constructing boolean expressions
 --------------------------------
@@ -13,7 +13,8 @@ operators `&`, `|`, `~`, `^`, `>>`, `<<` are overloaded for
 logical `And`, `Or`, negation, `Xor`, right implication and 
 left implication respectively.
 You can also directly call the functions `And()`, `Or()`, Not(),
-`Xor()`, `Nand()`, `Nor()`, `Implies`, `Equivalent` and `ITE`.
+`Xor()`, `Nand()`, `Nor()`, `Implies`, `Equivalent` and `ITE` for
+constructing corresponding expressions.
 
 These boolean symbols can be substituted `True` or `False` 
 using `.subs()`
@@ -29,8 +30,8 @@ SOPform function implemented in this module can be fed with
 a set of variables, minterms and don't cares and it returns 
 the minimized boolean function in SOPform. Quine–McCluskey 
 algorithm is used which is functionally identical to Karnaugh
-mapping. A similar function, POSform to return the result in 
-POS form is present.  
+mapping. A similar function, POSform, can be used to return 
+the result in POS form.  
 
 
 CNF and DNF
@@ -64,8 +65,8 @@ algorithm: Internal algorithm to be used. Current options in
 	SymPy are 'dpll' and 'dpll2', to be explained in following
 	sections.
 all_models: On setting all_models to True, if given expr is 
-	satisfiable then returns a generator of models. However, 
-	if expr is unsatisfiable then returns a generator containing 
+	satisfiable then it returns a generator of models. However, 
+	if expr is unsatisfiable then it returns a generator containing 
 	the single element False.
 
 
@@ -104,5 +105,3 @@ Watch literal scheme and VSIDS heuristics:
   publisher={Google Patents},
   note={US Patent 7,418,369}
 }
-- 
-

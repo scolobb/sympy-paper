@@ -160,16 +160,79 @@ discuss this system here.
 %% Extensibility
 \subsection{Extensibility}
 
-%% Functions
-\subsection{Functions}
+Extensibility is an important feature for SymPy. Because the same language,
+Python, is used both for the internal implementation and the external usage by
+users, all the extensibility capabilities available to users are also used by
+functions that are part of SymPy.
 
-Mathematical functions are implemented as Python classes.
+The typical way to create a custom SymPy object is to subclass an existing
+SymPy class, generally either \texttt{Basic}, \texttt{Expr}, or
+\texttt{Function}. All SymPy classes are subclasses of the base class
+\texttt{Basic}, which defines some basic methods for symbolic expression
+trees. \texttt{Expr} is the subclass for mathematical expressions which can be
+added and multiplied together. Instances of \texttt{Expr} are typically
+complex numbers, but may also include other ``rings'' like matrix expressions.
+Not all SymPy classes are \texttt{Expr}. For instance, logic expressions, such
+as \texttt{And(x, y)} are \texttt{Basic} but not \texttt{Expr}.
 
-%% Pattern matching
-%%
-%%%% three kinds of pattern matching in SymPy core.
-%%%% `strategies` and `unify` modules also worth mentioning
-%%%% (fu trig simplification function).
-%%%% Rewriting rules.
+The \texttt{Function} class is a subclass of \texttt{Expr} which makes it
+easier to define mathematical functions called with arguments. This includes
+named functions like $\sin(x)$ and $\log(x)$ as well as undefined functions
+like $f(x)$. Subclasses of \texttt{Function} should define a
+class method \texttt{eval} which returns values for which the function should
+be automatically evaluated, and \texttt{None} for arguments that shouldn't be
+automatically evaluated.
 
-%% Withheld evaluated (appears frequently on StackOverflow as a question).
+The behavior of classes in SymPy with various other SymPy functions is defined
+by defining a relevant \verb|_eval_| method on the class. For instance, an
+object can tell SymPy's \texttt{diff} function how to take the derivative of
+itself by defining the \verb|_eval_derivative(self, x)| method. The most
+common \verb|_eval_| methods relate to the assumptions.
+\verb|_eval_is_|\texttt{\textit{assumption}} defines the assumptions for
+\textit{assumption}.
+
+Here is a stripped down version of the gamma function $\Gamma(x)$ from SymPy,
+which evaluates itself on positive integer arguments, has the positive and
+real assumptions defined, can be rewritten in terms of factorial with
+\texttt{gamma(x).rewrite(factorial)}, and can be differentiated.
+\texttt{fdiff} is a convenience method for subclasses of \texttt{Function}.
+\texttt{fdiff} returns the derivative of the function without worrying about
+the chain rule. \texttt{self.func} is used instead of referencing
+\texttt{gamma} explicitly so that potential subclasses of \texttt{gamma} can
+reuse the methods.
+
+\begin{verbatim}
+from sympy import Function, floor, factorial, polygamma
+
+class gamma(Function)
+    @classmethod
+    def eval(cls, arg):
+        if isinstance(arg, Integer) and arg.is_positive:
+            return factorial(arg - 1)
+
+    def _eval_is_real(self):
+        x = self.args[0]
+        if x.is_positive or x.is_noninteger:
+            return True
+
+    def _eval_is_positive(self):
+        x = self.args[0]
+        if x.is_positive:
+            return True
+        elif x.is_noninteger:
+            return floor(x).is_even
+
+    def _eval_rewrite_as_factorial(self, z):
+        return factorial(z - 1)
+
+    def fdiff(self, argindex=1):
+        from sympy.core.function import ArgumentIndexError
+        if argindex == 1:
+            return self.func(self.args[0])*polygamma(0, self.args[0])
+        else:
+            raise ArgumentIndexError(self, argindex)
+\end{verbatim}
+
+The actual gamma function defined in SymPy has much more implemented than
+this, such as evaluation at rational points, series expansion, and pretty
+printing with the $\Gamma$ symbol.

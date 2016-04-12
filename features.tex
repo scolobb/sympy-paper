@@ -25,6 +25,8 @@
 
 SymPy has several different implementations for representing series expansions.
 
+TODO
+
 \subsubsection{Formal Power Series}
 
 SymPy can be used for computing the Formal Power Series of a function.
@@ -40,6 +42,20 @@ of the series expansion is generated rather than just computing a few terms.
 x - x**3/6 + x**5/120 + O(x**6)
 >>> f[15]
 -x**15/1307674368000
+\end{verbatim}
+
+\subsubsection{Fourier Series}
+
+SymPy provides functionality to compute Fourier Series of a function using
+the \texttt{fourier_series} function. Under the hood it just computes $a0$, $an$, $bn$ using
+standard integration formulas.
+
+\begin{verbatim}
+>>> from sympy import fourier_series, symbols, Heaviside
+>>> x, L = symbols('x L')
+>>> f = fourier_series(2 * (Heaviside(x/L) - Heaviside(x/L - 1)) - 1, (x, 0, 2*L))
+>>> f.truncate(3)
+4*sin(pi*x/L)/pi + 4*sin(3*pi*x/L)/(3*pi) + 4*sin(5*pi*x/L)/(5*pi)
 \end{verbatim}
 
 % Features to list, but not discuss in-depth:

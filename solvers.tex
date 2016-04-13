@@ -1,15 +1,20 @@
 %% Solvers in SymPy
 
-There are two submodules to solve equations in SymPy, referred to as old solve
-i.e. \texttt{solve} and new solve i.e. \texttt{solveset}. There are several
-design changes in \texttt{solveset} to resolve the issues with old solve, for
-example old \texttt{solve}'s input API has many flags which are not needed and
-they make it hard for the user and the developers to work on solvers. In
-contrast to old solve, the \texttt{solveset} has a clean input API, It only
-asks for the much needed information from the user, following are the function
-signatures of old and new solve:
+SymPy has a solvers module to solve equations symbolically. There are two
+submodules to solve equations in SymPy, referred to as old solve i.e.
+\texttt{solve} and new solve i.e. \texttt{solveset}. Solveset is introduced
+with several design changes with respect to old \texttt{solve} to resolve the
+issues with old \texttt{solve}, for example old \texttt{solve}'s input API has
+many flags which are not needed and they make it hard for the user and the
+developers to work on solvers. In contrast to old solve, the \texttt{solveset}
+has a clean input API, It only asks for the much needed information from the
+user, following are the function signatures of old and new solve:
 
 \begin{verbatim}
     solve(f, *symbols, **flags)  # Old Solve
     solveset(f, symbol, domain)  # New Solve
 \end{verbatim}
+
+The old \texttt{solve} has an inconsistent output API for various types of
+inputs, whereas the \texttt{solveset} has a canonical output API using sets.
+It can consistently output various types of solutions.

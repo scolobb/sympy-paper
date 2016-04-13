@@ -6,7 +6,7 @@ classes and then combining and transforming them using various set operations.
 
 Each of the set class inherits from the base Set class and defines
 rules to check membership of a SymPy object, to calculate union, intersection,
-set different and power set. In cases we are not able to evaluate these
+set different. In cases we are not able to evaluate these
 operations to atomic set classes they are represented as abstract unevaluated
 objects.
 
@@ -33,21 +33,43 @@ points allowing us to represent infinite ranges.
 
 
     \item \textbf{Real Interval} is specified by giving the start and end point
-and specifying if it is open or closed in these respective ends.
+and specifying if it is open or closed in these respective ends. The set of
+real numbers is represented as a special case of a real interval where the
+start point is negative infinite and the end point is positive infinite.
 
 \end{itemize}
 
 
 %% Operations
 
+Other than unevaluated classes of of Union, Intersection and Set Difference
+operations, we have following set classes.
+
 \begin{itemize}
-    \item Finite Union
-    \item Finite Intersection
-    \item Set Difference
-    \item Product Set
-    \item Image Set
-    \item Condition Set
+
+    \item Product Set abstractly defines the Cartesian product of two or more
+sets. Product Set is useful when representing higher dimensional spaces. For
+example to represent a three dimensional space we simple take the Cartesian
+product of three Real sets.
+
+    \item Image Set represents the set of image a function when applied to a
+particular set. In notation Image Set of a function F w.r.t a set S is \{ F(x)
+| x \in S \} In particular we use Image Set to represent the set of infinite
+solutions from trigonometric equations.
+
+
+    \item Condition Set represents subset of a set who's members which
+satisfies a particular condition. In notation Condition Set of set S w.r.t to a
+condition H is \{x | H(x), x \in S \}. We use Condition Set to represent the
+set of solutions of an equation or an inequality where the equation or the
+inequality is the condition and the set is the domain in which we aim to find
+the solution.
+
+
 \end{itemize}
+
+
+
 
 
 %% Explaining it later because it is a special case of Image Set rather being

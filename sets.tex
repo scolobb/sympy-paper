@@ -1,19 +1,40 @@
-%% Sets SymPy
+%% Sets
 
 SymPy supports representation of a wide variety of set, this is achieved by
-first defining abstract representation for a smaller number of sets in form of
-python classes and then combining and transforming them using various set
-operations.
+first defining abstract representation for a smaller number of atomic set
+classes and then combining and transforming them using various set operations.
 
-%% Set Types
+Each of the set class inherits from the base Set class and defines
+rules to check membership of a SymPy object, to calculate union, intersection,
+set different and power set. In cases we are not able to evaluate these
+operations to atomic set classes they are represented as abstract unevaluated
+objects.
+
 
 \begin{itemize}
-    \item Finite Set
-    \item Empty Set
-    \item Universal Set
-    \item Real Interval
-    \item Finite and Infinite Range
-    \item Complex Region
+
+    % Description of Empty Set sounds too obvious, not sure if we need to keep
+    % it.
+    \item \textbf{Empty Set}: Nothing is a member of Empty Set. Union with
+another set returns the other set and intersection leads to an Empty Set.
+
+    \item \textbf{Universal Set}: Everything is a member of Universal Set.
+Union of Universal Set with any set gives Universal Set and intersection leads
+to the other set itself.
+
+    \item \textbf{Finite Set} is functionally equivalent to python's set
+object. Its members can be any object including strings and other sets
+themselves.
+
+    \item \textfb{Range} implements a range of integers and is defined by
+specifying a start value, an end value and a step size. Range is functionally
+equivalent to python's range except the fact that it accepts infinity at end
+points allowing us to represent infinite ranges.
+
+
+    \item \textbf{Real Interval} is specified by giving the start and end point
+and specifying if it is open or closed in these respective ends.
+
 \end{itemize}
 
 
@@ -28,7 +49,13 @@ operations.
     \item Condition Set
 \end{itemize}
 
-%% Representations acheivable through application of Operations on atomic set
+
+%% Explaining it later because it is a special case of Image Set rather being
+%% something atomic
+
+    \textbf{Complex Region}
+
+%% Representations achievable through application of Operations on atomic set
 %% types mentioned above.
 
 

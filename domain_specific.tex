@@ -5,35 +5,44 @@ mechanics along with support for manipuating physical quantities with units.
 
 \subsection{Vector Algebra}
 
-The vector package provides reference frame, time, and space aware vector and
-dyadic objects that allow for three dimensional operations such as addition,
-subtraction, scalar multiplication, inner and outer products, cross products,
-etc. Both of these objects can be written in very compact notation that make it
-easy to express the vectors and dyadics in terms of multiple reference frames
-with arbitrarily defined relative orientations. The vectors are used to specify
-the positions, velocities, and accelerations of points, orientations, angular
-velocities, and angular accelerations of reference frames, and force and
-torques. The dyadics are essentially reference frame aware 3 x 3 tensors. The
-vector and dyadic objects can be used for any one, two, or three dimensional
-vector algebra and provide a strong framework to build physics and engineering
-tools atop.
+The \verb|sympy.physics.vector| package provides reference frame, time, and
+space aware vector and dyadic objects that allow for three dimensional
+operations such as addition, subtraction, scalar multiplication, inner and
+outer products, cross products, etc. Both of these objects can be written in
+very compact notation that make it easy to express the vectors and dyadics in
+terms of multiple reference frames with arbitrarily defined relative
+orientations. The vectors are used to specify the positions, velocities, and
+accelerations of points, orientations, angular velocities, and angular
+accelerations of reference frames, and force and torques. The dyadics are
+essentially reference frame aware $3 \times 3$ tensors. The vector and dyadic
+objects can be used for any one-, two-, or three-dimensional vector algebra and
+they provide a strong framework for build physics and engineering tools.
 
 \begin{listing}
   \begin{minted}{pycon}
+>>> from sympy import pi
+>>> from sympy.physics.vector import ReferenceFrame
 >>> A = ReferenceFrame('A')
 >>> B = ReferenceFrame('B')
 >>> C = ReferenceFrame('C')
->>> B.orient(A, 'body', (1, 2, 3), 'xzx')
->>> C.orient(B, 'axis', (4, B.x))
+>>> B.orient(A, 'body', (pi, pi / 3, pi / 4), 'zxz')
+>>> C.orient(B, 'axis', (pi / 2, B.x))
 >>> v = 1 * A.x + 2 * B.z + 3 * C.y
 >>> v
 A.x + 2*B.z + 3*C.y
 >>> v.express(A)
-(-3*sin(2)*cos(3)*cos(4) + 3*sin(2)*sin(3)*sin(4) + 2*sin(2)*sin(3) + 1)*A.x + (3*(-sin(3)*cos(1)*cos(2) - sin(1)*cos(3))*sin(4) + 3*(-sin(1)*sin(3) + cos(1)*cos(2)*cos(3))*cos(4) - 2*sin(3)*cos(1)*cos(2) - 2*sin(1)*cos(3))*A.y + (2*cos(1)*cos(3) + 3*(sin(3)*cos(1) + sin(1)*cos(2)*cos(3))*cos(4) - 2*sin(1)*sin(3)*cos(2) + 3*(cos(1)*cos(3) - sin(1)*sin(3)*cos(2))*sin(4))*A.z
+A.x + 5*sqrt(3)/2*A.y + 5/2*A.z
   \end{minted}
-  \caption{Python interpreter session showing how a vector is created using the
+  \caption{
+    Python interpreter session showing how a vector is created using the
     orthogonal unit vectors of three reference frames that are oriented with
-    respect to each other and the result of expressing the vector in one frame.}
+    respect to each other and the result of expressing the vector in the $A$
+    frame.
+    The $B$ frame is oriented with respect to the $A$ frame using Z-X-Z Euler
+    Angles of magnitude $\pi$, $\frac{\pi}{2}$, and $\frac{\pi}{3}$ radians,
+    respecitively whereas the $C$ frame is oriented with respect to the $B$
+    frame through a simple rotation about the $B$ frame's X unit vector through
+    $\frac{\pi}{2}$ radians.}
   \label{lis:physics-vector}
 \end{listing}
 

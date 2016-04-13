@@ -1,7 +1,7 @@
+sudo: required
+dist: trusty
 before_install:
   - "sudo apt-get update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra texlive-humanities texlive-science dvipng texlive-latex-recommended python-pygments"
-  - "# minted is included with texlive-latex-extra for Ubuntu >= 14.04, so for Travis's Ubuntu 12.04 builds we simply copy the file to the correct location."
-  - "wget https://raw.githubusercontent.com/gpoore/minted/master/source/minted.sty"
 script:
   - make travis
 # TODO: Deploy the built file somewhere (see for instance https://harshjv.github.io/blog/setup-latex-pdf-build-using-travis-ci/)

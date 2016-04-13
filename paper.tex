@@ -3,6 +3,21 @@
 % for nice source code syntax highlighting, also provides Listing env
 \usepackage{minted}
 
+% this is required for all the \url{} commands in the bib file
+%\usepackage{hyperref}
+
+% for nice units
+\usepackage{siunitx}
+
+% for images: png, pdf, etc
+\usepackage{graphicx}
+
+% for nice table formatting, i.e. /toprule, /midrule, etc
+\usepackage{booktabs}
+
+% to allow for \verb++ declarations in captions.
+\usepackage{cprotect}
+
 \begin{document}
 \section{Introduction}
 
@@ -43,5 +58,8 @@
 \input{conclusion_and_future_work}
 
 \section{References}
+
+\bibliography{paper}
+\bibliographystyle{unsrt}
 
 \end{document}

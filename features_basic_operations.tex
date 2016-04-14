@@ -6,7 +6,7 @@
 
 SymPy has two assumptions systems, referred to as new-style and old-style assumptions.
 
-In the old-style assumptions system prepositions are assigned to symbols
+In the old-style assumptions system propositions are assigned to symbols
 upon class construction, for example, to declare the symbol $i$ as positive integer,
 one would call
 
@@ -14,7 +14,7 @@ one would call
 i = Symbol("i", integer=True, positive=True)
 \end{verbatim}
 
-querying the assumptions is handled through class methods
+querying the assumptions is handled through attributes
 
 \begin{verbatim}
 i.is_positive
@@ -55,9 +55,7 @@ the old-style, but is significantly different in the way predicates are
 used.
 Predicates in the new-style assumptions system are located under the \textit{Q}
 namespace, they appear as
-\verb|Q.positive|, \verb|Q.integer| and so on,
-and, as of the writing of this paper, 
-they can accept only one parameter.
+\verb|Q.positive|, \verb|Q.integer| and so on.
 
 Querying is provided through the \verb|ask| functions.
 The previous example in the new-style assumptions can be written as

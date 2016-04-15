@@ -65,7 +65,18 @@ ImageSet(Lambda(_n, 2*_n*pi + pi/2), Integers())
 S.Complexes
 \end{verbatim}
 
-% TODO: Linsolve Examples
+\begin{itemize}
+\item Linear system: finite and infinite solution for determined, under
+determined and over determined problems.
+\end{itemize}
+\begin{verbatim}
+>>> A = Matrix([[1, 2, 3], [4, 5, 6], [7, 8, 10]])
+>>> b = Matrix([3, 6, 9])
+>>> linsolve((A, b), x, y, z)
+{(−1,2,0)}
+>>> linsolve(Matrix(([1, 1, 1, 1], [1, 1, 2, 3])), (x, y, z))
+{(-y - 1, y, 2)}
+\end{verbatim}
 
 The new solve i.e. \textbf{solveset} is under active development and is a
 planned replacement for \textbf{solve}, Hence there are some features which are

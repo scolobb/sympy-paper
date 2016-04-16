@@ -55,8 +55,6 @@ The advantage of this approach is that an explicit formula for the coefficients
 of the series expansion is generated rather than just computing a few terms.
 
 \begin{verbatim}
->>> from sympy import fps, symbols, sin
->>> x, y = symbols('x')
 >>> f = fps(sin(x), x, x0=0)
 >>> f.truncate(6)
 x - x**3/6 + x**5/120 + O(x**6)
@@ -71,8 +69,7 @@ the \texttt{fourier\_series} function. Under the hood it just computes $a0$, $an
 standard integration formulas.
 
 \begin{verbatim}
->>> from sympy import fourier_series, symbols, Heaviside
->>> x, L = symbols('x L')
+>>> L = symbols('L')
 >>> f = fourier_series(2 * (Heaviside(x/L) - Heaviside(x/L - 1)) - 1, (x, 0, 2*L))
 >>> f.truncate(3)
 4*sin(pi*x/L)/pi + 4*sin(3*pi*x/L)/(3*pi) + 4*sin(5*pi*x/L)/(5*pi)

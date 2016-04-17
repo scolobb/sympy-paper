@@ -1,12 +1,12 @@
 \subsection{SymPy Gamma}\label{sympy-gamma}
 
-SymPy Gamma is a simple web application that runs on Google App Engine 
-that executes and displays the results of SymPy expressions as well as
+SymPy Gamma is a simple web application that runs on Google App Engine. 
+It executes and displays the results of SymPy expressions as well as
 additional related computations, in a fashion similar to that of
 Wolfram\textbar{}Alpha. For instance, entering an integer will display
-prime factors, digits in the base-10 expansion, and a factorization
-diagram. Entering a function will give its docstring; in general,
-entering an arbitrary expression will provide the derivative, integral,
+its prime factors, digits in the base-10 expansion, and a factorization
+diagram. Entering a function will display its docstring; in general,
+entering an arbitrary expression will display its derivative, integral,
 series expansion, plot, and roots.
 
 SymPy Gamma also has several additional features than just computing the
@@ -35,13 +35,13 @@ which SymPy as a library doesn't support. For instance, SymPy Gamma
 supports queries like \texttt{sin\ x}, whereas SymPy doesn't support
 this, and supports only \texttt{sin(x)}.
 
-This parser converts the input query to the resultant SymPy readable 
+This parser converts the input query to the equivalent SymPy readable 
 code, which is then eventually processed by SymPy and the result is 
-finally formatted in LaTeX and displayed on the SymPy Gamma web-app.
+finally formatted in LaTeX and displayed on the SymPy Gamma web-application.
 
 \subsection{SymPy Live}\label{sympy-live}
 
-SymPy Live is an online web-based Python shell, which runs on Google
+SymPy Live is an online Python shell, which runs on Google
 App Engine, that executes SymPy code. It is integrated in the SymPy
 documentation examples, located at this \href{http://docs.sympy.org/latest/index.html}{link}.
 
@@ -49,7 +49,7 @@ This is accomplished by providing a HTML/JavaScript GUI for entering
 source code and visualization of output, and a server part which
 evaluates the requested source code. It's an interactive AJAX shell,
 that runs SymPy code using Python on the server.
-
+\newline
 Certain Features of SymPy Live-:
 
 \begin{itemize}
@@ -64,7 +64,7 @@ Certain Features of SymPy Live-:
 \item
   It can also be used to plot figures (\href{http://live.sympy.org/?evaluate=from\%20sympy\%20import\%20symbols\%0Afrom\%20sympy.plotting\%20import\%20textplot\%0Ax\%20\%3D\%20symbols(\%27x\%27)\%0Atextplot(x**2\%2C0\%2C5)\%0A\%23--\%0A}{link}), 
   and execute all kinds of expressions that SymPy can evaluate.
-\end{itemize}
-
+\item
 SymPy Live also formats the output in LaTeX for pretty-printing the
 output.
+\end{itemize}

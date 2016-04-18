@@ -12,7 +12,7 @@ naturally with the rest of SymPy.
 \begin{verbatim}
 In [1]: from sympy import Matrix, symbols, MatrixSymbol
 
-In [2]: x,y = symbols('x y', positive=True)
+In [2]: x, y = symbols('x y', positive=True)
 
 In [3]: t = Matrix(2, 2, [x, x + y, y, x])
 
@@ -83,7 +83,7 @@ BlockMatrix.
 \begin{verbatim}
 >>> from sympy import (MatrixSymbol, BlockMatrix, symbols,
 ...     Identity, ZeroMatrix, block_collapse)
->>> n,m,l = symbols('n m l')
+>>> n, m, l = symbols('n m l')
 >>> X = MatrixSymbol('X', n, n)
 >>> Y = MatrixSymbol('Y', m ,m)
 >>> Z = MatrixSymbol('Z', n, m)

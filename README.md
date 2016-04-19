@@ -20,11 +20,15 @@ Join our chat room to discuss contributions:
 
 # License
 
-The contents of this repository is licensed under the [Creative Commons
-Attribution 4.0 International
-License](http://creativecommons.org/licenses/by/4.0).
-
 [![CCBY](https://i.creativecommons.org/l/by/4.0/80x15.png)](http://creativecommons.org/licenses/by/4.0)
+
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)]()
+
+The contents of this repository are dual licensed under the [Creative Commons
+Attribution 4.0 International
+License](http://creativecommons.org/licenses/by/4.0) and the [MIT
+License](https://opensource.org/licenses/MIT). See the `LICENSE` file for
+details.
 
 # LaTeX Build Instructions
 

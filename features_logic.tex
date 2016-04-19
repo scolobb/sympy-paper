@@ -8,15 +8,16 @@ expressions have been implemented in the \texttt{logic} module.
 \subsubsection{Constructing boolean expressions}
 
 A boolean variable can be declared as a SymPy symbol. Python
-operators \&, \textbar  and \textasciitilde are overloaded for logical \texttt{And}, 
+operators \&, \textbar{} and \textasciitilde{} are overloaded for logical \texttt{And}, 
 \texttt{Or} and \texttt{negate}. Several others like \texttt{Xor},
-\texttt{Implies} can be constructed with \^{}, \textgreater\textgreater respectively.  
+\texttt{Implies} can be constructed with \^{}, \textgreater\textgreater{} respectively.  
 The above are just a shorthand, expressions can also be constructed
 by directly calling \texttt{And()}, \texttt{Or()}, \texttt{Not()},
 \texttt{Xor()}, \texttt{Nand()}, \texttt{Nor()}, etc.
-The boolean symbols can also be substituted \texttt{True} or \texttt{False}
 
 \begin{verbatim}
+>>> from sympy import *
+>>> x, y, z = symbols('x y z')
 >>> e = (x & y) | z
 >>> e.subs({x: True, y: True, z: False})
 True
@@ -30,10 +31,12 @@ API also permits to check if a boolean expression is in any
 of the above mentioned forms.
 
 \begin{verbatim}
->>> to_cnf((A & B) | C)
-And(Or(A, C), Or(B, C))
->>> to_dnf(A & (B | C))
-Or(And(A, B), And(A, C))
+>>> from sympy import *
+>>> x, y, z = symbols('x y z')
+>>> to_cnf((x & y) | z)
+And(Or(x, z), Or(y, z))
+>>> to_dnf(x & (y | z))
+Or(And(x, y), And(x, z))
 >>> is_cnf((x | y) & z)
 True
 >>> is_dnf((x & y) | z) 
@@ -49,6 +52,8 @@ variables of two expressions so as to represent the
 same logical behaviour.
 
 \begin{verbatim}
+>>> from sympy import *
+>>> a, b, c, x, y, z = symbols('a b c x y z')
 >>> e = a & (~a | ~b) & (a | c)
 >>> simplify(e)
 And(Not(b), a)
@@ -68,6 +73,8 @@ a clause learning DPLL algorithm implemented with watch
 literal scheme and VSIDS heuristic\cite{moskewicz2008method}.
 
 \begin{verbatim}
+>>> from sympy import *
+>>> a, b, c = symbols('a b c')
 >>> satisfiable(a & (~a | b) & (~b | c) & ~c)
 False
 >>> satisfiable(a & (~a | b) & (~b | c) & c)

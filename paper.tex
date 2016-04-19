@@ -5,7 +5,36 @@
 \usepackage{caption}
 \graphicspath{ {images/} }
 
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{hyperref}
+
+% for nice source code syntax highlighting, also provides Listing env
+\usepackage{minted}
+
+% this is required for all the \url{} commands in the bib file
+%\usepackage{hyperref}
+
+% for nice units
+\usepackage{siunitx}
+
+% for images: png, pdf, etc
+\usepackage{graphicx}
+
+% for nice table formatting, i.e. /toprule, /midrule, etc
+\usepackage{booktabs}
+
+% to allow for \verb++ declarations in captions.
+\usepackage{cprotect}
+
+% to allow usage of \mathbb symbols
+\usepackage{amssymb}
+
+\title{SymPy: Symbolic Computing in Python}
+
 \begin{document}
+\maketitle
+
 \section{Introduction}
 
 %% What sympy is, where to download etc.
@@ -38,6 +67,8 @@
 
 \input{features}
 
+\input{domain_specific}
+
 \section{Other Projects that use SymPy}
 
 \input{other_projects_that_use_sympy}
@@ -51,5 +82,8 @@
 \input{conclusion_and_future_work}
 
 \section{References}
+
+\bibliography{paper}
+\bibliographystyle{unsrt}
 
 \end{document}

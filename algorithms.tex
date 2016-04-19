@@ -73,7 +73,7 @@ callable Python function for faster numerical evaluation.
 Various back ends are supported. The following example
 demonstrates creating a NumPy-based function from
 a SymPy expression, which automatically supports
-vectorized array evaluation [NumPy citation?]:
+vectorized array evaluation~\cite{van2011numpy}:
 
 \begin{verbatim}
 >>> f = lambdify((x, y), sin(x*y)**2, modules='numpy')
@@ -115,7 +115,7 @@ Internally, mpmath represents a floating-point number
 $(-1)^s x \cdot 2^y$ by a tuple $(s, x, y, b)$ where
 $x$ and $y$ are arbitrary-size Python integers
 and the redundant integer $b$ stores the bit length of $x$ for quick access.
-If GMPY [citation?] is installed, mpmath automatically switches to
+If GMPY~\cite{GMPY} is installed, mpmath automatically switches to
 using the \texttt{gmpy.mpz} type for $x$ and using GMPY helper methods
 to perform rounding-related operations, improving performance.
 

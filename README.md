@@ -43,17 +43,17 @@ Alternatively, you can use docker, see the instructions in our
 We follow the ICMJE [criteria](http://www.icmje.org/recommendations/browse/roles-and-responsibilities/defining-the-role-of-authors-and-contributors.html#two)
 for authorship:
 
-* Substantial contributions to the conception or design of the work; or the
-  acquisition, analysis, or interpretation of data for the work; AND
+1. Substantial contributions to the conception or design of the work; or the
+   acquisition, analysis, or interpretation of data for the work; AND
 
-* Drafting the work or revising it critically for important intellectual
-  content; AND
+2. Drafting the work or revising it critically for important intellectual
+   content; AND
 
-* Final approval of the version to be published; AND
+3. Final approval of the version to be published; AND
 
-* Agreement to be accountable for all aspects of the work in ensuring that
-  questions related to the accuracy or integrity of any part of the work are
-  appropriately investigated and resolved.
+4. Agreement to be accountable for all aspects of the work in ensuring that
+   questions related to the accuracy or integrity of any part of the work are
+   appropriately investigated and resolved.
 
 Anyone who satisfies and is willing to accept these responsibilities and
 commitments is welcome to be an author on this publication.

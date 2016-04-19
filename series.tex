@@ -6,11 +6,11 @@ or expression involving elementary and special functions and multiple
 variables. For this it has two different implementations.
 
 The first approach stores a series as a core object. Each function has its
-specific implementation of its expansion. It is able to evaluate the Puiseux
+specific implementation of its expansion which is able to evaluate the Puiseux
 series expansion about any point.
 
 \begin{verbatim}
->>> from sympy import *
+>>> from sympy import symbols, series
 >>> x, y = symbols('x, y')
 >>> series(sin(x+y) + cos(x*y), x, 0, 2)
 1 + sin(y) + x*cos(y) + O(x**2)
@@ -29,6 +29,7 @@ implemented using semi-numerical algorithms. All these support Puiseux series
 expansion.
 
 \begin{verbatim}
+>>> from sympy import ring
 >>> from sympy.polys.ring_series import rs_sin
 >>> R, x = ring('x', QQ)
 >>> rs_sin(x**2 + x, x, 5)
@@ -43,6 +44,8 @@ speedup observed with larger series.
 
 \begin{verbatim}
 >>> from sympy.polys.ring_series import rs_series
+>>> from sympy.abc import a, b
+>>> from sympy import sin, cos
 >>> rs_series(sin(a + b), a, 4)
 -1/2*(sin(b))*a**2 + (sin(b)) - 1/6*(cos(b))*a**3 + (cos(b))*a
 \end{verbatim}

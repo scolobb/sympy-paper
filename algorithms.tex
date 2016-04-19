@@ -11,6 +11,17 @@
 The \texttt{Float} class holds an arbitrary-precision binary floating-point value
 and a precision in bits. An operation between two \texttt{Float}
 inputs is rounded to the larger of the two precisions.
+Since Python floating-point literals automatically evaluate to \texttt{double}
+(53-bit) precision, strings should be used to input precise decimal values:
+
+\begin{verbatim}
+>>> Float(1.1)
+1.10000000000000
+>>> Float(1.1, 30)   # precision equivalent to 30 digits
+1.10000000000000008881784197001
+>>> Float("1.1", 30)
+1.10000000000000000000000000000
+\end{verbatim}
 
 The preferred way to evaluate an expression numerically is with the
 \texttt{evalf} method, which internally estimates the number of accurate
@@ -40,7 +51,7 @@ special functions, infinite series and integrals.
 
 SymPy does not track the accuracy of
 approximate numbers outside of \texttt{evalf}.
-The familiar dangers of floating-point arithmetic apply, and 
+The familiar dangers of floating-point arithmetic apply~\cite{goldberg1991every}, and
 symbolic expressions containing floating-point numbers should be treated
 with some caution.
 This approach is similar to Maple and Maxima.

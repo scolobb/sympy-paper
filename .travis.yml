@@ -1,9 +1,15 @@
 sudo: required
 dist: trusty
 before_install:
-  - "sudo apt-get update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra texlive-humanities texlive-science latex-xcolor dvipng texlive-latex-recommended python-pygments"
+- sudo apt-get update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended
+  texlive-latex-extra texlive-fonts-extra texlive-humanities texlive-science latex-xcolor
+  dvipng texlive-latex-recommended python-pygments
 script:
-  - make travis
-# TODO: Deploy the built file somewhere (see for instance https://harshjv.github.io/blog/setup-latex-pdf-build-using-travis-ci/)
+- make travis
+- sh upload_travis.sh
 notifications:
   email: false
+env:
+  global:
+    secure: "qloVB8ddSdqFC7RiumCuDc68/GIlY1kKyqCgFEv+nTvrX8DrzGiJ7V6iNS4zMYB0Hv+iFGpf2kTwfdN0o+TSg2r3IGZZKqeTz1wHZRkThIzuuYt1APbhNh2OCeFGqJQJGm/RN5o2NJjmLOxnncDNSmEXxI4MoO/XAfmc1WLWSBC1UN16f4l0inH8cqle7mVH2ym6SFeYiw/RtUloBS7Z9Vz4ZL+fkemASGDWUz2M5d0lPQyaDf77Vrvm/1Bv3Ga+PFhU5XK00W2xY9UnhYYi4rhds8EUg6VggwNdqdXCRSybgD3Ftzld8Tv9pdUnaI4DjcquNhuizXLlxn47IGCiKhDprehyRvfjLPVRrJbjkfZW4tapgnGLp13jtE1z7zzzoReX7xIIdsSOfjjsPOo39hn6Or43OSYgg35NewamTRXexuOz3SBund7T1fx9A9P+OuwyG8CsGd8h460q/BfqvfKQIaKeO9WYNyOPtTOeK6jK7D/beGMM9QWsFjjF+yk4W8up9pzx60YjIWGhMcrHBrJ9R8dO9xm/fahVJU57jlEmQOH6UByg/w6Yr8mILiJzo0IAQ6vx9xxcuwtuTpOL8VmKCNH+GznKu46u2/rUhX68TQwYE1Opg/wA90rY1yT04PcuQgmc0NxhG2tdyPrmzXuvdPzJQJ2RUikEPKKIN/0="
+

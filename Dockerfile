@@ -9,7 +9,7 @@
 #
 #     docker run -it -v `pwd`:/home/swuser/data username/sympy-paper:v1
 #
-# This mounts your current directory (i.e. this repository) into ~/data in the
+# This mounts your current directory (i.e., this repository) into ~/data in the
 # countainer, logs you in as a swuser and runs bash. Inside the container,
 # build the paper using:
 #

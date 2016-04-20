@@ -1,19 +1,19 @@
 
 SymPy supports construction and manipulation of boolean expressions
-through the \texttt{logic} module. SymPy symbols can be used as 
-propositional variables and also be substituted as \texttt{True} 
-or \texttt{False}. A good number of manipulation features for boolean 
+through the \texttt{logic} module. SymPy symbols can be used as
+propositional variables and also be substituted as \texttt{True}
+or \texttt{False}. A good number of manipulation features for boolean
 expressions have been implemented in the \texttt{logic} module.
 
 \subsubsection{Constructing boolean expressions}
 
 A boolean variable can be declared as a SymPy symbol. Python
-operators \&, \textbar{} and \textasciitilde{} are overloaded for logical \texttt{And}, 
+operators \&, \textbar{} and \textasciitilde{} are overloaded for logical \texttt{And},
 \texttt{Or} and \texttt{negate}. Several others like \texttt{Xor},
-\texttt{Implies} can be constructed with \^{}, \textgreater\textgreater{} respectively.  
+\texttt{Implies} can be constructed with \^{}, \textgreater\textgreater{} respectively.
 The above are just a shorthand, expressions can also be constructed
-by directly calling \texttt{And()}, \texttt{Or()}, \texttt{Not()},
-\texttt{Xor()}, \texttt{Nand()}, \texttt{Nor()}, etc.
+by directly calling \verb|And()|, \verb|Or()|, \verb|Not()|,
+\verb|Xor()|, \verb|Nand()|, \verb|Nor()|, etc.
 
 \begin{verbatim}
 >>> from sympy import *
@@ -25,9 +25,9 @@ True
 
 \subsubsection{CNF and DNF}
 
-Any boolean expression can be converted to conjunctive normal 
-form, disjunctive normal form and negation normal form. The 
-API also permits to check if a boolean expression is in any 
+Any boolean expression can be converted to conjunctive normal
+form, disjunctive normal form and negation normal form. The
+API also permits to check if a boolean expression is in any
 of the above mentioned forms.
 
 \begin{verbatim}
@@ -39,7 +39,7 @@ And(Or(x, z), Or(y, z))
 Or(And(x, y), And(x, z))
 >>> is_cnf((x | y) & z)
 True
->>> is_dnf((x & y) | z) 
+>>> is_dnf((x & y) | z)
 True
 \end{verbatim}
 
@@ -47,8 +47,8 @@ True
 
 The module supports simplification of given boolean expression
 by making deductions on it. Equivalence of two expressions can
-also be checked. If so, it is possible to return the mapping of 
-variables of two expressions so as to represent the 
+also be checked. If so, it is possible to return the mapping of
+variables of two expressions so as to represent the
 same logical behaviour.
 
 \begin{verbatim}
@@ -66,10 +66,10 @@ And(Not(b), a)
 \subsubsection{SAT solving}
 
 The module also supports satisfiability checking of a given
-boolean expression. If satisfiable, it is possible to return 
+boolean expression. If satisfiable, it is possible to return
 a model for which the expression is satisfiable. The API also
-supports returning all possible models. The SAT solver has 
-a clause learning DPLL algorithm implemented with watch 
+supports returning all possible models. The SAT solver has
+a clause learning DPLL algorithm implemented with watch
 literal scheme and VSIDS heuristic\cite{moskewicz2008method}.
 
 \begin{verbatim}

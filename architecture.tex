@@ -54,7 +54,7 @@ containing all the nested class constructor calls to create the given expression
 \end{verbatim}
 
 Every SymPy expression satisfies a key invariant, namely,
-\texttt{expr.func(*expr.args) == expr}. This means that expressions are
+\verb|expr.func(*expr.args) == expr|. This means that expressions are
 rebuildable from their \texttt{args}~\footnote{\texttt{expr.func} is used
   instead of \texttt{type(expr)} to allow the function of an expression to be
   distinct from its actual Python class. In most cases the two are the same.}.
@@ -68,7 +68,7 @@ the above \texttt{x*y + 2} to, roughly,
 the \texttt{symbols} function, are \texttt{Symbol} instances. The \texttt{2}
 in the expression is processed by Python as a literal, and is stored as
 Python's builtin \texttt{int} type. When \texttt{2} is called by the
-\verb|__add__| method, it is converted to the SymPy type \texttt{Integer(2)}. In
+\verb|__add__| method, it is converted to the SymPy type \verb|Integer(2)|. In
 this way, SymPy expressions can be built in the natural way using Python
 operators and numeric literals.
 
@@ -83,10 +83,10 @@ evaluation, so expressions like \texttt{x + 1/2} will produce \texttt{x +
 already been converted to \texttt{0.5} by Python. However, for a CAS like
 SymPy, one typically wants to work with exact rational numbers whenever
 possible. Working around this is simple, however:  one can wrap one of the
-integers with \texttt{Integer}, like \texttt{x + Integer(1)/2}, or using
-\texttt{x + Rational(1, 2)}. SymPy provides a function \texttt{S} which can be
-used to convert objects to SymPy types with minimal typing, such as \texttt{x
-  + S(1)/2}. This gotcha is a small downside to using Python directly instead
+integers with \texttt{Integer}, like \verb|x + Integer(1)/2|, or using
+\verb|x + Rational(1, 2)|. SymPy provides a function \texttt{S} which can be
+used to convert objects to SymPy types with minimal typing, such as \verb|x + S(1)/2|.
+This gotcha is a small downside to using Python directly instead
 of a custom domain specific language (DSL), and we consider it to be worth it
 for the advantages listed above.
 
@@ -117,7 +117,7 @@ mathematically invalid operations. However, in many cases users will wish to
 simplify expressions containing terms like $\sqrt{x^2}$.
 
 Assumptions are set on \texttt{Symbol} objects when they are created. For
-instance \texttt{Symbol('x', positive=True)} will create a symbol named
+instance \verb|Symbol('x', positive=True)| will create a symbol named
 \texttt{x} that is assumed to be positive.
 
 \begin{verbatim}
@@ -136,7 +136,7 @@ Some common assumptions that SymPy allows are \texttt{positive},
 Assumptions are only needed to restrict a domain so that certain
 simplifications can be performed. It is not required to make the domain match
 the input of a function. For instance, one can create the object
-$\sum_{n=0}^m f(n)$ as \texttt{Sum(f(n), (n, 0, m))} without setting
+$\sum_{n=0}^m f(n)$ as \verb|Sum(f(n), (n, 0, m))| without setting
 \texttt{integer=True} when creating the Symbol object \texttt{n}.
 
 The assumptions system additionally has deductive capabilities. The
@@ -183,7 +183,7 @@ trees. \texttt{Expr} is the subclass for mathematical expressions that can be
 added and multiplied together. Instances of \texttt{Expr} are typically
 complex numbers, but may also include other ``rings'' like matrix expressions.
 Not all SymPy classes are \texttt{Expr}. For instance, logic expressions, such
-as \texttt{And(x, y)} are \texttt{Basic} but not \texttt{Expr}.
+as \verb|And(x, y)| are \texttt{Basic} but not \texttt{Expr}.
 
 The \texttt{Function} class is a subclass of \texttt{Expr} which makes it
 easier to define mathematical functions called with arguments. This includes
@@ -204,7 +204,7 @@ common \verb|_eval_|\texttt{\textit{*}} methods relate to the assumptions.
 Here is a stripped down version of the gamma function $\Gamma(x)$ from SymPy,
 which evaluates itself on positive integer arguments, has the positive and
 real assumptions defined, can be rewritten in terms of factorial with
-\texttt{gamma(x).rewrite(factorial)}, and can be differentiated.
+\verb|gamma(x).rewrite(factorial)|, and can be differentiated.
 \texttt{fdiff} is a convenience method for subclasses of \texttt{Function}.
 \texttt{fdiff} returns the derivative of the function without worrying about
 the chain rule. \texttt{self.func} is used throughout instead of referencing

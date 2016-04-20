@@ -112,7 +112,7 @@ in SymPy).
 
 Like SymPy, mpmath is a pure Python library.
 Internally, mpmath represents a floating-point number
-$(-1)^s x \cdot 2^y$ by a tuple $(s, x, y, b)$ where
+${(-1)}^s x \cdot 2^y$ by a tuple $(s, x, y, b)$ where
 $x$ and $y$ are arbitrary-size Python integers
 and the redundant integer $b$ stores the bit length of $x$ for quick access.
 If GMPY~\cite{GMPY} is installed, mpmath automatically switches to
@@ -148,7 +148,7 @@ zeta and polylogarithm functions,
 the generalized hypergeometric function, and the Meijer G-function.
 
 Most special functions are implemented as linear
-combinations of the generalized hypergeometric function ${}_pF_q$,
+combinations of the generalized hypergeometric function ${}_{p}F_{q}$,
 which is computed by a combination of direct summation,
 argument transformations (for ${}_2F_1$, ${}_3F_2$, $\ldots$)
 and asymptotic expansions
@@ -162,11 +162,11 @@ give rise to singularities that have to be removed for certain
 combinations of parameters.
 A typical example is the modified Bessel function of the second kind
 $$K_{\nu}(z) = \frac{1}{2} \left[
-            \left(\frac{z}{2}\right)^{-\nu}
+            {\left(\frac{z}{2}\right)}^{-\nu}
                 \Gamma(\nu)
                 {}_0F_1\!\left(1-\nu, \frac{z^2}{4}\right)
              -
-             \left(\frac{z}{2}\right)^{\nu}
+             {\left(\frac{z}{2}\right)}^{\nu}
                  \frac{\pi}{\nu \sin(\pi \nu) \Gamma(\nu)}
                  {}_0F_1\!\left(\nu+1, \frac{z^2}{4}\right)
             \right]$$
@@ -259,7 +259,7 @@ We first define comparability classes by calculating $L$:
 L\equiv \lim_{x\to\infty} {\log |f(x)| \over \log |g(x)|}
 \end{equation}
 And then we define the $<$, $>$ and $\sim$ operations as follows: $f>g$ when
-$L=\pm\infty$ ($f$ is more rapidly varying than $g$, i.e. $f$ goes to $\infty$
+$L=\pm\infty$ ($f$ is more rapidly varying than $g$, i.e., $f$ goes to $\infty$
 or $0$ faster than $g$, $f$ is greater than any power of $g$), $f<g$ when $L=0$
 ($f$ is less rapidly varying than $g$) and $f\sim g$ when $L\neq 0,\pm\infty$
 (both $f$ and $g$ are bounded from above and below by suitable integral powers

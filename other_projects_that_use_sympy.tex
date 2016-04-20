@@ -1,8 +1,8 @@
 There are several projects that use SymPy as a library for implementing
-a part of their project, or even as a part of back-end for their 
+a part of their project, or even as a part of back-end for their
 application as well.
 \newline
-Some of them are listed below-:
+Some of them are listed below:
 
 \begin{itemize}
 \item
@@ -61,7 +61,7 @@ Some of them are listed below-:
 \item
   \href{http://mech.fsv.cvut.cz/~stransky/software/latexexpr/doc/}{\textbf{LaTeX
   Expression project}}: Easy LaTeX typesetting of algebraic expressions
-  in symbolic form with automatic substitution and result computation).
+  in symbolic form with automatic substitution and result computation.
 \item
   \href{https://www.researchgate.net/publication/260585491_Symbolic_Statistics_with_SymPy/}{\textbf{Symbolic
   statistical modeling}}: Adding statistical operations to complex
@@ -70,7 +70,7 @@ Some of them are listed below-:
 
 \subsection{SymPy Gamma}\label{sympy-gamma}
 
-SymPy Gamma is a simple web application that runs on Google App Engine. 
+SymPy Gamma is a simple web application that runs on Google App Engine.
 It executes and displays the results of SymPy expressions as well as
 additional related computations, in a fashion similar to that of
 Wolfram\textbar{}Alpha. For instance, entering an integer will display
@@ -85,28 +85,27 @@ results using SymPy.
 \begin{itemize}
 \item
   It displays integration steps, differentiation steps in detail, which
-  can be viewed in Figure \ref{fig:integralsteps}:\par
+  can be viewed in Figure~\ref{fig:integralsteps}:\par
 \begin{minipage}{\textwidth}
     \centering
     \includegraphics[width=0.7\textwidth]{integral_steps.png}
-    \captionof{figure}{Integral steps of $\tan (x)$}
-    \label{fig:integralsteps}
+    \captionof{figure}{Integral steps of $\tan (x)$}\label{fig:integralsteps}
 \end{minipage}
 \item
   It also displays the factor tree diagrams for different numbers.
 \item
-  SymPy Gamma also saves user search queries, and offers many such 
-  similar features for free, which Wolfram\textbar{}Alpha only offers 
+  SymPy Gamma also saves user search queries, and offers many such
+  similar features for free, which Wolfram\textbar{}Alpha only offers
   to its paid users.
 \end{itemize}
 Every input query from the user on SymPy Gamma is first, parsed by its
 own parser, which handles several different forms of function names,
 which SymPy as a library doesn't support. For instance, SymPy Gamma
 supports queries like \texttt{sin\ x}, whereas SymPy doesn't support
-this, and supports only \texttt{sin(x)}.
+this, and supports only \verb|sin(x)|.
 
-This parser converts the input query to the equivalent SymPy readable 
-code, which is then eventually processed by SymPy and the result is 
+This parser converts the input query to the equivalent SymPy readable
+code, which is then eventually processed by SymPy and the result is
 finally formatted in LaTeX and displayed on the SymPy Gamma web-application.
 
 \subsection{SymPy Live}\label{sympy-live}
@@ -120,7 +119,7 @@ source code and visualization of output, and a server part which
 evaluates the requested source code. It's an interactive AJAX shell,
 that runs SymPy code using Python on the server.
 \newline
-Certain Features of SymPy Live-:
+Certain Features of SymPy Live:
 
 \begin{itemize}
 \item
@@ -132,7 +131,7 @@ Certain Features of SymPy Live-:
   tasks, as an interactive way to try out APIs, or as a debugging aid
   during development.
 \item
-  It can also be used to plot figures (\href{http://live.sympy.org/?evaluate=from\%20sympy\%20import\%20symbols\%0Afrom\%20sympy.plotting\%20import\%20textplot\%0Ax\%20\%3D\%20symbols(\%27x\%27)\%0Atextplot(x**2\%2C0\%2C5)\%0A\%23--\%0A}{link}), 
+  It can also be used to plot figures (\href{http://live.sympy.org/?evaluate=from\%20sympy\%20import\%20symbols\%0Afrom\%20sympy.plotting\%20import\%20textplot\%0Ax\%20\%3D\%20symbols(\%27x\%27)\%0Atextplot(x**2\%2C0\%2C5)\%0A\%23--\%0A}{link}),
   and execute all kinds of expressions that SymPy can evaluate.
 \item
 SymPy Live also formats the output in LaTeX for pretty-printing the

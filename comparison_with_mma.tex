@@ -1,7 +1,7 @@
 
 \subsection{Mathematica}
 
-Wolfram Mathematica is a popular proprietary CAS.
+Wolfram Mathematica is a popular proprietary CAS.\@
 It features highly advanced algorithms.
 Mathematica has a core implemented in C++~\cite{Wolfram2016}
 which interprets its own programming language (know as Wolfram language).
@@ -36,7 +36,7 @@ Products in Mathematica are determined by some builtin node types,
 such as \texttt{Times}, \texttt{Dot}, and others.
 \texttt{Times} is overloaded by the * operator,
 and is always meant to represent a commutative operator.
-The other notable product is \texttt{Dot}, overloaded by the . operator.
+The other notable product is \texttt{Dot}, overloaded by the \texttt{.} operator.
 This product represents matrix multiplication,
 it is not commutative.
 SymPy uses the same node for both scalar and matrix multiplication,
@@ -61,10 +61,9 @@ while Mathematica specifies the \texttt{Flat} attribute on the expression type.
 % * comparison with Mathematica: commutativity, associative expressions, one-identity. Advantage of SymPy: multiplicative commutativity defined on symbols.
 % * comparison with Mathematica: avoid misspelling variables through forced declaration (check that you can't do it in Mathematica).
 % * evaluate=False vs HoldForm
-% * comparison with Mathematica: == is structural equality, not 
+% * comparison with Mathematica: == is structural equality, not
 % * comparison with Mathematica: polynomial module.
 % * comparison with Mathematica: space is product, ** vs ^
 % * comparison with Mathematica: ( ) is Sequence, functions are generally uppercase.
 % * comparsion with Mathematica: table of comparison?
 % * comparison with Mathematica: Wolfram language has loads of operator overloading, functional paradigm.
-

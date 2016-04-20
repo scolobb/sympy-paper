@@ -5,6 +5,7 @@ all:
 	pdflatex -shell-escape paper.tex
 	pdflatex -shell-escape paper.tex
 travis:
+	cd authors; ./list_latex.py
 	pdflatex -shell-escape --halt-on-error paper.tex
 	bibtex paper.aux
 	pdflatex -shell-escape --halt-on-error paper.tex

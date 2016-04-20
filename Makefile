@@ -1,4 +1,5 @@
 all:
+	cd authors; ./list_latex.py
 	pdflatex -shell-escape paper.tex
 	bibtex paper.aux
 	pdflatex -shell-escape paper.tex

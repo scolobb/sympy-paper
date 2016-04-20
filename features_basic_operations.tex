@@ -3,18 +3,65 @@
 
 % symbols, various ways to declare them
 
+Symbols are instances of the class \texttt{Symbol}.
+They may be declared by invoking the class constructor with the symbol string
+representation, or through the faster \texttt{symbols} and \texttt{var}
+functions.
+
 % polynomial expressions
 
 % functions
 
 % expand( ), factor( ), collect( ), together( ), apart( )
 %% maybe a table best suits this part.
+Common functions for polynomial expression manipulations are listed in the
+following table:
+\begin{tabular}{l|p{0.7\linewidth}}
+expand & expand the expression \\
+factor & recognize factors \\
+collect & . \\
+together & . \\
+apart & . \\
+\end{tabular}
 
 % simplification: simplify, sqrt denest, fu, trigsimp
 
+The generic way to simplify an expression is by calling the \texttt{simplify}
+function, or equivalently, calling it as a method \texttt{expr.simplify()}.
+It must be emphasized that simplification is not an unambigously defined
+mathematica operation, nevertheless full simplification may require a huge
+amount of computational power.
+
+There are specific algorithms for special simplification cases,
+such as \texttt{fu}, which calls a powerful simplification algorithm for
+trigonometric exressions\cite{Fu et al.}.
+For trigonometric expressions there is furthermore a \texttt{trigsimp} method,
+acting as a wrapper for specific algorithms.
+\texttt{sqrtdenest} may help by denesting square roots inside other square roots.
+
+
 % substitution, wilds, replacement
 
+Substitutions are performed through the \texttt{.subs} method, which accepts
+wildcards and is sensible to some mathematical properties while matching,
+such as associativity, commutativity,  additive and multiplicative inverses,
+and matching of powers.
+
+\texttt{.replace} provides more basic matching algorithm,
+though it allows for costum matching functions to be passed to it.
+
+\texttt{.xreplace} is an expression tree structural replacement routing,
+unaware of any mathematical property.
+
+%% TODO: add examples
+
 % unevaluated expressions (evaluate=False), global_evaluate
+
+Expression constructors accept in most cases the boolean parameter \texttt{evaluate},
+setting it to false will prevent automatic evaluation of the expression.
+The \verb|global_evaluate| variable may be employed to globally block any kind
+of evaluation.
+
 
 \subsubsection{Assumptions system}
 
@@ -165,10 +212,28 @@ Out[9]: 1
 \end{verbatim}
 for unevaluated expressions, \verb|Limit|.
 
-TODO: Sums and products.
+TODO: right and left limits.
+
+Sums and products are handled by the \texttt{Sum} and \texttt{Product} classes,
+respectively.
+Analogously with \texttt{Integral}, the first argument is the expression to be
+summed over, whereas the following arguments represent the summation and 
+multiplication indices, respectively, provided with integer ranges.
+
+It may be noted the existence of the \texttt{IndexedBase} class,
+which provides the construction of indexed symbols, that is symbols that are
+treated as different if their indices are different.
+
 
 \subsubsection{Expression outputs}
 
+Alongside with its parsers, SymPy has a rich collection of expression printers.
+
 % LaTeX printer
+Expressions may be readily transformed into a LaTeX form with the \texttt{latex( )}
+function.
 
 % pretty printer
+Pretty printer outputs the expression in traditional form with characters,
+outputs can be visualized in monospace fonts.
+

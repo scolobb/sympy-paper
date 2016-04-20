@@ -20,7 +20,8 @@ fi
 mv ../paper.pdf ${name}
 git add ${name}
 git commit -m "Upload new pdf [skip ci]."
-git push -q
+
+git push -q > /dev/null 2>&1
 
 export payload='{"state":"success","target_url":"https://github.com/isuruf-bot/sympy-paper/blob/pdfs/'${name}'","description":"Pdf uploading succeeded!","context":"continuous-integration/latex-pdf"}'
 

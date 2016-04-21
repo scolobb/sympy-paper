@@ -7,7 +7,7 @@ from io import open
 
 author_list = load(open("authors.json"))
 
-with open("../authors.tex", "w") as f:
+with open("../authors.tex", "w", encoding='utf-8') as f:
     f.write(u"\\author{%\n")
     for n, author in enumerate(author_list):
         f.write((u"%s%%\n" % author["name"]))

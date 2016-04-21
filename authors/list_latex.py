@@ -3,11 +3,16 @@
 from __future__ import print_function
 
 from json import load
+from io import open
 
 author_list = load(open("authors.json"))
 
-with open("../authors.tex", "wb") as f:
-    for author in author_list:
-        f.write(("\\author{%s}\n" % author["name"]).encode("utf-8"))
-        f.write(("\\affil{%s}\n" % author["institution"]).encode("utf-8"))
-        f.write("\n".encode("utf-8"))
+with open("../authors.tex", "w") as f:
+    f.write(u"\\author{%\n")
+    for n, author in enumerate(author_list):
+        f.write((u"%s%%\n" % author["name"]))
+        f.write(u"\\thanks{%s (\\email{%s}).}\n" \
+                % (author["institution"], author["email"]))
+        if n < len(author_list) - 1:
+            f.write(u"\\and\n")
+    f.write(u"}\n")

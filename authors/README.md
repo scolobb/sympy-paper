@@ -2,6 +2,8 @@
 
 ## Usage
 
+You first need to change your current directory to authors/ to execute the below functions.
+
 * Call `./prettify.sh` after modyfing `authors.json`.
 * Use `./list_text.sh` to list the authors as text
 * Use `./list_latex.sh` to list the authors as latex source code

@@ -52,10 +52,13 @@ with the size of the series
 
 \subsubsection{Formal Power Series}
 
-SymPy can be used for computing the Formal Power Series of a function.
-The implementation is based on the algorithm described in the paper on Formal Power Series\cite{Gruntz93formalpower}.
-The advantage of this approach is that an explicit formula for the coefficients
-of the series expansion is generated rather than just computing a few terms.
+SymPy can be used for computing the Formal Power Series\cite{wiki:formal} of a function.
+The implementation is based on the algorithm described in the paper on
+Formal Power Series\cite{Gruntz93formalpower}.  The advantage of this approach is
+that an explicit formula for the coefficients of the series expansion is generated
+rather than just computing a few terms.
+
+The following example shows how to use \texttt{fps}:
 
 \begin{verbatim}
 >>> f = fps(sin(x), x, x0=0)
@@ -67,9 +70,11 @@ x - x**3/6 + x**5/120 + O(x**6)
 
 \subsubsection{Fourier Series}
 
-SymPy provides functionality to compute Fourier Series of a function using
+SymPy provides functionality to compute Fourier Series\cite{wiki:fourier} of a function using
 the \texttt{fourier\_series} function. Under the hood it just computes $a0$, $an$, $bn$ using
 standard integration formulas.
+
+Here's an example on how to compute Fourier Series in SymPy:
 
 \begin{verbatim}
 >>> L = symbols('L')

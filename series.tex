@@ -4,7 +4,7 @@
 SymPy is able to calculate the symbolic series expansion of an arbitrary series
 or expression involving elementary and special functions and multiple
 variables. For this it has two different implementations- the \texttt{series}
-method and ring series.
+method and Ring Series.
 
 The first approach stores a series as an object of the \texttt{Basic} class.
 Each function has its specific implementation of its expansion which is able to
@@ -26,10 +26,12 @@ well in a wider range of cases than a dense representation. Ring Series gives
 the user the freedom to choose the type of coefficients he wants to have in
 his series, allowing the use of faster operations on certain types.
 
-For this, several low level methods for expansion of elementary functions are
-implemented using semi-numerical algorithms. All these support Puiseux series
-expansion. The following example demonstrates the use of an elementary
-function that calculates the series expansion of the \texttt{sine} of a series.
+For this, several low level methods for expansion of trigonometric, hyperbolic
+and other elementary functions like inverse of a series, calculating $n$th
+root, etc, are implemented using variants of the Newton\cite{zimmerman} Method.
+All these support Puiseux series expansion. The following example demonstrates
+the use of an elementary function that calculates the Taylor expansion of the
+\texttt{sine} of a series.
 
 \begin{verbatim}
 >>> from sympy import ring

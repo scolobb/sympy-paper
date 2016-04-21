@@ -3,8 +3,8 @@
 ## Usage
 
 * Call `./prettify.sh` after modyfing `authors.json`.
-* Use `./list_text.sh` to list the authors as text
-* Use `./list_latex.sh` to list the authors as latex source code
+* Use `./list_text.py` to list the authors as text
+* Use `./list_latex.py` to list the authors as latex source code
 
 ## How to add a new author
 

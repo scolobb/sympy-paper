@@ -3,11 +3,13 @@
 
 SymPy is able to calculate the symbolic series expansion of an arbitrary series
 or expression involving elementary and special functions and multiple
-variables. For this it has two different implementations.
+variables. For this it has two different implementations- the \texttt{series}
+method and ring series.
 
-The first approach stores a series as a core object. Each function has its
-specific implementation of its expansion which is able to evaluate the Puiseux
-series expansion about any point.
+The first approach stores a series as an object of the \texttt{Basic} class.
+Each function has its specific implementation of its expansion which is able to
+evaluate the Puiseux series expansion about a specified point. For example,
+consider a Taylor expansion about 0:
 
 \begin{verbatim}
 >>> from sympy import symbols, series
@@ -26,7 +28,8 @@ his series, allowing the use of faster operations on certain types.
 
 For this, several low level methods for expansion of elementary functions are
 implemented using semi-numerical algorithms. All these support Puiseux series
-expansion.
+expansion. The following example demonstrates the use of an elementary
+function that calculates the series expansion of the \texttt{sine} of a series.
 
 \begin{verbatim}
 >>> from sympy import ring
@@ -36,11 +39,15 @@ expansion.
 -1/2*x**4 - 1/6*x**3 + x**2 + x
 \end{verbatim}
 
-The function \texttt{rs\_series} makes use of these elementary functions to
-intelligently expand an arbitrary SymPy expression. Currently it only supports
-expansion about 0 and is under active development. Ring Series is several times
-faster than the default implementation with the speed difference increasing
-with the size of the series
+The function \texttt{sympy.polys.rs\_series} makes use of these elementary
+functions to expand an arbitrary SymPy expression. It does so by following a
+recursive strategy of expanding the lower most functions first and then
+composing them recursively to calculate the desired expansion. Currently it
+only supports expansion about 0 and is under active development. Ring Series
+is several times faster than the default implementation with the speed
+difference increasing with the size of the series. The
+\texttt{sympy.polys.rs\_series} takes as input any SymPy expression and hence
+there is no need to explicitly create a polynomial \texttt{ring}. An example:
 
 \begin{verbatim}
 >>> from sympy.polys.ring_series import rs_series

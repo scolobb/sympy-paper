@@ -1,3 +1,10 @@
+set +x
+if [ "${GH_TOKEN}" = "" ]; then
+    echo "PDF not uploading because this is a PR from a fork"
+    exit 0
+fi
+set -x
+
 export commit_id=`git log -1 --pretty=format:"%H"`
 
 git config --global push.default simple
@@ -23,7 +30,21 @@ mv ../paper.pdf ${name}
 git add ${name}
 git commit -m "${msg} - [skip ci]."
 
-#git push -q > /dev/null 2>&1
+PUSH_COUNTER=0
+until git push -q > /dev/null 2>&1
+do
+    git fetch origin pdfs > /dev/null 2>&1
+    git reset --hard origin/pdfs > /dev/null 2>&1
+    mv ../paper.pdf ${name}
+    git add ${name}
+    git commit -m "${msg} - [skip ci]."
+
+    PUSH_COUNTER=$((PUSH_COUNTER + 1))
+    if [ "$PUSH_COUNTER" -gt 3 ]; then
+        echo "Push failed, aborting."
+        exit 1
+    fi
+done
 
 #export payload='{"state":"success","target_url":"https://github.com/isuruf-bot/sympy-paper/blob/pdfs/'${name}'","description":"Pdf uploading succeeded!","context":"continuous-integration/latex-pdf"}'
 

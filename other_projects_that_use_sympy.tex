@@ -1,0 +1,139 @@
+There are several projects that use SymPy as a library for implementing
+a part of their project, or even as a part of back-end for their
+application as well.
+\newline
+Some of them are listed below:
+
+\begin{itemize}
+\item
+  \href{http://cadabra.science/index.html}{\textbf{Cadabra}}: Cadabra is
+  a symbolic computer algebra system (CAS) designed specifically for the
+  solution of problems encountered in field theory.
+\item
+  \href{http://octave.sourceforge.net/symbolic/}{\textbf{Octave Symbolic}}:
+  The Octave-Forge Symbolic package adds symbolic calculation features
+  to GNU Octave. These include common Computer Algebra System tools such
+  as algebraic operations, calculus, equation solving, Fourier and
+  Laplace transforms, variable precision arithmetic and other features.
+\item
+  \href{https://github.com/jverzani/SymPy.jl}{\textbf{SymPy.jl}}:
+  Provides a Julia interface to SymPy using PyCall.
+\item
+  \href{https://mathics.github.io/}{\textbf{Mathics}}: Mathics is a
+  free, general-purpose online CAS featuring Mathematica compatible
+  syntax and functions. It is backed by highly extensible Python code,
+  relying on SymPy for most mathematical tasks.
+\item
+  \href{http://mathpix.com/}{\textbf{Mathpix}}: An iOS App, that uses
+  Artificial Intelligence to detect handwritten math as input, and uses
+  SymPy Gamma, to evaluate the math input and generate the relevant
+  steps to solve the problem.
+\item
+  \href{http://www.sagemath.org/}{\textbf{Sage}}: A CAS, visioned to be
+  a viable free open source alternative to Magma, Maple, Mathematica and
+  Matlab.
+\item
+  \href{https://cloud.sagemath.com}{\textbf{SageMathCloud}}:
+  SageMathCloud is a web-based cloud computing and course management
+  platform for computational mathematics.
+\item
+  \href{http://www.pydy.org/}{\textbf{PyDy}}: Multibody Dynamics with
+  Python.
+\item
+  \href{https://github.com/brombo/galgebra}{\textbf{galgebra}}:
+  Geometric algebra (previously sympy.galgebra).
+\item
+  \href{http://yt-project.org/}{\textbf{yt}}: Python package for
+  analyzing and visualizing volumetric data (yt.units uses SymPy).
+\item
+  \href{http://sfepy.org/}{\textbf{SfePy}}: Simple finite elements in
+  Python.
+\item
+  \href{http://quameon.sourceforge.net/}{\textbf{Quameon}}: Quantum
+  Monte Carlo in Python.
+\item
+  \href{http://lcapy.elec.canterbury.ac.nz/}{\textbf{Lcapy}}:
+  Experimental Python package for teaching linear circuit analysis.
+\item
+  \href{http://digitalcommons.calpoly.edu/cgi/viewcontent.cgi?article=1072\&context=physsp/}{\textbf{Quantum
+  Programming in Python}}: Quantum 1D Simple Harmonic Oscillator and
+  Quantum Mapping Gate.
+\item
+  \href{http://mech.fsv.cvut.cz/~stransky/software/latexexpr/doc/}{\textbf{LaTeX
+  Expression project}}: Easy LaTeX typesetting of algebraic expressions
+  in symbolic form with automatic substitution and result computation.
+\item
+  \href{https://www.researchgate.net/publication/260585491_Symbolic_Statistics_with_SymPy/}{\textbf{Symbolic
+  statistical modeling}}: Adding statistical operations to complex
+  physical models.
+\end{itemize}
+
+\subsection{SymPy Gamma}\label{sympy-gamma}
+
+SymPy Gamma is a simple web application that runs on Google App Engine.
+It executes and displays the results of SymPy expressions as well as
+additional related computations, in a fashion similar to that of
+Wolfram\textbar{}Alpha. For instance, entering an integer will display
+its prime factors, digits in the base-10 expansion, and a factorization
+diagram. Entering a function will display its docstring; in general,
+entering an arbitrary expression will display its derivative, integral,
+series expansion, plot, and roots.
+
+SymPy Gamma also has several additional features than just computing the
+results using SymPy.
+
+\begin{itemize}
+\item
+  It displays integration steps, differentiation steps in detail, which
+  can be viewed in Figure~\ref{fig:integralsteps}:\par
+\begin{minipage}{\textwidth}
+    \centering
+    \includegraphics[width=0.7\textwidth]{integral_steps.png}
+    \captionof{figure}{Integral steps of $\tan (x)$}\label{fig:integralsteps}
+\end{minipage}
+\item
+  It also displays the factor tree diagrams for different numbers.
+\item
+  SymPy Gamma also saves user search queries, and offers many such
+  similar features for free, which Wolfram\textbar{}Alpha only offers
+  to its paid users.
+\end{itemize}
+Every input query from the user on SymPy Gamma is first, parsed by its
+own parser, which handles several different forms of function names,
+which SymPy as a library doesn't support. For instance, SymPy Gamma
+supports queries like \texttt{sin\ x}, whereas SymPy doesn't support
+this, and supports only \verb|sin(x)|.
+
+This parser converts the input query to the equivalent SymPy readable
+code, which is then eventually processed by SymPy and the result is
+finally formatted in LaTeX and displayed on the SymPy Gamma web-application.
+
+\subsection{SymPy Live}\label{sympy-live}
+
+SymPy Live is an online Python shell, which runs on Google
+App Engine, that executes SymPy code. It is integrated in the SymPy
+documentation examples, located at this \href{http://docs.sympy.org/latest/index.html}{link}.
+
+This is accomplished by providing a HTML/JavaScript GUI for entering
+source code and visualization of output, and a server part which
+evaluates the requested source code. It's an interactive AJAX shell,
+that runs SymPy code using Python on the server.
+\newline
+Certain Features of SymPy Live:
+
+\begin{itemize}
+\item
+  It supports the exact same syntax as SymPy, hence it can be used
+  easily, to test for outputs of various SymPy expressions.
+\item
+  It can be run as a standalone app or in an existing app as an
+  admin-only handler, and can also be used for system administration
+  tasks, as an interactive way to try out APIs, or as a debugging aid
+  during development.
+\item
+  It can also be used to plot figures (\href{http://live.sympy.org/?evaluate=from\%20sympy\%20import\%20symbols\%0Afrom\%20sympy.plotting\%20import\%20textplot\%0Ax\%20\%3D\%20symbols(\%27x\%27)\%0Atextplot(x**2\%2C0\%2C5)\%0A\%23--\%0A}{link}),
+  and execute all kinds of expressions that SymPy can evaluate.
+\item
+SymPy Live also formats the output in LaTeX for pretty-printing the
+output.
+\end{itemize}

@@ -66,25 +66,6 @@ SymPy's \texttt{evalf} internals are non-rigorous in the same sense,
 but have no bearing on the semantics of floating-point
 numbers in the rest of the system.
 
-\subsubsection{Code generation}
-
-SymPy's \texttt{lambdify} can be used to convert a symbolic expression to a
-callable Python function for faster numerical evaluation.
-Various back ends are supported. The following example
-demonstrates creating a NumPy-based function from
-a SymPy expression, which automatically supports
-vectorized array evaluation~\cite{van2011numpy}:
-
-\begin{verbatim}
->>> f = lambdify((x, y), sin(x*y)**2, modules='numpy')
->>> from numpy import array
->>> f(array([1,2,3]), array([4,5,6]))
-array([ 0.57275002,  0.29595897,  0.56398184])
-\end{verbatim}
-
-SymPy can also generate C, C++, Fortran77, Fortran90 and
-Octave/Matlab source code, via the \texttt{codegen} function. [document this?]
-
 \subsubsection{The mpmath library}
 
 The implementation of arbitrary-precision floating-point arithmetic

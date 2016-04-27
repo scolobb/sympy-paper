@@ -31,13 +31,13 @@ Content TODOs:
 
 - [ ] Clean up matrices section.
 
-- [ ] Move series stuff to supplement.
+- [x] Move series stuff to supplement.
 
-- [ ] Move logic stuff to supplement.
+- [x] Move logic stuff to supplement.
 
 - [ ] Move vector and physics stuff to supplement.
 
-- [ ] Move SymPy Gamma/Live stuff to supplement.
+- [x] Move SymPy Gamma/Live stuff to supplement.
 
 - [ ] Either flesh out CAS comparison section with other CASs or move to
   supplement.

@@ -3,10 +3,26 @@
 
 % symbols, various ways to declare them
 
-Symbols are instances of the class \texttt{Symbol}.
-They may be declared by invoking the class constructor with the symbol string
-representation, or through the faster \texttt{symbols} and \texttt{var}
-functions.
+All symbols in SymPy must be instantiated and assigned to a variable before
+they can be used. This is typically done through the \texttt{symbols}
+function, which creates multiple symbols at once. For instance,
+
+\begin{verbatim}
+>>> x, y, z = symbols('x y z')
+\end{verbatim}
+
+creates three symbols named \texttt{x}, \texttt{y}, and \texttt{z}, assigned
+to Python variables of the same name. The Python variable names that symbols
+are assigned to are immaterial---we could have just as well have written
+\verb|a, b, c = symbol('x y z')|.
+
+Expressions are created from symbols using Python syntax, which mirrors usual
+mathematical notation. Note that in Python, exponentiation is \verb|**|.
+
+\begin{verbatim}
+>>> (x**2 - 2*x + 3)/y
+(x**2 - 2*x + 3)/y
+\end{verbatim}
 
 % polynomial expressions
 
@@ -14,31 +30,35 @@ functions.
 
 % expand( ), factor( ), collect( ), together( ), apart( )
 %% maybe a table best suits this part.
-Common functions for polynomial expression manipulations are listed in the
-following table:
-\begin{tabular}{l|p{0.7\linewidth}}
-expand & expand the expression \\
-factor & recognize factors \\
-collect & . \\
-together & . \\
-apart & . \\
-\end{tabular}
 
 % simplification: simplify, sqrt denest, fu, trigsimp
 
 The generic way to simplify an expression is by calling the \texttt{simplify}
-function, or equivalently, calling it as a method \texttt{expr.simplify()}.
+function.
 It must be emphasized that simplification is not an unambigously defined
-mathematica operation, nevertheless full simplification may require a huge
-amount of computational power.
+mathematical operation.% Cite simplification paper
+The \texttt{simplify} function applies several simplification routines along
+with some heuristics to make the output expression as ``simple'' as possible.
 
-There are specific algorithms for special simplification cases,
-such as \texttt{fu}, which calls a powerful simplification algorithm for
-trigonometric exressions~\cite{fu2006automated}.
-For trigonometric expressions there is furthermore a \texttt{trigsimp} method,
-acting as a wrapper for specific algorithms.
-\texttt{sqrtdenest} may help by denesting square roots inside other square roots.
+It is often preferable to apply more directed simplification functions. These
+apply very specific rules to the input expression, and are often able to make
+guarantees about the output (for instance, the \texttt{factor} function, given
+a polynomial with rational coefficients in several variables, is guaranteed to
+produce a factorization into irreducible factors).
+Table~\label{simplify-table} lists some common simplification functions.
 
+% TODO: add a simple example for each
+% TODO: fix the formatting
+\ref{simplify-table}
+\begin{tabular}{l|p{0.7\linewidth}}
+expand & expand the expression \\
+factor & factor a polynomial into irreducibles \\
+collect & collect polynomial coefficients \\
+cancel & rewrite a rational function as $p/q$ with common factors canceled \\
+apart & compute the partial fraction decomposition of a rational function \\
+trigsimp & simplify trigonometric expressions~\cite{fu2006automated} \\
+sqrtdenest & denest radicals \\
+\end{tabular}
 
 % substitution, wilds, replacement
 
@@ -142,7 +162,7 @@ instance of \verb|AppliedPredicate|.
 
 Logical connectors can be expressed through operator overloading,
 such as in \verb|Q.positive(x) & Q.positive(y)|,
-or by directly constructing the identical expression through the 
+or by directly constructing the identical expression through the
 logical connector class, in this case \verb|And(Q.positive(x), Q.positive(y))|.
 
 
@@ -168,10 +188,10 @@ The class \verb|Derivative| is a container for unevaluated derivatives
 In [3]: expr = Derivative(sin(x), x)
 
 In [4]: expr
-Out[4]: 
-d         
+Out[4]:
+d
 --(sin(x))
-dx        
+dx
 \end{verbatim}
 
 To evaluate such a held expression, simply call the \verb|doit| method:
@@ -217,7 +237,7 @@ TODO: right and left limits.
 Sums and products are handled by the \texttt{Sum} and \texttt{Product} classes,
 respectively.
 Analogously with \texttt{Integral}, the first argument is the expression to be
-summed over, whereas the following arguments represent the summation and 
+summed over, whereas the following arguments represent the summation and
 multiplication indices, respectively, provided with integer ranges.
 
 It may be noted the existence of the \texttt{IndexedBase} class,
@@ -236,4 +256,3 @@ function.
 % pretty printer
 Pretty printer outputs the expression in traditional form with characters,
 outputs can be visualized in monospace fonts.
-

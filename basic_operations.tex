@@ -60,26 +60,16 @@ trigsimp & simplify trigonometric expressions~\cite{fu2006automated} \\
 sqrtdenest & denest radicals \\
 \end{tabular}
 
-% substitution, wilds, replacement
-
-Substitutions are performed through the \texttt{.subs} method, which accepts
-wildcards and is sensible to some mathematical properties while matching,
-such as associativity, commutativity, additive and multiplicative inverses,
-and matching of powers.
-
-\texttt{.replace} provides more basic matching algorithm,
-though it allows for costum matching functions to be passed to it.
-
-\texttt{.xreplace} is an expression tree structural replacement routing,
-unaware of any mathematical property.
+Substitutions are performed through the \texttt{.subs} method, which is
+sensible to some mathematical properties while matching, such as
+associativity, commutativity, additive and multiplicative inverses, and
+matching of powers.
 
 %% TODO: add examples
-
 
 \subsubsection{Assumptions system}
 
 % Including the assumptions system
-
 
 SymPy has two assumptions systems, referred to as new-style and old-style assumptions.
 

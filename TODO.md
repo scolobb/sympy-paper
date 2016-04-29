@@ -15,7 +15,7 @@
 
 ## Content TODOs:
 
-- [ ] De-duplicate content in assumptions architecture section and assumptions
+- [x] De-duplicate content in assumptions architecture section and assumptions
   features section.
 
 - [ ] Mention all major algorithms that are implemented, even if they aren't
@@ -61,8 +61,8 @@ citations and "URL citations".
 
 - [ ] Introduction
 
-- [ ] Polynomials module architecture (if we can't get anyone to write it, add a
-  blurb and cite Mateusz's thesis)
+- [ ] Polynomials module architecture (if we can't get anyone to write it, add
+  a blurb and cite Mateusz's thesis)
 
 - [ ] Something on printers
 

@@ -1,4 +1,4 @@
-Style TODOs:
+## Style TODOs:
 
 - [ ] Add hyphenation entries for all unknown words.
 
@@ -13,7 +13,7 @@ Style TODOs:
 
 - [ ] "Other projects that use SymPy" section should use a table.
 
-Content TODOs:
+## Content TODOs:
 
 - [ ] De-duplicate content in assumptions architecture section and assumptions
   features section.
@@ -44,7 +44,7 @@ Content TODOs:
 
 - [ ] Address all inline TODOs in the .tex files.
 
-Citations:
+## Citations:
 
 - [ ] Make sure everything that needs to be cited is cited.
 
@@ -55,7 +55,7 @@ citations and "URL citations".
 
 - [ ] Fix citation of Mathematica.
 
-Sections that need to be written:
+## Sections that need to be written:
 
 - [ ] Abstract (note: write this last)
 

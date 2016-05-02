@@ -17,21 +17,19 @@ which is a superclass of all SymPy objects and
 provides common methods to all SymPy tree-elements.
 For example, consider the expression $xy + 2$:
 
-\begin{verbatim}
->>> from sympy import *
->>> x, y = symbols('x y')
->>> expr = x*y + 2
-\end{verbatim}
+\begin{pyconsole}
+from sympy import *
+x, y = symbols('x y')
+expr = x*y + 2
+\end{pyconsole}
 
 The expression \texttt{expr} is an addition, so it is of type \texttt{Add}. The child
 nodes of \texttt{expr} are \texttt{x*y} and \texttt{2}.
 
-\begin{verbatim}
->>> type(expr)
-<class 'sympy.core.add.Add'>
->>> expr.args
-(2, x*y)
-\end{verbatim}
+\begin{pyconsole}
+type(expr)
+expr.args
+\end{pyconsole}
 
 We can dig further into the expression tree to see the full expression. For
 example, the first child node, given by \texttt{expr.args[0]} is

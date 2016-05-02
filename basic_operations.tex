@@ -71,79 +71,53 @@ matching of powers.
 % Calculus (differentiation, integration, limits). Note that algorithm
 % descriptions will go in the algorithms section.
 
-Derivations can be computed with the \verb|diff| function,
-or using the method with the same name on the expressions:
+Derivatives can be computed with the \verb|diff| function.
 
 \begin{verbatim}
-In [1]: diff(sin(x), x)
-Out[1]: cos(x)
-
-In [2]: sin(x).diff(x)
-Out[2]: cos(x)
+>>> diff(sin(x), x)
+cos(x)
 \end{verbatim}
 
-The class \verb|Derivative| is a container for unevaluated derivatives
+Unevaluated \verb|Derivative| objects are also supported.
 
 \begin{verbatim}
-In [3]: expr = Derivative(sin(x), x)
-
-In [4]: expr
-Out[4]:
-d
---(sin(x))
-dx
+>>> expr = Derivative(sin(x), x)
+>>> expr
+Derivative(sin(x), x)
 \end{verbatim}
 
-To evaluate such a held expression, simply call the \verb|doit| method:
+Unevaluated expressions can be evaluated with the \verb|doit| method.
 
 \begin{verbatim}
 In [5]: expr.doit()
 Out[5]: cos(x)
 \end{verbatim}
 
-Integrals can be analogously calculated either with the \verb|integrate| function
-or with the method with the same name on expressions:
+% TODO: A more interesting example here
+Integrals can be analogously calculated either with the \verb|integrate|
+function, or the unevaluated \verb|Integral| objects.
 \begin{verbatim}
 >>> integrate(sin(x), x)
 -cos(x)
+>>> expr = Integral(sin(x), x)
+>>> expr
+Integral(sin(x), x)
+>>> expr.doit()
+-cos(x)
 \end{verbatim}
-This expression returns an expression whose derivative is the original expression.
-Notice that integrals are defined up to an integration constant,
-for the sake of simplicity SymPy will not display the full generic expression.
+
+Note that SymPy does not add an integration constant to indefinite integrals.
 
 Definite integration can be calculated with the same method, by specifying a
-range of the integration variable:
+range of the integration variable. The following computes $\int_0^1\sin(x)\,dx$.
 \begin{verbatim}
 >>> integrate(sin(x), (x, 0, 1))
 -cos(1) + 1
 \end{verbatim}
 
-To express unevaluated integrals, the class \verb|Integral| may help
-\begin{verbatim}
-Integral(sin(x), x)
-\end{verbatim}
-as in the case of derivatives, the method \verb|doit| will cause such an expression
-to be evaluated.
-
-Limits:
-\begin{verbatim}
-In [9]: limit(sin(x)/x, x, 0)
-Out[9]: 1
-\end{verbatim}
-for unevaluated expressions, \verb|Limit|.
-
-TODO: right and left limits.
-
-Sums and products are handled by the \texttt{Sum} and \texttt{Product} classes,
-respectively.
-Analogously with \texttt{Integral}, the first argument is the expression to be
-summed over, whereas the following arguments represent the summation and
-multiplication indices, respectively, provided with integer ranges.
-
-It may be noted the existence of the \texttt{IndexedBase} class,
-which provides the construction of indexed symbols, that is symbols that are
-treated as different if their indices are different.
-
+Summations and products are also supported, via the evaluated \verb|summation|
+and \verb|product| and unevaluated \verb|Sum| and \verb|Product|, and use the
+same syntax as \verb|integrate|.
 
 \subsubsection{Expression outputs}
 

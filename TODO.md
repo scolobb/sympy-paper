@@ -23,7 +23,7 @@
 
 - [ ] Write the Gruntz algorithm section as actual text.
 
-- [ ] Clean up "basic operations".
+- [x] Clean up "basic operations".
 
 - [ ] Move "sets" details in to citations/supplement.
 
@@ -64,6 +64,6 @@ citations and "URL citations".
 - [ ] Polynomials module architecture (if we can't get anyone to write it, add
   a blurb and cite Mateusz's thesis)
 
-- [ ] Something on printers
+- [x] Something on printers
 
 - [ ] Conclusion

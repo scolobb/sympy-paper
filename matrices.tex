@@ -45,10 +45,10 @@ inverse and transpose are stored symbolically as matrix expressions.
 2*T[0, 1] + Sum(R[0, _k]*S[_k, 1], (_k, 0, n - 1))
 \end{verbatim}
 
-Block matrices are also supported in SymPy. BlockMatrix elements can be
-any matrix expression which includes immutable matrices, matrix symbols and
-block matrices. All functionalities of matrix expressions are also present in
-BlockMatrix.
+Block matrices are also supported in SymPy. \verb|BlockMatrix| elements can be any
+matrix expression which includes explicit matrices, matrix symbols, and block
+matrices. All functionalities of matrix expressions are also present in
+\verb|BlockMatrix|.
 
 
 \begin{verbatim}

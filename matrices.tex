@@ -22,10 +22,10 @@ systems and computing inverses using LU decomposition, LDL decomposition,
 Gauss-Jordan elimination, Cholesky decomposition, Moore-Penrose pseudoinverse,
 adjugate matrix.
 
-Eigenvalues are computed symbolically as well. Eigenvalues are computed by
-generating the characteristic polynomial using the Berkowitz algorithm and
-then solving it using polynomial routines. Diagonalizable matrices can be
-diagonalized first to compute the eigenvalues.
+All operations are computed are computed symbolically. Eigenvalues are
+computed by generating the characteristic polynomial using the Berkowitz
+algorithm and then solving it using polynomial routines. Diagonalizable
+matrices can be diagonalized first to compute the eigenvalues.
 
 \begin{verbatim}
 >>> A.eigenvals()
@@ -33,7 +33,7 @@ diagonalized first to compute the eigenvalues.
 \end{verbatim}
 
 Internally these matrices store the elements as a list making it a dense
-representation. For storing sparse matrices, SparseMatrix and
+representation. For storing sparse matrices, the SparseMatrix and
 ImmutableSparseMatrix classes can be used. Sparse matrix classes store
 the elements in Dictionary of Keys (DoK) format.
 

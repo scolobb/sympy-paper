@@ -29,7 +29,7 @@
 
 - [ ] Move solvers details into citations/supplement.
 
-- [ ] Clean up matrices section.
+- [x] Clean up matrices section.
 
 - [x] Move series stuff to supplement.
 

@@ -58,11 +58,11 @@ matrices. All functionalities of matrix expressions are also present in
 >>> X = MatrixSymbol('X', n, n)
 >>> Y = MatrixSymbol('Y', m ,m)
 >>> Z = MatrixSymbol('Z', n, m)
->>> B = BlockMatrix([[X, Z], [ZeroMatrix(m,n), Y]])
->>> print(B)
+>>> B = BlockMatrix([[X, Z], [ZeroMatrix(m, n), Y]])
+>>> B
 Matrix([
 [X, Z],
 [0, Y]])
->>> print(B[0, 0])
+>>> B[0, 0]
 X[0, 0]
 \end{verbatim}

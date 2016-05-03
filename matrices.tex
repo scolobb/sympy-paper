@@ -37,12 +37,12 @@ representation. For storing sparse matrices, the SparseMatrix and
 ImmutableSparseMatrix classes can be used. Sparse matrix classes store
 the elements in Dictionary of Keys (DoK) format.
 
-SymPy also supports matrices with unknown dimension values. MatrixSymbol
-represents a matrix with dimensions \verb|m, n| where \verb|m| and \verb|n|
-can be symbols or integers. Matrix addition and multiplication, scalar
-operations, matrix inverse and transpose are stored symbolically as
-matrix expressions. Mutable matrices are converted to corresponding immutable
-types before interacting with matrix expressions
+SymPy also supports matrices with symbolic dimension values. MatrixSymbol
+represents a matrix with dimensions $m\times n$, where $m$ and $n$ can be
+symbolic. Matrix addition and multiplication, scalar operations, matrix
+inverse and transpose are stored symbolically as matrix expressions. Mutable
+matrices are converted to corresponding immutable types before interacting
+with matrix expressions
 
 \begin{verbatim}
 >>> m, n, p = symbols("m, n, p", integer=True)

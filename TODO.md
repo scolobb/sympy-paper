@@ -13,6 +13,8 @@
 
 - [ ] "Other projects that use SymPy" section should use a table.
 
+- [ ] Add Unicode pretty printing example (see discussion on #89)
+
 ## Content TODOs:
 
 - [x] De-duplicate content in assumptions architecture section and assumptions

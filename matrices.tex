@@ -37,7 +37,9 @@ inverse and transpose are stored symbolically as matrix expressions.
 
 \begin{verbatim}
 >>> m, n, p = symbols("m, n, p", integer=True)
->>> R, S, T = MatrixSymbol("R", m, n), MatrixSymbol("S", n, p), MatrixSymbol("t", m, p)
+>>> R = MatrixSymbol("R", m, n)
+>>> S = MatrixSymbol("S", n, p)
+>>> T = MatrixSymbol("t", m, p)
 >>> U = R*S + 2*T
 >>> u.shape
 (m, p)

@@ -17,43 +17,43 @@ which is a superclass of all SymPy objects and
 provides common methods to all SymPy tree-elements.
 For example, consider the expression $xy + 2$:
 
-\begin{verbatim}
+\begin{minted}{pycon}
 >>> from sympy import *
 >>> x, y = symbols('x y')
 >>> expr = x*y + 2
-\end{verbatim}
+\end{minted}
 
 The expression \texttt{expr} is an addition, so it is of type \texttt{Add}. The child
 nodes of \texttt{expr} are \texttt{x*y} and \texttt{2}.
 
-\begin{verbatim}
+\begin{minted}{pycon}
 >>> type(expr)
 <class 'sympy.core.add.Add'>
 >>> expr.args
 (2, x*y)
-\end{verbatim}
+\end{minted}
 
 We can dig further into the expression tree to see the full expression. For
 example, the first child node, given by \texttt{expr.args[0]} is
 \texttt{2}. Its class is \texttt{Integer}, and it has empty \texttt{args},
 indicating that it is a leaf node.
 
-\begin{verbatim}
+\begin{minted}{pycon}
 >>> expr.args[0]
 2
 >>> type(expr.args[0])
 <class 'sympy.core.numbers.Integer'>
 >>> expr.args[0].args
 ()
-\end{verbatim}
+\end{minted}
 
 The function \texttt{srepr} gives a string representing a valid Python code,
 containing all the nested class constructor calls to create the given expression.
 
-\begin{verbatim}
+\begin{minted}{pycon}
 >>> srepr(expr)
 "Add(Mul(Symbol('x'), Symbol('y')), Integer(2))"
-\end{verbatim}
+\end{minted}
 
 Every SymPy expression satisfies a key invariant, namely,
 \verb|expr.func(*expr.args) == expr|. This means that expressions are
@@ -108,11 +108,11 @@ By default, SymPy performs all calculations assuming that variables are
 complex valued. This assumption makes it easier to treat mathematical problems
 in full generality.
 
-\begin{verbatim}
+\begin{minted}{pycon}
 >>> x = Symbol('x')
 >>> sqrt(x**2)
 sqrt(x**2)
-\end{verbatim}
+\end{minted}
 
 By assuming symbols are complex by default, SymPy avoids performing
 mathematically invalid operations. However, in many cases users will wish to
@@ -122,11 +122,11 @@ Assumptions are set on \texttt{Symbol} objects when they are created. For
 instance \verb|Symbol('x', positive=True)| will create a symbol named
 \texttt{x} that is assumed to be positive.
 
-\begin{verbatim}
+\begin{minted}{pycon}
 >>> x = Symbol('x', positive=True)
 >>> sqrt(x**2)
 x
-\end{verbatim}
+\end{minted}
 
 Some common assumptions that SymPy allows are \texttt{positive},
 \texttt{negative}, \texttt{real}, \texttt{nonpositive}, \texttt{nonnegative},
@@ -214,7 +214,7 @@ the chain rule. \texttt{self.func} is used throughout instead of referencing
 \texttt{gamma} explicitly so that potential subclasses of \texttt{gamma} can
 reuse the methods.
 
-\begin{verbatim}
+\begin{minted}{pycon}
 from sympy import Integer, Function, floor, factorial, polygamma
 
 class gamma(Function)
@@ -245,6 +245,6 @@ class gamma(Function)
             return self.func(self.args[0])*polygamma(0, self.args[0])
         else:
             raise ArgumentIndexError(self, argindex)
-\end{verbatim}
+\end{minted}
 
 The actual gamma function defined in SymPy has many more capabilities, such as evaluation at rational points and series expansion.

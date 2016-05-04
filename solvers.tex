@@ -12,10 +12,10 @@ solvers. In contrast to old solve function, the \texttt{solveset} has a clean
 input API, It only asks for the much needed information from the user, following
 are the function signatures of old and new solve function:
 
-\begin{verbatim}
+\begin{minted}{pycon}
 solve(f, *symbols, **flags)  # old solve function
 solveset(f, symbol, domain)  # new solve function
-\end{verbatim}
+\end{minted}
 
 The old \texttt{solve} function has an inconsistent output API for various types
 of inputs, whereas the \texttt{solveset} has a canonical output API which is
@@ -24,59 +24,59 @@ achieved using sets. It can consistently return various types of solutions.
 \begin{itemize}
 \item Single solution
 \end{itemize}
-\begin{verbatim}
+\begin{minted}{pycon}
 >>> solveset(x - 1)
 >>> {1}
-\end{verbatim}
+\end{minted}
 
 \begin{itemize}
 \item Finite set of solution, quadratic equation
 \end{itemize}
-\begin{verbatim}
+\begin{minted}{pycon}
 >>> solveset(x**2 - pi**2, x)
 {-pi, pi}
-\end{verbatim}
+\end{minted}
 
 \begin{itemize}
 \item No Solution
 \end{itemize}
-\begin{verbatim}
+\begin{minted}{pycon}
 >>> solveset(1, x)
 EmptySet()
-\end{verbatim}
+\end{minted}
 
 \begin{itemize}
 \item Interval of solution
 \end{itemize}
-\begin{verbatim}
+\begin{minted}{pycon}
 >>> solveset(x**2 - 3 > 0, x, domain=S.Reals)
 (-oo, -sqrt(3)) U (sqrt(3), oo)
-\end{verbatim}
+\end{minted}
 
 \begin{itemize}
 \item Infinitely many solutions
 \end{itemize}
-\begin{verbatim}
+\begin{minted}{pycon}
 >>> solveset(sin(x) - 1, x, domain=S.Reals)
 ImageSet(Lambda(_n, 2*_n*pi + pi/2), Integers())
 >>> solveset(x - x, x, domain=S.Reals)
 (-oo, oo)
 >>> solveset(x - x, x, domain=S.Complexes)
 S.Complexes
-\end{verbatim}
+\end{minted}
 
 \begin{itemize}
 \item Linear system: finite and infinite solution for determined, under
 determined and over determined problems.
 \end{itemize}
-\begin{verbatim}
+\begin{minted}{pycon}
 >>> A = Matrix([[1, 2, 3], [4, 5, 6], [7, 8, 10]])
 >>> b = Matrix([3, 6, 9])
 >>> linsolve((A, b), x, y, z)
 {(-1,2,0)}
 >>> linsolve(Matrix(([1, 1, 1, 1], [1, 1, 2, 3])), (x, y, z))
 {(-y - 1, y, 2)}
-\end{verbatim}
+\end{minted}
 
 The new solve i.e. \textbf{solveset} is under active development and is a
 planned replacement for \textbf{solve}, Hence there are some features which are
@@ -108,20 +108,20 @@ Below are some of the examples of old \textbf{solve} function:
 \item Non Linear (multivariate) System of Equation: Intersection of a circle
 and a parabola.
 \end{itemize}
-\begin{verbatim}
+\begin{minted}{pycon}
 >>> solve([x**2 + y**2 - 16, 4*x - y**2 + 6], x, y)
 [(-2 + sqrt(14), -sqrt(-2 + 4*sqrt(14))),
  (-2 + sqrt(14), sqrt(-2 + 4*sqrt(14))),
  (-sqrt(14) - 2, -I*sqrt(2 + 4*sqrt(14))),
  (-sqrt(14) - 2, I*sqrt(2 + 4*sqrt(14)))]
-\end{verbatim}
+\end{minted}
 
 \begin{itemize}
 \item Transcendental Equation
 \end{itemize}
-\begin{verbatim}
+\begin{minted}{pycon}
 >>> solve(x + log(x))**2 - 5*(x + log(x)) + 6, x)
 [LambertW(exp(2)), LambertW(exp(3))]
 >>> solve(x**3 + exp(x))
 [-3*LambertW((-1)**(2/3)/3)]
-\end{verbatim}
+\end{minted}

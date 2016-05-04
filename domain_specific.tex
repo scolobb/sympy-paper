@@ -18,8 +18,16 @@ essentially reference frame aware $3 \times 3$ tensors. The vector and dyadic
 objects can be used for any one-, two-, or three-dimensional vector algebra and
 they provide a strong framework for building physics and engineering tools.
 
-\begin{listing}
-  \begin{minted}{pycon}
+The following Python interpreter session showing how a vector is created using
+the orthogonal unit vectors of three reference frames that are oriented with
+respect to each other and the result of expressing the vector in the $A$
+frame. The $B$ frame is oriented with respect to the $A$ frame using Z-X-Z
+Euler Angles of magnitude $\pi$, $\frac{\pi}{2}$, and
+$\frac{\pi}{3}$\si{\radian}, respectively whereas the $C$ frame is oriented
+with respect to the $B$ frame through a simple rotation about the $B$ frame's
+X unit vector through $\frac{\pi}{2}$\si{\radian}.
+
+\begin{verbatim}
 >>> from sympy import pi
 >>> from sympy.physics.vector import ReferenceFrame
 >>> A = ReferenceFrame('A')
@@ -32,20 +40,7 @@ they provide a strong framework for building physics and engineering tools.
 A.x + 2*B.z + 3*C.y
 >>> v.express(A)
 A.x + 5*sqrt(3)/2*A.y + 5/2*A.z
-  \end{minted}
-  \caption{
-    Python interpreter session showing how a vector is created using the
-    orthogonal unit vectors of three reference frames that are oriented with
-    respect to each other and the result of expressing the vector in the $A$
-    frame.
-    The $B$ frame is oriented with respect to the $A$ frame using Z-X-Z Euler
-    Angles of magnitude $\pi$, $\frac{\pi}{2}$, and
-    $\frac{\pi}{3}$\si{\radian},
-    respectively whereas the $C$ frame is oriented with respect to the $B$
-    frame through a simple rotation about the $B$ frame's X unit vector through
-    $\frac{\pi}{2}$\si{\radian}.}
-  \label{lis:physics-vector}
-\end{listing}
+\end{verbatim}
 
 \subsection{Classical Mechanics}
 

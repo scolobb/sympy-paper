@@ -52,6 +52,8 @@
 
 - [ ] Address all inline TODOs in the .tex files.
 
+- [ ] Make sure features table isn't missing anything.
+
 ## Citations:
 
 - [ ] Make sure everything that needs to be cited is cited.

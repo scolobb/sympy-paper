@@ -13,7 +13,11 @@
 
 - [ ] "Other projects that use SymPy" section should use a table.
 
-- [ ] Add Unicode pretty printing example (see discussion on #89)
+- [ ] Add Unicode pretty printing example (see discussion on #89).
+
+- [ ] Code examples use curly quotes (’) instead of regular quotes (').
+
+- [ ] Stylize code examples with decent colors.
 
 ## Content TODOs:
 

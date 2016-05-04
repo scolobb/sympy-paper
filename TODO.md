@@ -19,6 +19,8 @@
 
 - [ ] Stylize code examples with decent colors.
 
+- [ ] Should we use listings for the code examples?
+
 ## Content TODOs:
 
 - [x] De-duplicate content in assumptions architecture section and assumptions

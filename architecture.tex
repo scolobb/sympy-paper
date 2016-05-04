@@ -1,3 +1,27 @@
+\subsection{Basic Usage}
+
+% symbols, various ways to declare them
+
+All symbols in SymPy must be instantiated and assigned to a variable before
+they can be used. This is typically done through the \texttt{symbols}
+function, which creates multiple symbols at once. For instance,
+
+\begin{verbatim}
+>>> x, y, z = symbols('x y z')
+\end{verbatim}
+
+creates three symbols named \texttt{x}, \texttt{y}, and \texttt{z}, assigned
+to Python variables of the same name. The Python variable names that symbols
+are assigned to are immaterial---we could have just as well have written
+\verb|a, b, c = symbol('x y z')|.
+
+Expressions are created from symbols using Python syntax, which mirrors usual
+mathematical notation. Note that in Python, exponentiation is \verb|**|.
+
+\begin{verbatim}
+>>> (x**2 - 2*x + 3)/y
+(x**2 - 2*x + 3)/y
+\end{verbatim}
 
 %% I volunteer to write this section. --Aaron
 %%

@@ -54,6 +54,8 @@
 
 - [ ] Make sure features table isn't missing anything.
 
+- [x] Rearrange basic usage before the architecture.
+
 ## Citations:
 
 - [ ] Make sure everything that needs to be cited is cited.

@@ -7,9 +7,9 @@ All symbols in SymPy must be instantiated and assigned to a variable before
 they can be used. This is typically done through the \texttt{symbols}
 function, which creates multiple symbols at once. For instance,
 
-\begin{minted}{pycon}
+\begin{verbatim}
 >>> x, y, z = symbols('x y z')
-\end{minted}
+\end{verbatim}
 
 creates three symbols named \texttt{x}, \texttt{y}, and \texttt{z}, assigned
 to Python variables of the same name. The Python variable names that symbols
@@ -19,10 +19,10 @@ are assigned to are immaterial---we could have just as well have written
 Expressions are created from symbols using Python syntax, which mirrors usual
 mathematical notation. Note that in Python, exponentiation is \verb|**|.
 
-\begin{minted}{pycon}
+\begin{verbatim}
 >>> (x**2 - 2*x + 3)/y
 (x**2 - 2*x + 3)/y
-\end{minted}
+\end{verbatim}
 
 % polynomial expressions
 
@@ -73,30 +73,30 @@ matching of powers.
 
 Derivatives can be computed with the \verb|diff| function.
 
-\begin{minted}{pycon}
+\begin{verbatim}
 >>> diff(sin(x), x)
 cos(x)
-\end{minted}
+\end{verbatim}
 
 Unevaluated \verb|Derivative| objects are also supported.
 
-\begin{minted}{pycon}
+\begin{verbatim}
 >>> expr = Derivative(sin(x), x)
 >>> expr
 Derivative(sin(x), x)
-\end{minted}
+\end{verbatim}
 
 Unevaluated expressions can be evaluated with the \verb|doit| method.
 
-\begin{minted}{pycon}
+\begin{verbatim}
 In [5]: expr.doit()
 Out[5]: cos(x)
-\end{minted}
+\end{verbatim}
 
 % TODO: A more interesting example here
 Integrals can be analogously calculated either with the \verb|integrate|
 function, or the unevaluated \verb|Integral| objects.
-\begin{minted}{pycon}
+\begin{verbatim}
 >>> integrate(sin(x), x)
 -cos(x)
 >>> expr = Integral(sin(x), x)
@@ -104,13 +104,13 @@ function, or the unevaluated \verb|Integral| objects.
 Integral(sin(x), x)
 >>> expr.doit()
 -cos(x)
-\end{minted}
+\end{verbatim}
 Definite integration can be calculated with the same method, by specifying a
 range of the integration variable. The following computes $\int_0^1\sin(x)\,dx$.
-\begin{minted}{pycon}
+\begin{verbatim}
 >>> integrate(sin(x), (x, 0, 1))
 -cos(1) + 1
-\end{minted}
+\end{verbatim}
 
 SymPy implements a combination of the Risch
 algorithm~\cite{bronstein2005integration}, table lookups, a reimplementation
@@ -141,11 +141,11 @@ to the user. By default, an interactive Python session will render the
 \verb|str| form of an expression, which has been used in all the examples in
 this paper so far.
 
-\begin{minted}{pycon}
+\begin{verbatim}
 >>> phi0 = Symbol('phi0')
 >>> str(Integral(sqrt(phi0), phi0))
 Integral(sqrt(phi0 + 1), x)
-\end{minted}
+\end{verbatim}
 
 Expressions can be printed with 2D monospace text with \verb|pprint|. This
 uses Unicode characters to render mathematical symbols such as integral signs,
@@ -155,7 +155,7 @@ are rendered automatically.
 Alternately, the \verb|use_unicode=False| flag can be set, which causes the
 expression to be printed using only ASCII characters.
 
-\begin{minted}{pycon}
+\begin{verbatim}
 >>> pprint(Integral(sqrt(phi0 + 1), phi0), use_unicode=False)
   /
  |
@@ -163,14 +163,14 @@ expression to be printed using only ASCII characters.
  | \/ phi0 + 1  d(phi0)
  |
 /
-\end{minted}
+\end{verbatim}
 
 The function \verb|latex| returns a \LaTeX{} representation of an expression.
 
-\begin{minted}{pycon}
+\begin{verbatim}
 >>> print(latex(Integral(sqrt(phi0 + 1), phi0)))
 \int \sqrt{\phi_{0} + 1}\, d\phi_{0}
-\end{minted}
+\end{verbatim}
 
 Users are encouraged to run the \verb|init_printing| function at the beginning
 of interactive sessions, which automatically enables the best pretty printing

@@ -4,14 +4,14 @@ inputs is rounded to the larger of the two precisions.
 Since Python floating-point literals automatically evaluate to \texttt{double}
 (53-bit) precision, strings should be used to input precise decimal values:
 
-\begin{minted}{pycon}
+\begin{verbatim}
 >>> Float(1.1)
 1.10000000000000
 >>> Float(1.1, 30)   # precision equivalent to 30 digits
 1.10000000000000008881784197001
 >>> Float("1.1", 30)
 1.10000000000000000000000000000
-\end{minted}
+\end{verbatim}
 
 The preferred way to evaluate an expression numerically is with the
 \texttt{evalf} method, which internally estimates the number of accurate
@@ -28,12 +28,12 @@ when converting symbolic expressions to numerical values, for example
 due to catastrophic cancellation. This is illustrated by the following
 example (the input 25 specifies that 25 digits are sought):
 
-\begin{minted}{pycon}
+\begin{verbatim}
 >>> cos(exp(-100)).evalf(25) - 1
 0
 >>> (cos(exp(-100)) - 1).evalf(25)
 -6.919482633683687653243407e-88
-\end{minted}
+\end{verbatim}
 
 The \texttt{evalf} method works with complex numbers and supports
 more complicated expressions, such as
@@ -66,14 +66,14 @@ are \texttt{mpf} and \texttt{mpc}, which respectively act as
 multiprecision substitutes for Python's \texttt{float} and \texttt{complex}.
 The floating-point precision is controlled by a global context:
 
-\begin{minted}{pycon}
+\begin{verbatim}
 >>> import mpmath
 >>> mpmath.mp.dps = 30    # 30 digits of precision
 >>> mpmath.mpf("0.1") + mpmath.exp(-50)
 mpf('0.100000000000000000000192874984794')
 >>> print(_)   # pretty-printed
 0.100000000000000000000192874985
-\end{minted}
+\end{verbatim}
 
 For pure numerical computing, it is convenient to use mpmath directly
 with \texttt{from mpmath import *} (it is best to avoid such an
@@ -162,17 +162,17 @@ Mathematica produced incorrect numerical values for large $x > 0$.
 Here, mpmath automatically removes the internal singularity
 and compensates for cancellations (amounting to 656 bits
 of precision when $x = 10000$), giving correct values:
-\begin{minted}{pycon}
+\begin{verbatim}
 >>> mpmath.mp.dps = 15
 >>> mpmath.meijerg([[],[0]],[[-0.5,-1,-1.5],[]],10000)
 mpf('2.4392576907199564e-94')
-\end{minted}
+\end{verbatim}
 
 Equivalently, with SymPy's interface this function can be evaluated as:
-\begin{minted}{pycon}
+\begin{verbatim}
 >>> meijerg([[],[0]],[[-S(1)/2,-1,-S(3)/2],[]],10000).evalf()
 2.43925769071996e-94
-\end{minted}
+\end{verbatim}
 
 We highlight the generalized hypergeometric functions and
 the Meijer G-function, due to those functions' frequent appearance
@@ -195,7 +195,7 @@ using the PSLQ algorithm~\cite{Ferguson1999} to search for
 a matching algebraic number or optionally a linear combination
 of user-provided base constants (such as $\pi$).
 
-\begin{minted}{pycon}
+\begin{verbatim}
 >>> x = 1 / (sin(pi/5)+sin(2*pi/5)+sin(3*pi/5)+sin(4*pi/5))**2
 >>> nsimplify(x)
 -2*sqrt(5)/5 + 1
@@ -203,4 +203,4 @@ of user-provided base constants (such as $\pi$).
 22/7
 >>> nsimplify(1.783919626661888, [pi], tolerance=1e-12)
 pi/(-1/3 + 2*pi/3)
-\end{minted}
+\end{verbatim}

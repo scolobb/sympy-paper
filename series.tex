@@ -11,12 +11,12 @@ Each function has its specific implementation of its expansion which is able to
 evaluate the Puiseux series expansion about a specified point. For example,
 consider a Taylor expansion about 0:
 
-\begin{minted}{pycon}
+\begin{verbatim}
 >>> from sympy import symbols, series
 >>> x, y = symbols('x, y')
 >>> series(sin(x+y) + cos(x*y), x, 0, 2)
 1 + sin(y) + x*cos(y) + O(x**2)
-\end{minted}
+\end{verbatim}
 
 The newer and much faster\cite{sympyRingSeries} approach called Ring Series makes use of the
 observation that a truncated Taylor series, is in fact a polynomial.
@@ -33,13 +33,13 @@ All these support Puiseux series expansion. The following example demonstrates
 the use of an elementary function that calculates the Taylor expansion of the
 \texttt{sine} of a series.
 
-\begin{minted}{pycon}
+\begin{verbatim}
 >>> from sympy import ring
 >>> from sympy.polys.ring_series import rs_sin
 >>> R, x = ring('x', QQ)
 >>> rs_sin(x**2 + x, x, 5)
 -1/2*x**4 - 1/6*x**3 + x**2 + x
-\end{minted}
+\end{verbatim}
 
 The function \texttt{sympy.polys.rs\_series} makes use of these elementary
 functions to expand an arbitrary SymPy expression. It does so by following a
@@ -51,13 +51,13 @@ difference increasing with the size of the series. The
 \texttt{sympy.polys.rs\_series} takes as input any SymPy expression and hence
 there is no need to explicitly create a polynomial \texttt{ring}. An example:
 
-\begin{minted}{pycon}
+\begin{verbatim}
 >>> from sympy.polys.ring_series import rs_series
 >>> from sympy.abc import a, b
 >>> from sympy import sin, cos
 >>> rs_series(sin(a + b), a, 4)
 -1/2*(sin(b))*a**2 + (sin(b)) - 1/6*(cos(b))*a**3 + (cos(b))*a
-\end{minted}
+\end{verbatim}
 
 \subsubsection{Formal Power Series}
 
@@ -69,13 +69,13 @@ rather than just computing a few terms.
 
 The following example shows how to use \texttt{fps}:
 
-\begin{minted}{pycon}
+\begin{verbatim}
 >>> f = fps(sin(x), x, x0=0)
 >>> f.truncate(6)
 x - x**3/6 + x**5/120 + O(x**6)
 >>> f[15]
 -x**15/1307674368000
-\end{minted}
+\end{verbatim}
 
 \subsubsection{Fourier Series}
 
@@ -85,9 +85,9 @@ standard integration formulas.
 
 Here's an example on how to compute Fourier Series in SymPy:
 
-\begin{minted}{pycon}
+\begin{verbatim}
 >>> L = symbols('L')
 >>> f = fourier_series(2 * (Heaviside(x/L) - Heaviside(x/L - 1)) - 1, (x, 0, 2*L))
 >>> f.truncate(3)
 4*sin(pi*x/L)/pi + 4*sin(3*pi*x/L)/(3*pi) + 4*sin(5*pi*x/L)/(5*pi)
-\end{minted}
+\end{verbatim}

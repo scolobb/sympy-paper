@@ -10,15 +10,17 @@ SymPy is written entirely in the Python programming language,
 % cite Python?
 which is also the language used to interact with it, both programmatically and
 interactively. Python is a popular dynamically typed programming language that
-has a focus on ease of use and readability. Unlike many CASs, SymPy does not
-invent its own programming language. It rather takes the approach that Python
-is already a well-designed programming language, built by expert language
-designers, something which the majority of SymPy developers are not. Python is
-also a very popular language for scientific computing and data science, with a
-wide range of useful libraries.
+has a focus on ease of use and readability. It also a very popular language
+for scientific computing and data science, with a wide range of useful
+libraries.
 % Cite numpy, scipy, pandas
 % We could also cite
 % https://stackoverflow.com/research/developer-survey-2016#most-popular-technologies-per-occupation
+Unlike many CASs, SymPy does not invent its own programming language. Python
+is used both for the internal implementation and the user interaction.
+Exclusively using Python in this way makes it easier for people already
+familiar with the language to use SymPy, or to do development on it. It also
+lets the SymPy developers focus on mathematics, rather than language design.
 
 SymPy is designed with a strong focus that it be usable as a library. This
 means that extensibility is important in its API design. This is also one of

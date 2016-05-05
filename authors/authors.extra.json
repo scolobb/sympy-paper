@@ -1,3 +1,4 @@
+[
     {
         "email": "??",
         "github_id": "scopatz",
@@ -9,16 +10,14 @@
         "email": "sumith1896@gmail.com",
         "github_id": "Sumith1896",
         "institution": "Indian Institute of Technology Bombay",
-        "institution_address": "Indian Institute of Technology Bombay,
-         Powai, Mumbai, Maharashtra, India - 400076",
+        "institution_address": "Indian Institute of Technology Bombay, Powai, Mumbai, Maharashtra, India - 400076",
         "name": "Sumith"
     },
     {
-        "email": "singhsartaj94@gmail.com""
+        "email": "singhsartaj94@gmail.com",
         "github_id": "leosartaj",
         "institution": "Indian Institute of Technology (BHU)",
-        "institution_address": "Indian Institute of Technology (BHU),
-         Varanasi, Uttar Pradesh, India - 221005",
+        "institution_address": "Indian Institute of Technology (BHU), Varanasi, Uttar Pradesh, India - 221005",
         "name": "Sartaj Singh"
     },
     {
@@ -41,4 +40,5 @@
         "institution": "INRIA - SIERRA project-team",
         "institution_address": "2 Rue Simone IFF, 75012 Paris",
         "name": "Fabian Pedregosa"
-    },
+    }
+]

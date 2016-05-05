@@ -1,0 +1,67 @@
+
+Wolfram Mathematica is a popular proprietary CAS.\@
+It features highly advanced algorithms.
+Mathematica has a core implemented in C++~\cite{Wolfram2016}
+which interprets its own programming language (know as Wolfram language).
+
+% M-expressions
+
+Analogously to Lisp's S-expressions,
+Mathematica uses its own style of M-expressions,
+which are arrays of either atoms or other M-expression.
+The first element of the expression identifies the type of the expression
+and is indexed by zero, whereas the first argument is indexed by one.
+Notice that SymPy expression arguments are stored in a Python tuple
+(that is, an immutable array),
+while the expression type is identified by the type of the object storing the
+expression.
+
+% Attributes
+
+Mathematica can associate attributes to its atoms.
+
+% Expression mutability
+
+Unlike SymPy, Mathematica's expressions are mutable,
+that is one can change parts of the expression tree without the need of
+creating a new object.
+The reactivity of Mathematica allows for a lazy updating of any references
+to that data structure.
+
+% Products and commutativity
+
+Products in Mathematica are determined by some builtin node types,
+such as \texttt{Times}, \texttt{Dot}, and others.
+\texttt{Times} is overloaded by the * operator,
+and is always meant to represent a commutative operator.
+The other notable product is \texttt{Dot}, overloaded by the \texttt{.} operator.
+This product represents matrix multiplication,
+it is not commutative.
+SymPy uses the same node for both scalar and matrix multiplication,
+the only exception being with abstract matrix symbols.
+Unlike Mathematica, SymPy determines commutativity with respect to
+multiplication from the factor's expression type.
+Mathematica puts the \texttt{Orderless} attribute on the expression
+type.
+
+% Associative expressions.
+
+Regarding associative expressions,
+SymPy handles associativity by making associative expressions inherit the
+class \texttt{AssocOp},
+while Mathematica specifies the \texttt{Flat} attribute on the expression type.
+
+% Pattern matching
+
+
+%% TODO list:
+% * comparison with Mathematica: MatrixExp, product not always commutative, type inheritance (polymorphism) and advantage in unifying the product symbol * for symbols and matrices, pattern matching vs. single dispatch.
+% * comparison with Mathematica: commutativity, associative expressions, one-identity. Advantage of SymPy: multiplicative commutativity defined on symbols.
+% * comparison with Mathematica: avoid misspelling variables through forced declaration (check that you can't do it in Mathematica).
+% * evaluate=False vs HoldForm
+% * comparison with Mathematica: == is structural equality, not
+% * comparison with Mathematica: polynomial module.
+% * comparison with Mathematica: space is product, ** vs ^
+% * comparison with Mathematica: ( ) is Sequence, functions are generally uppercase.
+% * comparsion with Mathematica: table of comparison?
+% * comparison with Mathematica: Wolfram language has loads of operator overloading, functional paradigm.

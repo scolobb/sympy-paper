@@ -1,7 +1,47 @@
-\documentclass{article}
+% SIAM Article Template
+\documentclass[review]{siamart0216}
 
+\usepackage[utf8]{inputenc}
+
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{caption}
+\graphicspath{ {images/} }
+
+\usepackage{upquote}
+
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{hyperref}
+
+% this is required for all the \url{} commands in the bib file
+%\usepackage{hyperref}
+
+% for nice units
+\usepackage{siunitx}
+
+% for images: png, pdf, etc
+\usepackage{graphicx}
+
+% for nice table formatting, i.e., /toprule, /midrule, etc
+\usepackage{booktabs}
+
+% to allow for \verb++ declarations in captions.
+\usepackage{cprotect}
+
+% to allow usage of \mathbb symbols
+\usepackage{amssymb}
+
+\usepackage{longtable}
+
+\title{SymPy: Symbolic Computing in Python}
+
+\input{authors}
 
 \begin{document}
+\maketitle
+
 \section{Introduction}
 
 %% What sympy is, where to download etc.
@@ -16,13 +56,13 @@
 
 \input{architecture}
 
-\section{Algorithms}
+\section{Numerics}
 
 %% Description of some algorithms (example: integration with Risch, Meijer G, Gruntz, polys)
 %%
 %% Description of numerics/mpmath (Fredrik)
 
-\input{algorithms}
+\input{numerics}
 
 \section{Features}
 
@@ -34,10 +74,27 @@
 
 \input{features}
 
+\section{Domain Specific Features}
+
+\input{domain_specific}
+
+\section{Other Projects that use SymPy}
+
+\input{other_projects_that_use_sympy}
+
 \section{Conclusion and future work}
 
 \input{conclusion_and_future_work}
 
 \section{References}
+
+\bibliographystyle{siamplain}
+\bibliography{paper}
+
+% Adding this here for now so it stays in one document. Will be a separate
+% document at the end.
+\section{Supplement}
+
+\input{supplement}
 
 \end{document}

@@ -9,12 +9,11 @@
 \usepackage{caption}
 \graphicspath{ {images/} }
 
+\usepackage{upquote}
+
 \usepackage{amsmath}
 \usepackage{url}
 \usepackage{hyperref}
-
-% for nice source code syntax highlighting, also provides Listing env
-\usepackage{minted}
 
 % this is required for all the \url{} commands in the bib file
 %\usepackage{hyperref}
@@ -57,13 +56,13 @@
 
 \input{architecture}
 
-\section{Algorithms}
+\section{Numerics}
 
 %% Description of some algorithms (example: integration with Risch, Meijer G, Gruntz, polys)
 %%
 %% Description of numerics/mpmath (Fredrik)
 
-\input{algorithms}
+\input{numerics}
 
 \section{Features}
 
@@ -75,15 +74,13 @@
 
 \input{features}
 
+\section{Domain Specific Features}
+
 \input{domain_specific}
 
 \section{Other Projects that use SymPy}
 
 \input{other_projects_that_use_sympy}
-
-\section{Comparison with other CAS}
-
-\input{comparison_with_mma}
 
 \section{Conclusion and future work}
 
@@ -93,5 +90,11 @@
 
 \bibliographystyle{siamplain}
 \bibliography{paper}
+
+% Adding this here for now so it stays in one document. Will be a separate
+% document at the end.
+\section{Supplement}
+
+\input{supplement}
 
 \end{document}

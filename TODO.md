@@ -71,7 +71,7 @@ citations and "URL citations".
 
 - [ ] Abstract (note: write this last)
 
-- [ ] Introduction
+- [x] Introduction
 
 - [ ] Polynomials module architecture (if we can't get anyone to write it, add
   a blurb and cite Mateusz's thesis)

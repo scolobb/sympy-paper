@@ -1,17 +1,17 @@
 [
     {
+        "email": "asmeurer@gmail.com",
+        "github_id": "asmeurer",
+        "institution": "University of South Carolina",
+        "institution_address": "541 Main St., Columbia, SC 29201",
+        "name": "Aaron Meurer"
+    },
+    {
         "email": "ondrej.certik@gmail.com",
         "github_id": "certik",
         "institution": "Los Alamos National Laboratory",
         "institution_address": "P.O. Box 1663, Los Alamos, New Mexico 87545, USA",
         "name": "Ond\u0159ej \u010cert\u00edk"
-    },
-    {
-        "email": "??",
-        "github_id": "asmeurer",
-        "institution": "??",
-        "institution_address": "??",
-        "name": "Aaron Meurer"
     },
     {
         "email": "??",

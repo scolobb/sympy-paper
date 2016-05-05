@@ -64,13 +64,13 @@ heuristics.
 The limit module implements the Gruntz algorithm~\cite{Gruntz1996limits} for
 computing symbolic limits.
 
-For example, the following computes $\lim_{x\to \infty} x\sin(\frac{1}{x})=1$ (note that
+For example, the following computes $\lim\limits_{x\to \infty} x\sin(\frac{1}{x})=1$ (note that
 $\infty$ is \verb|oo| in SymPy).
 \begin{verbatim}
 >>> limit(x*sin(1/x), x, oo)
 1
 \end{verbatim}
-As a more complicated example, SymPy computes $\lim_{x\to 0}{\left(2 e^{\frac{1 - \cos{\left (x \right )}}{\sin{\left (x \right )}}} -
+As a more complicated example, SymPy computes $\lim\limits_{x\to 0}{\left(2 e^{\frac{1 - \cos{\left (x \right )}}{\sin{\left (x \right )}}} -
   1\right)}^{\frac{\sinh{\left (x \right )}}{\operatorname{atan}^{2}{\left (x
       \right )}}} = e$.
 \begin{verbatim}

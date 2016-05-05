@@ -53,19 +53,16 @@ SymPy to compute a wide variety of indefinite and definite integrals.
 
 Summations and products are also supported, via the evaluated \verb|summation|
 and \verb|product| and unevaluated \verb|Sum| and \verb|Product|, and use the
-same syntax as \verb|integrate|.
-
-Summations are computed using a combination of Gosper's algorithm and an
-algorithm that uses Meijer G-functions. Products are computed via some
-heuristics.
+same syntax as \verb|integrate|. Summations are computed using a combination
+of Gosper's algorithm and an algorithm that uses Meijer G-functions. Products
+are computed via some heuristics.
 % TODO: Citations for Gosper and Meijer G-function algorithms
 % TODO: Are there other summation algorithms implemented?
 
 The limit module implements the Gruntz algorithm~\cite{Gruntz1996limits} for
-computing symbolic limits.
-
-For example, the following computes $\lim\limits_{x\to \infty} x\sin(\frac{1}{x})=1$ (note that
-$\infty$ is \verb|oo| in SymPy).
+computing symbolic limits. For example, the following computes
+$\lim\limits_{x\to \infty} x\sin(\frac{1}{x})=1$ (note that $\infty$ is
+\verb|oo| in SymPy).
 \begin{verbatim}
 >>> limit(x*sin(1/x), x, oo)
 1

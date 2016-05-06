@@ -1,3 +1,37 @@
+\subsection{Basic Usage}
+
+% symbols, various ways to declare them
+
+Being built on Python, SymPy requires that all variable names be defined
+before they can be used. The statement
+\begin{verbatim}
+>>> from sympy import *
+\end{verbatim}
+will import all SymPy functions into the global Python namespace. All the
+examples in this paper assume that this has been run.
+
+Additionally, symbolic variables, called symbols, must be assigned to Python
+variables before they can be used. This is typically done through the
+\texttt{symbols} function, which creates multiple symbols at once. For
+instance,
+
+\begin{verbatim}
+>>> x, y, z = symbols('x y z')
+\end{verbatim}
+
+creates three symbols named \texttt{x}, \texttt{y}, and \texttt{z}, assigned
+to Python variables of the same name. The Python variable names that symbols
+are assigned to are immaterial---we could have just as well have written
+\verb|a, b, c = symbol('x y z')|. All the examples in this paper will assume
+that the symbols \verb|x|, \verb|y|, and \verb|z| have been assigned as above.
+
+Expressions are created from symbols using Python syntax, which mirrors usual
+mathematical notation. Note that in Python, exponentiation is \verb|**|.
+
+\begin{verbatim}
+>>> (x**2 - 2*x + 3)/y
+(x**2 - 2*x + 3)/y
+\end{verbatim}
 
 %% I volunteer to write this section. --Aaron
 %%
@@ -5,7 +39,9 @@
 
 \subsection{The Core}
 
-Every symbolic expression in SymPy is an instance of a Python class.
+The core of a computer algebra system (CAS) refers to the module that is in
+charge of resenting symbolic expressions and performing basic manipulations
+with them. In SymPy, every symbolic expression is an instance of a Python class.
 Expressions are represented by expression trees. The operators are represented
 by the type of an expression and the child nodes are stored in the
 \texttt{args} attribute. A leaf node in the expression tree has an empty
@@ -13,7 +49,7 @@ by the type of an expression and the child nodes are stored in the
 The \texttt{args} attribute is provided by the class \texttt{Basic},
 which is a superclass of all SymPy objects and
 provides common methods to all SymPy tree-elements.
-For example, take the expression $xy + 2$.
+For example, consider the expression $xy + 2$:
 
 \begin{verbatim}
 >>> from sympy import *
@@ -177,13 +213,13 @@ The typical way to create a custom SymPy object is to subclass an existing
 SymPy class, generally either \texttt{Basic}, \texttt{Expr}, or
 \texttt{Function}. All SymPy classes used for expression trees~\footnote{Some
   internal classes, such as those used in the polynomial module, do not follow
-  this rule.} should be subclasses of the base class
+  this rule for efficiency reasons.} should be subclasses of the base class
 \texttt{Basic}, which defines some basic methods for symbolic expression
 trees. \texttt{Expr} is the subclass for mathematical expressions that can be
-added and multiplied together. Instances of \texttt{Expr} are typically
+added and multiplied together. Instances of \texttt{Expr} typically represent
 complex numbers, but may also include other ``rings'' like matrix expressions.
-Not all SymPy classes are \texttt{Expr}. For instance, logic expressions, such
-as \verb|And(x, y)| are \texttt{Basic} but not \texttt{Expr}.
+Not all SymPy classes are subclasses of \texttt{Expr}. For instance, logic expressions, such
+as \verb|And(x, y)| are subclasses of \texttt{Basic} but not of \texttt{Expr}.
 
 The \texttt{Function} class is a subclass of \texttt{Expr} which makes it
 easier to define mathematical functions called with arguments. This includes
@@ -201,7 +237,8 @@ common \verb|_eval_|\texttt{\textit{*}} methods relate to the assumptions.
 \verb|_eval_is_|\texttt{\textit{assumption}} defines the assumptions for
 \textit{assumption}.
 
-Here is a stripped down version of the gamma function $\Gamma(x)$ from SymPy,
+As an example of the notions presented in this section, we present below
+a stripped down version of the gamma function $\Gamma(x)$ from SymPy,
 which evaluates itself on positive integer arguments, has the positive and
 real assumptions defined, can be rewritten in terms of factorial with
 \verb|gamma(x).rewrite(factorial)|, and can be differentiated.
@@ -244,5 +281,4 @@ class gamma(Function)
             raise ArgumentIndexError(self, argindex)
 \end{verbatim}
 
-The actual gamma function defined in SymPy has much more implemented than
-this, such as evaluation at rational points and series expansion.
+The actual gamma function defined in SymPy has many more capabilities, such as evaluation at rational points and series expansion.

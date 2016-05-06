@@ -1,0 +1,38 @@
+
+SymPy Gamma is a simple web application that runs on Google App Engine.
+It executes and displays the results of SymPy expressions as well as
+additional related computations, in a fashion similar to that of
+Wolfram\textbar{}Alpha. For instance, entering an integer will display
+its prime factors, digits in the base-10 expansion, and a factorization
+diagram. Entering a function will display its docstring; in general,
+entering an arbitrary expression will display its derivative, integral,
+series expansion, plot, and roots.
+
+SymPy Gamma also has several additional features than just computing the
+results using SymPy.
+
+\begin{itemize}
+\item
+  It displays integration steps, differentiation steps in detail, which
+  can be viewed in Figure~\ref{fig:integralsteps}:\par
+\begin{minipage}{\textwidth}
+    \centering
+    \includegraphics[width=0.7\textwidth]{integral_steps.png}
+    \captionof{figure}{Integral steps of $\tan (x)$}\label{fig:integralsteps}
+\end{minipage}
+\item
+  It also displays the factor tree diagrams for different numbers.
+\item
+  SymPy Gamma also saves user search queries, and offers many such
+  similar features for free, which Wolfram\textbar{}Alpha only offers
+  to its paid users.
+\end{itemize}
+Every input query from the user on SymPy Gamma is first, parsed by its
+own parser, which handles several different forms of function names,
+which SymPy as a library doesn't support. For instance, SymPy Gamma
+supports queries like \texttt{sin\ x}, whereas SymPy doesn't support
+this, and supports only \verb|sin(x)|.
+
+This parser converts the input query to the equivalent SymPy readable
+code, which is then eventually processed by SymPy and the result is
+finally formatted in LaTeX and displayed on the SymPy Gamma web-application.

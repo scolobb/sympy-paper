@@ -2,9 +2,18 @@
 
 % symbols, various ways to declare them
 
-All symbols in SymPy must be instantiated and assigned to a variable before
-they can be used. This is typically done through the \texttt{symbols}
-function, which creates multiple symbols at once. For instance,
+Being built on Python, SymPy requires that all variable names be defined
+before they can be used. The statement
+\begin{verbatim}
+>>> from sympy import *
+\end{verbatim}
+will import all SymPy functions into the global Python namespace. All the
+examples in this paper assume that this has been run.
+
+Additionally, symbolic variables, called symbols, must be assigned to Python
+variables before they can be used. This is typically done through the
+\texttt{symbols} function, which creates multiple symbols at once. For
+instance,
 
 \begin{verbatim}
 >>> x, y, z = symbols('x y z')
@@ -13,7 +22,8 @@ function, which creates multiple symbols at once. For instance,
 creates three symbols named \texttt{x}, \texttt{y}, and \texttt{z}, assigned
 to Python variables of the same name. The Python variable names that symbols
 are assigned to are immaterial---we could have just as well have written
-\verb|a, b, c = symbol('x y z')|.
+\verb|a, b, c = symbol('x y z')|. All the examples in this paper will assume
+that the symbols \verb|x|, \verb|y|, and \verb|z| have been assigned as above.
 
 Expressions are created from symbols using Python syntax, which mirrors usual
 mathematical notation. Note that in Python, exponentiation is \verb|**|.

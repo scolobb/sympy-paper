@@ -1,0 +1,42 @@
+
+% polynomial expressions
+
+% functions
+
+% expand( ), factor( ), collect( ), together( ), apart( )
+%% maybe a table best suits this part.
+
+% simplification: simplify, sqrt denest, fu, trigsimp
+
+The generic way to simplify an expression is by calling the \texttt{simplify}
+function.
+It must be emphasized that simplification is not an unambigously defined
+mathematical operation~\cite{Carette2004understanding}.
+The \texttt{simplify} function applies several simplification routines along
+with some heuristics to make the output expression as ``simple'' as possible.
+
+It is often preferable to apply more directed simplification functions. These
+apply very specific rules to the input expression, and are often able to make
+guarantees about the output (for instance, the \texttt{factor} function, given
+a polynomial with rational coefficients in several variables, is guaranteed to
+produce a factorization into irreducible factors).
+Table~\ref{simplify-table} lists some common simplification functions.
+
+% TODO: add a simple example for each
+% TODO: fix the formatting
+\label{simplify-table}
+\begin{tabular}{l|p{0.7\linewidth}}
+expand & expand the expression \\
+factor & factor a polynomial into irreducibles \\
+collect & collect polynomial coefficients \\
+cancel & rewrite a rational function as $p/q$ with common factors canceled \\
+apart & compute the partial fraction decomposition of a rational function \\
+trigsimp & simplify trigonometric expressions~\cite{fu2006automated} \\
+\end{tabular}
+
+Substitutions are performed through the \texttt{.subs} method, which is
+sensible to some mathematical properties while matching, such as
+associativity, commutativity, additive and multiplicative inverses, and
+matching of powers.
+
+%% TODO: add examples

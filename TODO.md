@@ -6,7 +6,7 @@
 
 - [ ] Syntax highlighting of code (one option: pygments can output to tex).
 
-- [ ] Consistent example formatting (>>> style, str printer, note at beginning
+- [x] Consistent example formatting (>>> style, str printer, note at beginning
   that `from sympy import *` is assumed).
 
 - [ ] Avoid too much itemize.

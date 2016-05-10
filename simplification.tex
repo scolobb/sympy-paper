@@ -24,15 +24,17 @@ Table~\ref{simplify-table} lists some common simplification functions.
 
 % TODO: add a simple example for each
 % TODO: fix the formatting
-\label{simplify-table}
-\begin{tabular}{l|p{0.7\linewidth}}
+\begin{longtable}[htbc]{lp{0.7\linewidth}}
+\caption{SymPy Simplification Functions\label{simplify-table}}\\
+\toprule
 expand & expand the expression \\
 factor & factor a polynomial into irreducibles \\
 collect & collect polynomial coefficients \\
 cancel & rewrite a rational function as $p/q$ with common factors canceled \\
 apart & compute the partial fraction decomposition of a rational function \\
 trigsimp & simplify trigonometric expressions~\cite{fu2006automated} \\
-\end{tabular}
+\bottomrule
+\end{longtable}
 
 Substitutions are performed through the \texttt{.subs} method, which is
 sensible to some mathematical properties while matching, such as

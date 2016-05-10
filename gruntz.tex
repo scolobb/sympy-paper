@@ -34,9 +34,9 @@ f(x) = e^{x+2e^{-x}} - e^x + {1\over x} \,.
 \end{equation}
 The goal is to calculate $\lim\limits_{x\to\infty} f(x)$.
 First the set of most rapidly varying subexpressions is determined, the so
-called \textit{mrv set}. For \eqref{gruntz_example_fn}, the following mrv set
-$\{e^x, e^{-x}, e^{x+2e^{-x}}\}$ is obtained. These are all subexpressions of
-\eqref{gruntz_example_fn} and they all belong to the same comparability class.
+called \textit{mrv set}. For~\eqref{gruntz_example_fn}, the following mrv set
+$\{e^x, e^{-x}, e^{x+2e^{-x}}\}$ is obtained. These are all subexpressions of%
+~\eqref{gruntz_example_fn} and they all belong to the same comparability class.
 This calculation can be done using SymPy as follows:
 
 \begin{verbatim}
@@ -60,8 +60,7 @@ f(x) = {1\over x}-{1\over\omega}+{1\over\omega}e^{2\omega}
 \end{equation}
 
 Since $\omega$ is from the mrv set, then in the limit $x\to\infty$ it is
-$\omega\to0$ and so $2\omega + O(\omega^2) \to 0$ in
-\eqref{gruntz_example_fn2}:
+$\omega\to0$ and so $2\omega + O(\omega^2) \to 0$ in~\eqref{gruntz_example_fn2}:
 \begin{equation}
 f(x) = {1\over x}-{1\over\omega}+{1\over\omega}e^{2\omega}
     = 2+{1\over x} + 2\omega + O(\omega^2)

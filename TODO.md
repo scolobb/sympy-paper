@@ -2,7 +2,7 @@
 
 - [ ] Add hyphenation entries for all unknown words.
 
-- [ ] Clean and consistent tables.
+- [x] Clean and consistent tables.
 
 - [ ] Syntax highlighting of code (one option: pygments can output to tex).
 

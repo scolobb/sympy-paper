@@ -6,7 +6,7 @@
 
 - [ ] Syntax highlighting of code (one option: pygments can output to tex).
 
-- [ ] Consistent example formatting (>>> style, str printer, note at beginning
+- [x] Consistent example formatting (>>> style, str printer, note at beginning
   that `from sympy import *` is assumed).
 
 - [ ] Avoid too much itemize.
@@ -15,7 +15,7 @@
 
 - [ ] Add Unicode pretty printing example (see discussion on #89).
 
-- [ ] Code examples use curly quotes (’) instead of regular quotes (').
+- [x] Code examples use curly quotes (’) instead of regular quotes (').
 
 - [ ] Stylize code examples with decent colors.
 

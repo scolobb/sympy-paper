@@ -1,6 +1,6 @@
 SymPy calculates limits using the Gruntz algorithm, as described in%
 ~\cite{Gruntz1996limits}. The basic idea is as follows: any limit can be
-converted to a limit $\lim_{x\to\infty} f(x)$ by substitutions like
+converted to a limit $\lim\limits_{x\to\infty} f(x)$ by substitutions like
 $x\to{1\over x}$. Then the most varying subexpression $\omega$ (that converges
 to zero as $x\to\infty$ the fastest from all subexpressions) is identified in
 $f(x)$, and $f(x)$ is expanded into a series with respect to $\omega$. Any
@@ -32,7 +32,7 @@ The Gruntz algorithm is now illustrated on the following example:
     \label{gruntz_example_fn}
 f(x) = e^{x+2e^{-x}} - e^x + {1\over x} \,.
 \end{equation}
-The goal is to calculate $\lim_{x\to\infty} f(x)$.
+The goal is to calculate $\lim\limits_{x\to\infty} f(x)$.
 First the set of most rapidly varying subexpressions is determined, the so
 called \textit{mrv set}. For \eqref{gruntz_example_fn}, the following mrv set
 $\{e^x, e^{-x}, e^{x+2e^{-x}}\}$ is obtained. These are all subexpressions of
@@ -89,6 +89,6 @@ f(x) = \underbrace{O\left({1\over \omega^3}\right)}_\infty
 \end{equation}
 The positive powers of $\omega$ are zero. If there are any negative powers of
 $\omega$, then the result of the limit is infinity, otherwise the limit is
-equal to $\lim_{x\to\infty} C_0(x)$. The expression $C_0(x)$ is simpler than
-$f(x)$ and so the algorithm always converges. A proof of this, as well as
+equal to $\lim\limits_{x\to\infty} C_0(x)$. The expression $C_0(x)$ is simpler
+than $f(x)$ and so the algorithm always converges. A proof of this, as well as
 further details are given in Gruntz's Ph.D. thesis~\cite{Gruntz1996limits}.

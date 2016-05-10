@@ -1,23 +1,22 @@
 SymPy calculates limits using the Gruntz algorithm, as described in%
 ~\cite{Gruntz1996limits}. The basic idea is as follows: any limit can be
 converted to a limit $\lim_{x\to\infty} f(x)$ by substitutions like
-$x\to{1\over x}$.
-Then we identify in $f(x)$ the most varying subexpression $\omega$ (that
-converges to zero as $x\to\infty$ the fastest from all subexpressions), and
-expand $f(x)$ into a series with respect to $\omega$. Any positive powers of
-$\omega$ converge to zero. If there are negative powers of $\omega$, then the
-limit is infinite. The constant term (independent of $\omega$, but could depend
-on $x$) then determines the limit (one might need to recursively apply the
-Gruntz algorithm on this term to determine the limit).
+$x\to{1\over x}$. Then the most varying subexpression $\omega$ (that converges
+to zero as $x\to\infty$ the fastest from all subexpressions) is identified in
+$f(x)$, and $f(x)$ is expanded into a series with respect to $\omega$. Any
+positive powers of $\omega$ converge to zero. If there are negative powers of
+$\omega$, then the limit is infinite. The constant term (independent of
+$\omega$, but could depend on $x$) then determines the limit (one might need to
+recursively apply the Gruntz algorithm on this term to determine the limit).
 
-To determine the most varying subexpression, we first need to define
-comparability classes, by calculating $L$:
+To determine the most varying subexpression, the comparability classes must
+first be defined, by calculating $L$:
 \begin{equation}
 L\equiv \lim_{x\to\infty} {\log |f(x)| \over \log |g(x)|}
 \end{equation}
-And then we define the $<$, $>$ and $\sim$ operations as follows: $f>g$ when
-$L=\pm\infty$ (we say that $f$ is more rapidly varying than $g$, i.e., $f$ goes
-to $\infty$ or $0$ faster than $g$, $f$ is greater than any power of $g$),
+And then operations $<$, $>$ and $\sim$ are defined as follows: $f>g$ when
+$L=\pm\infty$ (it is said that $f$ is more rapidly varying than $g$, i.e., $f$
+goes to $\infty$ or $0$ faster than $g$, $f$ is greater than any power of $g$),
 $f<g$ when $L=0$ ($f$ is less rapidly varying than $g$) and $f\sim g$ when
 $L\neq 0,\pm\infty$ (both $f$ and $g$ are bounded from above and below by
 suitable integral powers of the other). Here are some examples of comparability
@@ -28,17 +27,17 @@ $$x\sim x^2\sim x^3\sim {1\over x}\sim x^m\sim -x$$
 $$e^x\sim e^{-x}\sim e^{2x}\sim e^{x+e^{-x}}$$
 $$f(x)\sim{1\over f(x)}$$
 
-Let us now illustrate the Gruntz algorithm on the following example:
+The Gruntz algorithm is now illustrated on the following example:
 \begin{equation}
     \label{gruntz_example_fn}
 f(x) = e^{x+2e^{-x}} - e^x + {1\over x} \,.
 \end{equation}
-We want to calculate $\lim_{x\to\infty} f(x)$.
-We first determine the set of most rapidly varying subexpressions, the so
-called \textit{mrv set}, for \eqref{gruntz_example_fn} we obtain
-$\{e^x, e^{-x}, e^{x+2e^{-x}}\}$. These are all subexpressions of
+The goal is to calculate $\lim_{x\to\infty} f(x)$.
+First the set of most rapidly varying subexpressions is determined, the so
+called \textit{mrv set}, for \eqref{gruntz_example_fn} the following mrv set
+$\{e^x, e^{-x}, e^{x+2e^{-x}}\}$ is obtained. These are all subexpressions of
 \eqref{gruntz_example_fn} and they all belong to the same comparability class.
-We can do this calculation using SymPy as follows:
+This calculation can be done using SymPy as follows:
 
 \begin{verbatim}
 >>> from sympy.series.gruntz import mrv
@@ -46,23 +45,21 @@ We can do this calculation using SymPy as follows:
 dict_keys([exp(x + 2*exp(-x)), exp(x), exp(-x)])
 \end{verbatim}
 
-
-
-Next we take any item $\omega$ from mrv that converges to zero for
-$x\to\infty$.  We get $\omega=e^{-x}$. If such a term is not present in the mrv
-set (i.e. all terms converge to infinity instead of zero), we can use the
-relation $f(x)\sim {1\over f(x)}$.
+Next any item $\omega$ is taken from mrv that converges to zero for
+$x\to\infty$. The item $\omega=e^{-x}$ is obtained. If such a term is not
+present in the mrv set (i.e. all terms converge to infinity instead of zero),
+the relation $f(x)\sim {1\over f(x)}$ can be used.
 
 Next step is to rewrite the mrv in terms of $\omega$: $\{{1\over\omega},
-\omega, {1\over\omega}e^{2\omega}\}$. Then we substitute for the original
-subexpressions back into $f(x)$ and expand with respect to $\omega$:
+\omega, {1\over\omega}e^{2\omega}\}$. Then the original subexpressions are
+substituted back into $f(x)$ and expanded with respect to $\omega$:
 \begin{equation}
     \label{gruntz_example_fn2}
 f(x) = {1\over x}-{1\over\omega}+{1\over\omega}e^{2\omega}
      = 2+{1\over x} + 2\omega + O(\omega^2)
 \end{equation}
 
-Since $\omega$ is from the mrv set, then in the limit $x\to\infty$ we have
+Since $\omega$ is from the mrv set, then in the limit $x\to\infty$ it is
 $\omega\to0$ and so $2\omega + O(\omega^2) \to 0$ in
 \eqref{gruntz_example_fn2}:
 \begin{equation}
@@ -71,17 +68,17 @@ f(x) = {1\over x}-{1\over\omega}+{1\over\omega}e^{2\omega}
     \to 2 + {1\over x}
 \end{equation}
 
-Since the result ($2+{1\over x}$) still depends on $x$,
-we iterate the above procedure on the result until we get just a number
-(independent of $x$), which is the final limit. In our case the limit is $2$,
-as can be verified by SymPy:
+Since the result ($2+{1\over x}$) still depends on $x$, the above procedure is
+iterated on the result until just a number (independent of $x$) is obtained,
+which is the final limit. In the above case the limit is $2$, as can be
+verified by SymPy:
 
 \begin{verbatim}
 >>> limit(exp(x+2*exp(-x))-exp(x) + 1/x, x, oo)
 2
 \end{verbatim}
 
-In general, when we expand in terms of $\omega$, we obtain:
+In general, when $f(x)$ is expanded in terms of $\omega$, it is obtained:
 \begin{equation}
 f(x) = \underbrace{O\left({1\over \omega^3}\right)}_\infty
     + \underbrace{C_{-2}(x)\over \omega^2}_\infty
@@ -95,4 +92,3 @@ $\omega$, then the result of the limit is infinity, otherwise the limit is
 equal to $\lim_{x\to\infty} C_0(x)$. The expression $C_0(x)$ is simpler than
 $f(x)$ and so the algorithm always converges. A proof of this, as well as
 further details are given in Gruntz's Ph.D. thesis~\cite{Gruntz1996limits}.
-

@@ -1,12 +1,12 @@
 SymPy has extensive capabilities for symbolic quantum mechanics in the
 \verb|sympy.physics.quantum| subpackage. At the base level, this subpackage has
 Python objects to represent the different mathematical objects relevant in
-quantum theory [1]: states (bras and kets), operators (unitary, hermitian,
-etc.) and basis sets as well as operations on these objects such as tensor
-products, inner products, outer products, commutators, anticommutators, etc.
-The base objects are designed in the most general way possible to enable any
-particular quantum system to be implemented by subclassing the base operators
-to provide system specific logic.
+quantum theory \cite{sakurai}: states (bras and kets), operators (unitary,
+hermitian, etc.) and basis sets as well as operations on these objects such as
+tensor products, inner products, outer products, commutators, anticommutators,
+etc.  The base objects are designed in the most general way possible to enable
+any particular quantum system to be implemented by subclassing the base
+operators to provide system specific logic.
 
 The `quantum` subpackage has a general purpose `qapply` function that is
 capable of applying operators to states symbolically as well as simplifying a
@@ -18,18 +18,18 @@ of commuting Hermitian operators.
 
 On top of this base set of objects, a number of specific quantum systems have
 been implemented. First, we have implemented the traditional algebra for
-quantum angular momentum [2]. This allows the different spin operators ($S_x$,
-$S_y$, $S_z$) and their eigenstates to be represented in any basis and for any
-spin quantum number. Facilities for Clebsch-Gordan Coefficients, Wigner
+quantum angular momentum \cite{zare}. This allows the different spin operators
+($S_x$, $S_y$, $S_z$) and their eigenstates to be represented in any basis and
+for any spin quantum number. Facilities for Clebsch-Gordan Coefficients, Wigner
 Coefficients, rotations, and angular momentum coupling are also present in
 their symbolic and numerical forms.
 
 Second we have implemented a full set of states and operators for symbolic
-quantum computing. Multidimensional qubit states can be represented
-symbolically and as vectors. A full set of one ($X$, $Y$, $Z$, $H$, etc.) and
-two qubit ($CNOT$, etc.) gates (unitary operators) are provided. These can be
-represented as matricies (sparse or dense) or made to act on qubits
-symbolically without representation. With these gates, it is possible to
+quantum computing \cite{nielsen} Multidimensional qubit states can be
+represented symbolically and as vectors. A full set of one ($X$, $Y$, $Z$, $H$,
+etc.) and two qubit ($CNOT$, etc.) gates (unitary operators) are provided.
+These can be represented as matricies (sparse or dense) or made to act on
+qubits symbolically without representation. With these gates, it is possible to
 implement a number of basic quantum circuits including the quantum Fourier
 transform, quantum error correction, quantum teleportation, Grover's algorithm,
 dense coding, etc.
@@ -41,11 +41,3 @@ and raising/lowering forms) and continuous position/momentum based systems.
 The package also contains exact symbolic energies and wave functions of several
 simple systems like the Hydrogen atom (non-relativistic and relativistic) and
 harmonic oscillator (1d and spherical 3D).
-
-1. J.J. Sakurai and J.J. Napolitano, "Modern Quantum Mechanics," Addison-Wesley
-(2010).
-2. R.N. Zare, "Angular Momentum: Understanding Spatial Aspects in Chemistry and
-Physics," Wiley (1991).
-3. M.A. Nielsen and I.L. Chuang, "Quantum Computation and Quantum Information,"
-Cambridge University Press (2011).
-

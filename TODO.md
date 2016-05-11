@@ -78,4 +78,4 @@ citations and "URL citations".
 
 - [x] Something on printers
 
-- [ ] Conclusion
+- [x] Conclusion

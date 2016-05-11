@@ -63,36 +63,3 @@ operators, and computation of standard quantum models.
 
 % TODO : This needs some help from someone that knows something about quantum
 % physics. I wasn't able to understand much from the documentation.
-
-\subsection{Optics}
-
-The \verb|physics.optics| package provides Gaussian optics functions.
-
-% TODO : This needs some help from someone that knows something about optics.
-
-\subsection{Units}
-
-The \verb|physics.units| module provides around two hundred predefined prefixes
-and SI units that are commonly used in the sciences. Additionally, it provides
-the \verb|Unit| class which allows the user to define their own units.  These
-prefixes and units are multiplied by standard SymPy objects to make expressions
-unit aware, allowing for algebraic and calculus manipulations to be applied to
-the expressions while the units are tracked in the manipulations.  The units of
-the expressions can be easily converted to other desired units.  There is also
-a new units system in \verb|sympy.physics.unitsystems| that allows the user to
-work in specified unit systems.
-
-\subsection{Tensors}
-
-Ongoing work to provide the capabilities of tensor computer algebra has so far
-produced the \verb|tensor| module.  It is composed of three separated
-submodules, whose purposes are quite different: \verb|tensor.indexed| and
-\verb|tensor.indexed_methods| support indexed symbols,
-\verb|tensor.array| contains facilities to operator on symbolic $N$-dimensional
-arrays and finally \verb|tensor.tensor| is used to defineabstract tensors.
-The abstract tensors subsection
-is inspired by xAct\cite{xAct} and Cadabra\cite{Peeters2007cadabra}.
-Canonicalization based on the Butler-Portugal\cite{ManssurPortugal1999}
-algorithm is supported in SymPy.  It is currently limited to polynomial tensor
-expressions.
-

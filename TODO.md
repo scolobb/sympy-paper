@@ -17,8 +17,6 @@
 
 - [x] Code examples use curly quotes (’) instead of regular quotes (').
 
-- [ ] Stylize code examples with decent colors.
-
 - [ ] Should we use listings for the code examples?
 
 ## Content TODOs:
@@ -29,7 +27,7 @@
 - [ ] Mention all major algorithms that are implemented, even if they aren't
   discussed in-depth.
 
-- [ ] Write the Gruntz algorithm section as actual text.
+- [x] Write the Gruntz algorithm section as actual text.
 
 - [x] Clean up "basic operations".
 

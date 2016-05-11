@@ -1,38 +1,36 @@
 SymPy is a full featured computer algebra system (CAS) written in the Python
 programming language. It is open source, licensed under the extremely
-permissive 3-clause BSD license, which allows anyone to reuse SymPy or its
-source code, even for commercial purposes. SymPy was started by Ond\v{r}ej
-\v{C}ert\'{\i}k in 2005, and it has since grown into a large open source
-project, with over 500 contributors. SymPy is developed on GitHub using a
-bazaar community model.~\cite{raymond1999cathedral} The accessibility of the
-codebase and the bazaar community model allow SymPy to rapidly respond to the
-needs of the community of users, and has made the large contributor count
-possible.
+permissive 3-clause BSD license.
+% cite BSD?
+SymPy was started by Ond\v{r}ej \v{C}ert\'{\i}k in 2005, and it has since
+grown into a large open source project, with over 500 contributors. SymPy is
+developed on GitHub using a bazaar community
+model~\cite{raymond1999cathedral}. The accessibility of the codebase and the
+open community model allow SymPy to rapidly respond to the needs of the
+community of users, and has made the large contributor count possible.
 % citation?
 
-SymPy is written entirely in the Python programming language,
+SymPy is written entirely in the Python programming language.
 % cite Python?
-which is also the language used to interact with it, both programmatically and
-interactively. Python is a popular dynamically typed programming language that
-has a focus on ease of use and readability. It also a very popular language
-for scientific computing and data science, with a wide range of useful
-libraries.
+Python is a popular dynamically typed programming language that has a focus
+on ease of use and readability. It also a very popular language for scientific
+computing and data science, with a wide range of useful
+libraries~\cite{oliphant2007python}.
 % Cite numpy, scipy, pandas
 % We could also cite
 % https://stackoverflow.com/research/developer-survey-2016#most-popular-technologies-per-occupation
 Unlike many CASs, SymPy does not invent its own programming language. Python
 is used both for the internal implementation and the user interaction.
 Exclusively using Python in this way makes it easier for people already
-familiar with the language to use SymPy, or to do development on it. It also
-lets the SymPy developers focus on mathematics, rather than language design.
+familiar with the language to use or develop SymPy. It also lets the SymPy
+developers focus on mathematics, rather than language design.
 
 SymPy is designed with a strong focus that it be usable as a library. This
-means that extensibility is important in its API design. This is also one of
-the reasons SymPy makes no attempt to extend the Python language itself. The
-goal is for users of SymPy to be able to import SymPy alongside other Python
-libraries in their workflow, whether that is an interactive workflow or
-programmatic use as part of a larger library.
-% cite https://www.python.org/dev/peps/pep-0020/
+means that extensibility is important in its application program interface
+(API) design. This is also one of the reasons SymPy makes no attempt to extend
+the Python language itself. The goal is for users of SymPy to be able to
+import SymPy alongside other Python libraries in their workflow, whether that
+is an interactive workflow or programmatic use as part of a larger system.
 
 SymPy does not have a built in graphical user interface (GUI), however, when
 used in the Jupyter Notebook

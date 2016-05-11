@@ -1,17 +1,17 @@
 % Features to discuss in-depth:
 
 SymPy has an extensive feature set that encompasses too much to cover
-in-depth here. Bedrock areas, such a Calculus, receive their own sub-sections
+in-depth here. Bedrock areas, such as calculus, receive their own sub-sections
 below. Additionally, Table~\ref{features-table} describes other capabilities
 present in the SymPy code base. This gives a sampling from the breadth of
 topics and application domains that SymPy services.
 
 
-\begin{longtable}[htbc]{|l|p{0.7\linewidth}|}
+\begin{longtable}[htbc]{lp{0.56\linewidth}}
 \caption{SymPy Features and Descriptions\label{features-table}}\\
-\hline
+\toprule
 \textbf{Feature} & \textbf{Description} \\
-\hline
+\midrule
 Discrete Math & Summations, products, binomial coefficients,
     prime number tools, integer factorization, Diophantine equation solving, and
     boolean logic representation, equivalence testing, and inference.\\
@@ -62,7 +62,7 @@ Special Functions & Implements a number of well known special functions,
     Mathieu, Jacobi polynomials, Gegenbauer polynomial, Chebyshev polynomial,
     Legendre polynomial, Hermite polynomial, Laguerre polynomial, and
     spherical harmonic functions.\\
-\hline
+\bottomrule
 
 \end{longtable}
 
@@ -78,15 +78,9 @@ Special Functions & Implements a number of well known special functions,
 
 \input{printers.tex}
 
-% Sets
-\subsection{Sets}
-\input{sets}
-
 % Solvers (regular equations, maybe also mention other types of solvers like ODEs/recurrence/Diophantine)
 \subsection{Solvers}
 \input{solvers.tex}
-
-\input{diophantine}
 
 % Matrices (worth including to stress that they are symbolic)
 \subsection{Matrices}

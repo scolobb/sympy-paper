@@ -1,55 +1,93 @@
-We first define comparability classes by calculating $L$:
+SymPy calculates limits using the Gruntz algorithm, as described in%
+~\cite{Gruntz1996limits}. The basic idea is as follows: any limit can be
+converted to a limit $\lim\limits_{x\to\infty} f(x)$ by substitutions like
+$x\to{1\over x}$. Then the most varying subexpression $\omega$ (that converges
+to zero as $x\to\infty$ the fastest from all subexpressions) is identified in
+$f(x)$, and $f(x)$ is expanded into a series with respect to $\omega$. Any
+positive powers of $\omega$ converge to zero. If there are negative powers of
+$\omega$, then the limit is infinite. The constant term (independent of
+$\omega$, but could depend on $x$) then determines the limit (one might need to
+recursively apply the Gruntz algorithm on this term to determine the limit).
+
+To determine the most varying subexpression, the comparability classes must
+first be defined, by calculating $L$:
 \begin{equation}
 L\equiv \lim_{x\to\infty} {\log |f(x)| \over \log |g(x)|}
 \end{equation}
-And then we define the $<$, $>$ and $\sim$ operations as follows: $f>g$ when
-$L=\pm\infty$ ($f$ is more rapidly varying than $g$, i.e., $f$ goes to $\infty$
-or $0$ faster than $g$, $f$ is greater than any power of $g$), $f<g$ when $L=0$
-($f$ is less rapidly varying than $g$) and $f\sim g$ when $L\neq 0,\pm\infty$
-(both $f$ and $g$ are bounded from above and below by suitable integral powers
-of the other).
-
-Examples:
+And then operations $<$, $>$ and $\sim$ are defined as follows: $f>g$ when
+$L=\pm\infty$ (it is said that $f$ is more rapidly varying than $g$, i.e., $f$
+goes to $\infty$ or $0$ faster than $g$, $f$ is greater than any power of $g$),
+$f<g$ when $L=0$ ($f$ is less rapidly varying than $g$) and $f\sim g$ when
+$L\neq 0,\pm\infty$ (both $f$ and $g$ are bounded from above and below by
+suitable integral powers of the other). Here are some examples of comparability
+classes:
 $$2 < x < e^x < e^{x^2} < e^{e^x}$$
 $$2\sim 3\sim -5$$
 $$x\sim x^2\sim x^3\sim {1\over x}\sim x^m\sim -x$$
 $$e^x\sim e^{-x}\sim e^{2x}\sim e^{x+e^{-x}}$$
 $$f(x)\sim{1\over f(x)}$$
 
-The Gruntz algorithm, on an example:
-$$f(x) = e^{x+2e^{-x}} - e^x + {1\over x}$$
-$$\lim_{x\to\infty} f(x) = ?$$
+The Gruntz algorithm is now illustrated on the following example:
+\begin{equation}
+    \label{gruntz_example_fn}
+f(x) = e^{x+2e^{-x}} - e^x + {1\over x} \,.
+\end{equation}
+The goal is to calculate $\lim\limits_{x\to\infty} f(x)$.
+First the set of most rapidly varying subexpressions is determined, the so
+called \textit{mrv set}. For~\eqref{gruntz_example_fn}, the following mrv set
+$\{e^x, e^{-x}, e^{x+2e^{-x}}\}$ is obtained. These are all subexpressions of%
+~\eqref{gruntz_example_fn} and they all belong to the same comparability class.
+This calculation can be done using SymPy as follows:
 
-Strategy:
-mrv set: the set of most rapidly varying subexpressions
-$\{e^x, e^{-x}, e^{x+2e^{-x}}\}$, the same comparability class
-Take an item $\omega$ from mrv, converging to 0 at infinity. Here
-$\omega=e^{-x}$. If not present in the mrv set, use the relation
-$f(x)\sim {1\over f(x)}$.
+\begin{verbatim}
+>>> from sympy.series.gruntz import mrv
+>>> mrv(exp(x+2*exp(-x))-exp(x) + 1/x, x)[0].keys()
+dict_keys([exp(x + 2*exp(-x)), exp(x), exp(-x)])
+\end{verbatim}
 
-Rewrite the mrv set using $\omega$: $\{{1\over\omega}, \omega,
-{1\over\omega}e^{2\omega}\}$, substitute back into $f(x)$ and expand in
-$\omega$:
-$$f(x) = {1\over x}-{1\over\omega}+{1\over\omega}e^{2\omega}
-    = 2+{1\over x} + 2\omega + O(\omega^2)$$
+Next any item $\omega$ is taken from mrv that converges to zero for
+$x\to\infty$. The item $\omega=e^{-x}$ is obtained. If such a term is not
+present in the mrv set (i.e., all terms converge to infinity instead of zero),
+the relation $f(x)\sim {1\over f(x)}$ can be used.
 
-The core idea of the algorithm: $\omega$ is from the mrv set, so in the limit
-$\omega\to0$:
-$$f(x) = {1\over x}-{1\over\omega}+{1\over\omega}e^{2\omega}
+Next step is to rewrite the mrv in terms of $\omega$: $\{{1\over\omega},
+\omega, {1\over\omega}e^{2\omega}\}$. Then the original subexpressions are
+substituted back into $f(x)$ and expanded with respect to $\omega$:
+\begin{equation}
+    \label{gruntz_example_fn2}
+f(x) = {1\over x}-{1\over\omega}+{1\over\omega}e^{2\omega}
+     = 2+{1\over x} + 2\omega + O(\omega^2)
+\end{equation}
+
+Since $\omega$ is from the mrv set, then in the limit $x\to\infty$ it is
+$\omega\to0$ and so $2\omega + O(\omega^2) \to 0$ in~\eqref{gruntz_example_fn2}:
+\begin{equation}
+f(x) = {1\over x}-{1\over\omega}+{1\over\omega}e^{2\omega}
     = 2+{1\over x} + 2\omega + O(\omega^2)
-    \to 2 + {1\over x}$$
+    \to 2 + {1\over x}
+\end{equation}
 
-We iterate until we get just a number, the final limit. Gruntz proved this
-algorithm always works and converges in his Ph.D. thesis
-\cite{Gruntz1996limits}.
+Since the result ($2+{1\over x}$) still depends on $x$, the above procedure is
+iterated on the result until just a number (independent of $x$) is obtained,
+which is the final limit. In the above case the limit is $2$, as can be
+verified by SymPy:
 
-Generally:
-$$ f(x) = \underbrace{O\left({1\over \omega^3}\right)}_\infty
+\begin{verbatim}
+>>> limit(exp(x+2*exp(-x))-exp(x) + 1/x, x, oo)
+2
+\end{verbatim}
+
+In general, when $f(x)$ is expanded in terms of $\omega$, it is obtained:
+\begin{equation}
+f(x) = \underbrace{O\left({1\over \omega^3}\right)}_\infty
     + \underbrace{C_{-2}(x)\over \omega^2}_\infty
     + \underbrace{C_{-1}(x)\over \omega}_\infty
     + {C_{0}(x)}
     + \underbrace{C_{1}(x)\omega}_0
     + \underbrace{O(\omega^2)}_0
-$$
-we look at the lowest power of $\omega$. The limit is one of: $0$,
-$\lim_{x\to\infty} C_0(x)$, $\infty$.
+\end{equation}
+The positive powers of $\omega$ are zero. If there are any negative powers of
+$\omega$, then the result of the limit is infinity, otherwise the limit is
+equal to $\lim\limits_{x\to\infty} C_0(x)$. The expression $C_0(x)$ is simpler
+than $f(x)$ and so the algorithm always converges. A proof of this, as well as
+further details are given in Gruntz's Ph.D. thesis~\cite{Gruntz1996limits}.

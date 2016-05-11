@@ -31,9 +31,9 @@
 
 - [x] Clean up "basic operations".
 
-- [ ] Move "sets" details in to citations/supplement.
+- [x] Move "sets" details in to citations/supplement.
 
-- [ ] Move solvers details into citations/supplement.
+- [x] Move solvers details into citations/supplement.
 
 - [x] Clean up matrices section.
 
@@ -41,7 +41,7 @@
 
 - [x] Move logic stuff to supplement.
 
-- [ ] Move vector and physics stuff to supplement.
+- [x] Move vector and physics stuff to supplement.
 
 - [x] Move SymPy Gamma/Live stuff to supplement.
 

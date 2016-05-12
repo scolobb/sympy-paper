@@ -50,7 +50,7 @@
 
 - [ ] Address all inline TODOs in the .tex files.
 
-- [ ] Make sure features table isn't missing anything.
+- [x] Make sure features table isn't missing anything.
 
 - [x] Rearrange basic usage before the architecture.
 

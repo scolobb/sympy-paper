@@ -17,8 +17,6 @@
 
 - [x] Code examples use curly quotes (’) instead of regular quotes (').
 
-- [ ] Stylize code examples with decent colors.
-
 - [ ] Should we use listings for the code examples?
 
 ## Content TODOs:
@@ -29,13 +27,13 @@
 - [ ] Mention all major algorithms that are implemented, even if they aren't
   discussed in-depth.
 
-- [ ] Write the Gruntz algorithm section as actual text.
+- [x] Write the Gruntz algorithm section as actual text.
 
 - [x] Clean up "basic operations".
 
-- [ ] Move "sets" details in to citations/supplement.
+- [x] Move "sets" details in to citations/supplement.
 
-- [ ] Move solvers details into citations/supplement.
+- [x] Move solvers details into citations/supplement.
 
 - [x] Clean up matrices section.
 
@@ -43,7 +41,7 @@
 
 - [x] Move logic stuff to supplement.
 
-- [ ] Move vector and physics stuff to supplement.
+- [x] Move vector and physics stuff to supplement.
 
 - [x] Move SymPy Gamma/Live stuff to supplement.
 
@@ -71,7 +69,7 @@ citations and "URL citations".
 
 - [ ] Abstract (note: write this last)
 
-- [ ] Introduction
+- [x] Introduction
 
 - [ ] Polynomials module architecture (if we can't get anyone to write it, add
   a blurb and cite Mateusz's thesis)

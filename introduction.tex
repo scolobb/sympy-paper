@@ -1,2 +1,50 @@
+SymPy is a full featured computer algebra system (CAS) written in the Python
+programming language. It is open source, licensed under the extremely
+permissive 3-clause BSD license.
+% cite BSD?
+SymPy was started by Ond\v{r}ej \v{C}ert\'{\i}k in 2005, and it has since
+grown into a large open source project, with over 500 contributors. SymPy is
+developed on GitHub using a bazaar community
+model~\cite{raymond1999cathedral}. The accessibility of the codebase and the
+open community model allow SymPy to rapidly respond to the needs of the
+community of users, and has made the large contributor count possible.
+% citation?
 
+SymPy is written entirely in the Python programming language.
+% cite Python?
+Python is a popular dynamically typed programming language that has a focus on
+ease of use and readability. It also a very popular language for scientific
+computing and data science, with a wide range of useful
+libraries~\cite{oliphant2007python}. SymPy is itself used by many libraries
+and tools across many domains, such as Sage~\cite{SAGE} (pure mathematics),
+yt~\cite{2011ApJS..192....9T} (astronomy and astrophysics), PyDy
+% citation?
+(multibody
+dynamics), and SfePy~\cite{cimrman2014sfepy} (finite elements).
 
+Unlike many CASs, SymPy does not invent its own programming language. Python
+is used both for the internal implementation and the user interaction.
+Exclusively using Python in this way makes it easier for people already
+familiar with the language to use or develop SymPy. It also lets the SymPy
+developers focus on mathematics, rather than language design.
+
+SymPy is designed with a strong focus that it be usable as a library. This
+means that extensibility is important in its application program interface
+(API) design. This is also one of the reasons SymPy makes no attempt to extend
+the Python language itself. The goal is for users of SymPy to be able to
+import SymPy alongside other Python libraries in their workflow, whether that
+is an interactive workflow or programmatic use as part of a larger system.
+
+SymPy does not have a built in graphical user interface (GUI), however, when
+used in the Jupyter Notebook
+% citation
+SymPy expressions will pretty print using MathJax.
+% citation
+
+Section~\ref{sec:architecture} discusses the architecture of SymPy. Following
+that, Section~\ref{sec:numerics} looks at the numerical features of SymPy and
+its dependency library, mpmath. Section~\ref{sec:features} enumerates the
+features of SymPy and takes a closer look at some of the important ones.
+Section~\ref{sec:domain_specific} looks at the domain specific submodules for
+doing classical mechanics and quantum mechanics. Finally,
+Section~\ref{sec:conclusion} concludes the paper and discusses future work.

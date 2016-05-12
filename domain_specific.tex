@@ -3,9 +3,12 @@ problems. For example, a comprehensive physics package is included that is
 useful for solving problems in classical mechanics, optics, and quantum
 mechanics along with support for manipuating physical quantities with units.
 
-\subsection{Vector Algebra}
 
-The \texttt{sympy.physics.\allowbreak{}vector} package provides reference frame, time, and
+\subsection{Classical Mechanics}
+
+\subsubsection{Vector Algebra}
+
+The \verb|sympy.physics.vector| package provides reference frame, time, and
 space aware vector and dyadic objects that allow for three dimensional
 operations such as addition, subtraction, scalar multiplication, inner and
 outer products, cross products, etc. Both of these objects can be written in
@@ -42,20 +45,19 @@ A.x + 2*B.z + 3*C.y
 A.x + 5*sqrt(3)/2*A.y + 5/2*A.z
 \end{verbatim}
 
-\subsection{Classical Mechanics}
+\subsubsection{Mechanics}
 
-The \verb|physics.mechanics| package implements classical mechanics. It
-utilizes the \verb|physics.vector| package to populate time aware particle and
-rigid body objects to fully describe the kinematics and kinetics of a rigid
-multi-body system. These objects store all of the information needed to derive
-the ordinary differential or differential algebraic equations that govern the
-motion of the system, i.e., the equations of motion. These equations of motion
-abide by Newton's laws of motion and can handle any arbitrary kinematical
-constraints or complex loads. The package offers two automated methods for
-formulating the equations of motion based on Lagrangian
-Dynamics~\cite{Lagrange1811} and Kane's Method~\cite{Kane1985}. Lastly, there
-are automated linearization routines for constrained dynamical systems based
-on~\cite{Peterson2014}.
+The \verb|sympy.physics.mechanics| package utilizes the \texttt{sympy.\allowbreak{}physics.\allowbreak{}vector} package
+to populate time aware particle and rigid body objects to fully describe the
+kinematics and kinetics of a rigid multi-body system. These objects store all
+of the information needed to derive the ordinary differential or differential
+algebraic equations that govern the motion of the system, i.e., the equations
+of motion. These equations of motion abide by Newton's laws of motion and can
+handle any arbitrary kinematical constraints or complex loads. The package
+offers two automated methods for formulating the equations of motion based on
+Lagrangian Dynamics~\cite{Lagrange1811} and Kane's Method~\cite{Kane1985}. Lastly, there
+are automated linearization routines for constrained dynamical
+systems based on~\cite{Peterson2014}.
 
 \subsection{Quantum Mechanics}
 
@@ -64,35 +66,3 @@ operators, and computation of standard quantum models.
 
 % TODO : This needs some help from someone that knows something about quantum
 % physics. I wasn't able to understand much from the documentation.
-
-\subsection{Optics}
-
-The \verb|physics.optics| package provides Gaussian optics functions.
-
-% TODO : This needs some help from someone that knows something about optics.
-
-\subsection{Units}
-
-The \verb|physics.units| module provides around two hundred predefined prefixes
-and SI units that are commonly used in the sciences. Additionally, it provides
-the \verb|Unit| class which allows the user to define their own units.  These
-prefixes and units are multiplied by standard SymPy objects to make expressions
-unit aware, allowing for algebraic and calculus manipulations to be applied to
-the expressions while the units are tracked in the manipulations.  The units of
-the expressions can be easily converted to other desired units.  There is also
-a new units system in \verb|sympy.physics.unitsystems| that allows the user to
-work in specified unit systems.
-
-\subsection{Tensors}
-
-Ongoing work to provide the capabilities of tensor computer algebra has so far
-produced the \verb|tensor| module.  It is composed of three separated
-submodules, whose purposes are quite different: \verb|tensor.indexed| and
-\verb|tensor.indexed_methods| support indexed symbols,
-\verb|tensor.array| contains facilities to operator on symbolic $N$-dimensional
-arrays and finally \verb|tensor.tensor| is used to defineabstract tensors.
-The abstract tensors subsection
-is inspired by xAct\cite{xAct} and Cadabra\cite{Peeters2007cadabra}.
-Canonicalization based on the Butler-Portugal\cite{ManssurPortugal1999}
-algorithm is supported in SymPy.  It is currently limited to polynomial tensor
-expressions.

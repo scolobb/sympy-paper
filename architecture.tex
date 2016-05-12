@@ -33,6 +33,11 @@ mathematical notation. Note that in Python, exponentiation is \verb|**|.
 (x**2 - 2*x + 3)/y
 \end{verbatim}
 
+
+All SymPy expressions are immutable. This simplifies the design by allowing
+interning. It also allows expressions to be hashed and stored in a Python
+dictionary, which enables caching and other features.
+
 %% I volunteer to write this section. --Aaron
 %%
 %% Representing symbolic expressions using Python objects

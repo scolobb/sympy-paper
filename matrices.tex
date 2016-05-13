@@ -10,31 +10,29 @@ Matrix([
 \end{verbatim}
 
 All SymPy matrix types can do linear algebra including matrix addition,
-multiplication, exponentiation, computing determinant, solving linear systems
+multiplication, exponentiation, computing determinant, solving linear systems,
 and computing inverses using LU decomposition, LDL decomposition, Gauss-Jordan
 elimination, Cholesky decomposition, Moore-Penrose pseudoinverse, and adjugate
 matrix.
 
-All operations are computed are computed symbolically. Eigenvalues are
-computed by generating the characteristic polynomial using the Berkowitz
-algorithm and then solving it using polynomial routines. Diagonalizable
-matrices can be diagonalized first to compute the eigenvalues.
-
+All operations are computed symbolically. Eigenvalues are computed by generating
+the characteristic polynomial using the Berkowitz algorithm and then solving it
+using polynomial routines. Diagonalizable matrices can be diagonalized first to
+compute the eigenvalues.
 \begin{verbatim}
 >>> A.eigenvals()
 {x - sqrt(y*(x + y)): 1, x + sqrt(y*(x + y)): 1}
 \end{verbatim}
 
-Internally these matrices store the elements as a list making it a dense
+Internally these matrices store the elements as a list, making it a dense
 representation. For storing sparse matrices, the \verb|SparseMatrix| class can
 be used. Sparse matrices store the elements in a dictionary of keys (DoK)
 format.
 
-SymPy also supports matrices with symbolic dimension values. MatrixSymbol
+SymPy also supports matrices with symbolic dimension values. \verb|MatrixSymbol|
 represents a matrix with dimensions $m\times n$, where $m$ and $n$ can be
-symbolic. Matrix addition and multiplication, scalar operations, matrix
-inverse and transpose are stored symbolically as matrix expressions.
-
+symbolic. Matrix addition and multiplication, scalar operations, matrix inverse,
+and transpose are stored symbolically as matrix expressions.
 \begin{verbatim}
 >>> m, n, p = symbols("m, n, p", integer=True)
 >>> R = MatrixSymbol("R", m, n)

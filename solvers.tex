@@ -1,22 +1,20 @@
 %% Solvers in SymPy
 
 
-SymPy has module of equation solvers for symbolic equations. There are two
+SymPy has a module of equation solvers for symbolic equations. There are two
 submodules to solve algebraic equations in SymPy, referred to as old solve
 function, \texttt{solve}, and new solve function, \texttt{solveset}.
-Solveset is introduced with several design changes with respect to old
+Solveset is introduced with several design changes with respect to the old
 \texttt{solve} function to resolve the issues with old \texttt{solve} function,
 for example old \texttt{solve} function's input API has many flags which are
 not needed and they make it hard for the user and the developers to work on
-solvers. In contrast to old solve function, the \texttt{solveset} has a clean
-input API, It only asks for the much needed information from the user, following
-are the function signatures of old and new solve function:
-
+solvers. In contrast to the old solve function, the \texttt{solveset} has a
+clean input API, it only asks for the necessary information from the user.
+The function signatures of the old and new solve function:
 \begin{verbatim}
 solve(f, *symbols, **flags)  # old solve function
 solveset(f, symbol, domain)  # new solve function
 \end{verbatim}
-
 The old \texttt{solve} function has an inconsistent output API for various types
 of inputs, whereas the \texttt{solveset} has a canonical output API which is
 achieved using sets. It can consistently return various types of solutions.

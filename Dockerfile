@@ -28,6 +28,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive \
         texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra \
         texlive-humanities texlive-science latex-xcolor dvipng \
         texlive-latex-recommended python-pygments \
+        lmodern texlive-xetex \
         make \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \

@@ -61,8 +61,70 @@ systems based on~\cite{Peterson2014}.
 
 \subsection{Quantum Mechanics}
 
-The \verb|sympy.physics.quantum| package provides quantum functions, states,
-operators, and computation of standard quantum models.
+The \verb|sympy.physics.quantum| package provides python objects for defining and manipulating quantum functions, states, operators, including options to manipulate quantum states. One can, for example, define general operators and apply commutation relations to them.
+\begin{verbatim}
+>>> from sympy.physics.quantum import Commutator, Dagger, Operator
+>>> A = Operator('A')
+>>> B = Operator('B')
+>>> comm = Commutator(A, B)
+>>> comm
+[A,B]
+>>> comm.doit()
+A*B - B*A
+\end{verbatim}
+The commutator orders its objects in canonical order, factoring out commutative constants. The commutator objects can expand commutator expressions, and can properly apply adjoint operators.
+\begin{verbatim}
+>>> Dagger(Commutator(C+B, A)).expand(commutator=True)
+[Dagger(A),Dagger(B)] + [Dagger(A),Dagger(C)]
+\end{verbatim}
 
-% TODO : This needs some help from someone that knows something about quantum
-% physics. I wasn't able to understand much from the documentation.
+The \verb|sympy.physics.quantum| package provides features to create and manipulate qubit states for quantum information theory. 
+\begin{verbatim}
+>>> from sympy.physics.quantum.qubit import Qubit
+>>> Qubit(0,0,0)
+|000>
+>>> q = Qubit('0101')
+>>> q
+|0101>
+\end{verbatim}
+Qubit states can be manipulated in standard ways, flipping spins, applying adjoint operations, and forming tensor and inner products.
+\begin{verbatim}
+>>> from sympy.physics.quantum.dagger import Dagger
+>>> q.flip(1)
+|0111>
+>>> Dagger(q)
+<0101|
+>>> ip = Dagger(q)*q
+>>> ip
+<0101|0101>
+>>> ip.doit()
+1
+\end{verbatim}
+Quantum operators can be applied to transform these states.
+\begin{verbatim}
+>>> from sympy.physics.quantum.qubit import Qubit, measure_all
+>>> from sympy.physics.quantum.gate import H, X, Y, Z
+>>> from sympy.physics.quantum.qapply import qapply
+>>> c = H(0)*H(1)*Qubit('00')
+>>> c
+H(0)*H(1)*|00>
+>>> q = qapply(c)
+>>> measure_all(q)
+[(|00>, 1/4), (|01>, 1/4), (|10>, 1/4), (|11>, 1/4)]
+\end{verbatim}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.5]{images/circuitplot-example.png}
+\caption{Example of plotting a simple quantum circuit.}
+\label{fig-circuitplot-example}
+\end{center}
+\end{figure}
+
+Finally, there are also capabilities to plot circuit diagrams for simple circuits.
+\begin{verbatim}
+>>> from sympy.physics.quantum.circuitplot import CircuitPlot
+>>> from sympy.physics.quantum.gate import H, CNOT
+>>> CircuitPlot(CNOT(1,0)*H(1),2)
+\end{verbatim}
+This results in figure \ref{fig-circuitplot-example}.

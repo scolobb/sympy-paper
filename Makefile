@@ -1,4 +1,4 @@
-all: authors pprint tex
+all: authors.tex pprint tex
 
 tex:
 	pdflatex -shell-escape --halt-on-error paper.tex
@@ -6,7 +6,7 @@ tex:
 	pdflatex -shell-escape --halt-on-error paper.tex
 	pdflatex -shell-escape --halt-on-error paper.tex
 
-authors:
+authors.tex:
 	cd authors; ./list_latex.py
 
 pprint:

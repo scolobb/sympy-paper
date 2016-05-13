@@ -10,29 +10,25 @@ before they can be used. The statement
 will import all SymPy functions into the global Python namespace. All the
 examples in this paper assume that this has been run.
 
-Additionally, symbolic variables, called symbols, must be assigned to Python
+The symbolic nature of SymPy comes from its implementation of symbolic
+variables, called symbols, which must be defined and assigned to Python
 variables before they can be used. This is typically done through the
-\texttt{symbols} function, which creates multiple symbols at once. For
-instance,
-
+\texttt{symbols} function, which creates multiple symbols at once. For instance,
 \begin{verbatim}
 >>> x, y, z = symbols('x y z')
 \end{verbatim}
-
-creates three symbols named \texttt{x}, \texttt{y}, and \texttt{z}, assigned
+creates three symbols representing variables named $x$, $y$, and $z$, assigned
 to Python variables of the same name. The Python variable names that symbols
 are assigned to are immaterial---we could have just as well have written
 \verb|a, b, c = symbol('x y z')|. All the examples in this paper will assume
 that the symbols \verb|x|, \verb|y|, and \verb|z| have been assigned as above.
 
 Expressions are created from symbols using Python syntax, which mirrors usual
-mathematical notation. Note that in Python, exponentiation is \verb|**|.
-
+mathematical notation. Note that in Python, exponentiation is \verb|**|, as:
 \begin{verbatim}
 >>> (x**2 - 2*x + 3)/y
 (x**2 - 2*x + 3)/y
 \end{verbatim}
-
 
 All SymPy expressions are immutable. This simplifies the design by allowing
 interning. It also allows expressions to be hashed and stored in a Python
@@ -55,16 +51,14 @@ The \texttt{args} attribute is provided by the class \texttt{Basic},
 which is a superclass of all SymPy objects and
 provides common methods to all SymPy tree-elements.
 For example, consider the expression $xy + 2$:
-
 \begin{verbatim}
 >>> from sympy import *
 >>> x, y = symbols('x y')
 >>> expr = x*y + 2
 \end{verbatim}
-
-The expression \texttt{expr} is an addition, so it is of type \texttt{Add}. The child
-nodes of \texttt{expr} are \texttt{x*y} and \texttt{2}.
-
+By order of operations, the parent of the expression tree for \texttt{expr} is
+an addition, so it is of type \texttt{Add}. The child nodes of \texttt{expr} are
+\texttt{2} and \texttt{x*y}.
 \begin{verbatim}
 >>> type(expr)
 <class 'sympy.core.add.Add'>
@@ -76,7 +70,6 @@ We can dig further into the expression tree to see the full expression. For
 example, the first child node, given by \texttt{expr.args[0]} is
 \texttt{2}. Its class is \texttt{Integer}, and it has empty \texttt{args},
 indicating that it is a leaf node.
-
 \begin{verbatim}
 >>> expr.args[0]
 2
@@ -86,9 +79,9 @@ indicating that it is a leaf node.
 ()
 \end{verbatim}
 
-The function \texttt{srepr} gives a string representing a valid Python code,
-containing all the nested class constructor calls to create the given expression.
-
+The function \texttt{srepr} returns a string representation of the object as
+valid Python code, which contains all the nested class constructor calls to
+create the given expression.
 \begin{verbatim}
 >>> srepr(expr)
 "Add(Mul(Symbol('x'), Symbol('y')), Integer(2))"
@@ -97,39 +90,39 @@ containing all the nested class constructor calls to create the given expression
 Every SymPy expression satisfies a key invariant, namely,
 \verb|expr.func(*expr.args) == expr|. This means that expressions are
 rebuildable from their \texttt{args}~\footnote{\texttt{expr.func} is used
-  instead of \texttt{type(expr)} to allow the function of an expression to be
-  distinct from its actual Python class. In most cases the two are the same.}.
+instead of \texttt{type(expr)} to allow the function of an expression to be
+distinct from its actual Python class. In most cases the two are the same.}.
 Here, we note that in SymPy, the \texttt{==} operator represents exact
-structural equality, not mathematical equality. This allows one to test if any
-two expressions are equal to one another as expression trees.
+structural equality, not just mathematical equality. This allows one to test if
+any two expressions are equal to one another as expression trees.
 
-Python allows classes to overload operators. The Python interpreter translates
-the above \texttt{x*y + 2} to, roughly,
-\verb|(x.__mul__(y)).__add__(2)|. \texttt{x} and \texttt{y}, returned from
+Python allows classes to override mathematical operators. The Python interpreter
+translates the above \texttt{x*y + 2} to, roughly,
+\verb|(x.__mul__(y)).__add__(2)|. Both \texttt{x} and \texttt{y}, returned from
 the \texttt{symbols} function, are \texttt{Symbol} instances. The \texttt{2}
 in the expression is processed by Python as a literal, and is stored as
 Python's builtin \texttt{int} type. When \texttt{2} is called by the
-\verb|__add__| method, it is converted to the SymPy type \verb|Integer(2)|. In
-this way, SymPy expressions can be built in the natural way using Python
-operators and numeric literals.
+\verb|__add__| method of \texttt{Symbol}, it is converted to the SymPy type
+\verb|Integer(2)|. In this way, SymPy expressions can be built in the natural
+way using Python operators and numeric literals.
 
 One must be careful in one particular instance. Python does not have a builtin
 rational literal type. Given a fraction of integers such as \texttt{1/2},
 Python will perform floating point division and produce
 \texttt{0.5}~\footnote{This is the behavior in Python 3. In Python 2,
-  \texttt{1/2} will perform integer division and produce \texttt{0}, unless
-  one uses \texttt{from \_\_future\_\_ import division}.}. Python uses eager
-evaluation, so expressions like \texttt{x + 1/2} will produce \texttt{x +
-  0.5}, and by the time any SymPy function sees the \texttt{1/2} it has
-already been converted to \texttt{0.5} by Python. However, for a CAS like
-SymPy, one typically wants to work with exact rational numbers whenever
-possible. Working around this is simple, however:  one can wrap one of the
-integers with \texttt{Integer}, like \verb|x + Integer(1)/2|, or using
+\texttt{1/2} will perform integer division and produce \texttt{0}, unless one
+uses \texttt{from \_\_future\_\_ import division}.}. Python uses eager
+evaluation, so expressions like \texttt{x + 1/2} will produce \texttt{x + 0.5},
+and by the time any SymPy function sees the \texttt{1/2} it has already been
+converted to \texttt{0.5} by Python. However, for a CAS like SymPy, one
+typically wants to work with exact rational numbers whenever possible. Working
+around this is simple, however: one can wrap one of the integers with
+\texttt{Integer}, like \verb|x + Integer(1)/2|, or using
 \verb|x + Rational(1, 2)|. SymPy provides a function \texttt{S} which can be
-used to convert objects to SymPy types with minimal typing, such as \verb|x + S(1)/2|.
-This gotcha is a small downside to using Python directly instead
-of a custom domain specific language (DSL), and we consider it to be worth it
-for the advantages listed above.
+used to convert objects to SymPy types with minimal typing, such as
+\verb|x + S(1)/2|.  This gotcha is a small downside to using Python directly
+instead of a custom domain specific language (DSL), and we consider it to be
+worth it for the advantages listed above.
 
 %%
 %% Assumptions
@@ -146,32 +139,29 @@ holds. However, for general complex $x$, no such identity holds.
 By default, SymPy performs all calculations assuming that variables are
 complex valued. This assumption makes it easier to treat mathematical problems
 in full generality.
-
 \begin{verbatim}
 >>> x = Symbol('x')
 >>> sqrt(x**2)
 sqrt(x**2)
 \end{verbatim}
 
-By assuming symbols are complex by default, SymPy avoids performing
-mathematically invalid operations. However, in many cases users will wish to
-simplify expressions containing terms like $\sqrt{x^2}$.
+By assuming the most general case, that symbols are complex by default, SymPy
+avoids performing mathematically invalid operations. However, in many cases
+users will wish to simplify expressions containing terms like $\sqrt{x^2}$.
 
 Assumptions are set on \texttt{Symbol} objects when they are created. For
 instance \verb|Symbol('x', positive=True)| will create a symbol named
 \texttt{x} that is assumed to be positive.
-
 \begin{verbatim}
 >>> x = Symbol('x', positive=True)
 >>> sqrt(x**2)
 x
 \end{verbatim}
-
 Some common assumptions that SymPy allows are \texttt{positive},
 \texttt{negative}, \texttt{real}, \texttt{nonpositive}, \texttt{nonnegative},
 \texttt{real}, \texttt{integer}, and \texttt{commutative}~\footnote{If $A$ and
-  $B$ are Symbols created with \texttt{commutative=False} then SymPy will keep
-  $A\cdot B$ and $B\cdot A$ distinct.}. Assumptions on any object can be checked with the
+$B$ are Symbols created with \texttt{commutative=False} then SymPy will keep
+$A\cdot B$ and $B\cdot A$ distinct.}. Assumptions on any object can be checked with the
 \verb|is_|\texttt{\textit{assumption}} attributes, like \verb|x.is_positive|.
 
 Assumptions are only needed to restrict a domain so that certain
@@ -232,14 +222,16 @@ easier to define mathematical functions called with arguments. This includes
 named functions like $\sin(x)$ and $\log(x)$ as well as undefined functions
 like $f(x)$. Subclasses of \texttt{Function} should define a
 class method \texttt{eval}, which returns values for which the function should
-be automatically evaluated, and \texttt{None} for arguments that shouldn't be
+be automatically evaluated, and \texttt{None} for arguments that should not be
 automatically evaluated.
 
-The behavior of classes in SymPy with various other SymPy functions is defined
-by defining a relevant \verb|_eval_|\texttt{\textit{*}} method on the class. For instance, an
-object can tell SymPy's \texttt{diff} function how to take the derivative of
-itself by defining the \verb|_eval_derivative(self, x)| method. The most
-common \verb|_eval_|\texttt{\textit{*}} methods relate to the assumptions.
+Many SymPy functions require various evaluations down the expression tree.  The
+evaluation of such functions on of classes in SymPy is performed by defining a
+relevant \verb|_eval_|\texttt{\textit{*}} method on the class. For instance, an
+object can signal to SymPy's \texttt{diff} function how to take the derivative of
+itself by defining the \verb|_eval_derivative(self, x)| method, which may in
+turn call \texttt{diff} on its \texttt{args}. The most common
+\verb|_eval_|\texttt{\textit{*}} methods relate to the assumptions.
 \verb|_eval_is_|\texttt{\textit{assumption}} defines the assumptions for
 \textit{assumption}.
 
@@ -253,7 +245,6 @@ real assumptions defined, can be rewritten in terms of factorial with
 the chain rule. \texttt{self.func} is used throughout instead of referencing
 \texttt{gamma} explicitly so that potential subclasses of \texttt{gamma} can
 reuse the methods.
-
 \begin{verbatim}
 from sympy import Integer, Function, floor, factorial, polygamma
 
@@ -286,5 +277,5 @@ class gamma(Function)
         else:
             raise ArgumentIndexError(self, argindex)
 \end{verbatim}
-
-The actual gamma function defined in SymPy has many more capabilities, such as evaluation at rational points and series expansion.
+The actual gamma function defined in SymPy has many more capabilities, such as
+evaluation at rational points and series expansion.

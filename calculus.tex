@@ -3,14 +3,12 @@
 % descriptions will go in the algorithms section.
 
 Derivatives can be computed with the \verb|diff| function.
-
 \begin{verbatim}
 >>> diff(sin(x), x)
 cos(x)
 \end{verbatim}
 
 Unevaluated \verb|Derivative| objects are also supported.
-
 \begin{verbatim}
 >>> expr = Derivative(sin(x), x)
 >>> expr
@@ -18,14 +16,13 @@ Derivative(sin(x), x)
 \end{verbatim}
 
 Unevaluated expressions can be evaluated with the \verb|doit| method.
-
 \begin{verbatim}
 >>> expr.doit()
 cos(x)
 \end{verbatim}
 
 % TODO: A more interesting example here
-Integrals can be analogously calculated either with the \verb|integrate|
+Integrals can be analogously, calculated either with the \verb|integrate|
 function, or the unevaluated \verb|Integral| objects.
 \begin{verbatim}
 >>> integrate(sin(x), x)

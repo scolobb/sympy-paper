@@ -1,12 +1,12 @@
 SymPy is a full featured computer algebra system (CAS) written in the Python
-programming language. It is open source, licensed under the extremely
+programming language. It is open source, being licensed under the extremely
 permissive 3-clause BSD license.
 % cite BSD?
 SymPy was started by Ond\v{r}ej \v{C}ert\'{\i}k in 2005, and it has since
 grown into a large open source project, with over 500 contributors. SymPy is
 developed on GitHub using a bazaar community
 model~\cite{raymond1999cathedral}. The accessibility of the codebase and the
-open community model allow SymPy to rapidly respond to the needs of the
+open community model allows SymPy to rapidly respond to the needs of the
 community of users, and has made the large contributor count possible.
 % citation?
 
@@ -35,16 +35,16 @@ the Python language itself. The goal is for users of SymPy to be able to
 import SymPy alongside other Python libraries in their workflow, whether that
 is an interactive workflow or programmatic use as part of a larger system.
 
-SymPy does not have a built in graphical user interface (GUI), however, when
-used in the Jupyter Notebook
-% citation
-SymPy expressions will pretty print using MathJax.
-% citation
+Being developed as a library, SymPy does not have a built-in graphical user
+interface (GUI).  However, SymPy exposes a rich interactive display system,
+including registering printers with Jupyter~\cite{perez2007ipython} frontends,
+including the Notebook and Qt Console, which will pretty print SymPy expressions
+using MathJax or \LaTeX rendering.
 
 Section~\ref{sec:architecture} discusses the architecture of SymPy. Following
 that, Section~\ref{sec:numerics} looks at the numerical features of SymPy and
 its dependency library, mpmath. Section~\ref{sec:features} enumerates the
 features of SymPy and takes a closer look at some of the important ones.
-Section~\ref{sec:domain_specific} looks at the domain specific submodules for
-doing classical mechanics and quantum mechanics. Finally,
+Section~\ref{sec:domain_specific} looks at the domain specific physics
+submodules for doing classical mechanics and quantum mechanics. Finally,
 Section~\ref{sec:conclusion} concludes the paper and discusses future work.

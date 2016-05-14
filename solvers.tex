@@ -23,8 +23,10 @@ achieved using sets. It can consistently return various types of solutions.
 \item Single solution
 \end{itemize}
 \begin{verbatim}
+>>> x, y = symbols("x y")
 >>> solveset(x - 1)
->>> {1}
+{1}
+
 \end{verbatim}
 
 \begin{itemize}
@@ -33,6 +35,7 @@ achieved using sets. It can consistently return various types of solutions.
 \begin{verbatim}
 >>> solveset(x**2 - pi**2, x)
 {-pi, pi}
+
 \end{verbatim}
 
 \begin{itemize}
@@ -41,6 +44,7 @@ achieved using sets. It can consistently return various types of solutions.
 \begin{verbatim}
 >>> solveset(1, x)
 EmptySet()
+
 \end{verbatim}
 
 \begin{itemize}
@@ -49,6 +53,7 @@ EmptySet()
 \begin{verbatim}
 >>> solveset(x**2 - 3 > 0, x, domain=S.Reals)
 (-oo, -sqrt(3)) U (sqrt(3), oo)
+
 \end{verbatim}
 
 \begin{itemize}
@@ -61,6 +66,7 @@ ImageSet(Lambda(_n, 2*_n*pi + pi/2), Integers())
 (-oo, oo)
 >>> solveset(x - x, x, domain=S.Complexes)
 S.Complexes
+
 \end{verbatim}
 
 \begin{itemize}
@@ -71,9 +77,10 @@ determined and over determined problems.
 >>> A = Matrix([[1, 2, 3], [4, 5, 6], [7, 8, 10]])
 >>> b = Matrix([3, 6, 9])
 >>> linsolve((A, b), x, y, z)
-{(-1,2,0)}
+{(-1, 2, 0)}
 >>> linsolve(Matrix(([1, 1, 1, 1], [1, 1, 2, 3])), (x, y, z))
 {(-y - 1, y, 2)}
+
 \end{verbatim}
 
 The new solve i.e. \textbf{solveset} is under active development and is a
@@ -112,14 +119,16 @@ and a parabola.
  (-2 + sqrt(14), sqrt(-2 + 4*sqrt(14))),
  (-sqrt(14) - 2, -I*sqrt(2 + 4*sqrt(14))),
  (-sqrt(14) - 2, I*sqrt(2 + 4*sqrt(14)))]
+
 \end{verbatim}
 
 \begin{itemize}
 \item Transcendental Equation
 \end{itemize}
 \begin{verbatim}
->>> solve(x + log(x))**2 - 5*(x + log(x)) + 6, x)
+>>> solve((x + log(x))**2 - 5*(x + log(x)) + 6, x)
 [LambertW(exp(2)), LambertW(exp(3))]
 >>> solve(x**3 + exp(x))
 [-3*LambertW((-1)**(2/3)/3)]
+
 \end{verbatim}

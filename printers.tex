@@ -5,9 +5,11 @@ to the user. By default, an interactive Python session will render the
 this paper so far.
 
 \begin{verbatim}
+>>> from sympy import *
 >>> phi0 = Symbol('phi0')
 >>> str(Integral(sqrt(phi0), phi0))
-Integral(sqrt(phi0 + 1), x)
+'Integral(sqrt(phi0), phi0)'
+
 \end{verbatim}
 
 Expressions can be printed with 2D monospace text with \verb|pprint|. This
@@ -22,12 +24,13 @@ expression to be printed using only ASCII characters.
 
 \begin{verbatim}
 >>> pprint(Integral(sqrt(phi0 + 1), phi0), use_unicode=False)
-  /
- |
- |   __________
+  /                    
+ |                     
+ |   __________        
  | \/ phi0 + 1  d(phi0)
- |
-/
+ |                     
+/                      
+
 \end{verbatim}
 
 The function \verb|latex| returns a \LaTeX{} representation of an expression.
@@ -35,6 +38,7 @@ The function \verb|latex| returns a \LaTeX{} representation of an expression.
 \begin{verbatim}
 >>> print(latex(Integral(sqrt(phi0 + 1), phi0)))
 \int \sqrt{\phi_{0} + 1}\, d\phi_{0}
+
 \end{verbatim}
 
 Users are encouraged to run the \verb|init_printing| function at the beginning

@@ -43,6 +43,7 @@ X unit vector through $\frac{\pi}{2}$\si{\radian}.
 A.x + 2*B.z + 3*C.y
 >>> v.express(A)
 A.x + 5*sqrt(3)/2*A.y + 5/2*A.z
+
 \end{verbatim}
 
 \subsubsection{Mechanics}
@@ -71,11 +72,13 @@ The \verb|sympy.physics.quantum| package provides python objects for defining an
 [A,B]
 >>> comm.doit()
 A*B - B*A
+
 \end{verbatim}
 The commutator orders its objects in canonical order, factoring out commutative constants. The commutator objects can expand commutator expressions, and can properly apply adjoint operators.
 \begin{verbatim}
 >>> Dagger(Commutator(C+B, A)).expand(commutator=True)
 [Dagger(A),Dagger(B)] + [Dagger(A),Dagger(C)]
+
 \end{verbatim}
 
 The \verb|sympy.physics.quantum| package provides features to create and manipulate qubit states for quantum information theory.
@@ -86,6 +89,7 @@ The \verb|sympy.physics.quantum| package provides features to create and manipul
 >>> q = Qubit('0101')
 >>> q
 |0101>
+
 \end{verbatim}
 Qubit states can be manipulated in standard ways, flipping spins, applying adjoint operations, and forming tensor and inner products.
 \begin{verbatim}
@@ -99,6 +103,7 @@ Qubit states can be manipulated in standard ways, flipping spins, applying adjoi
 <0101|0101>
 >>> ip.doit()
 1
+
 \end{verbatim}
 Quantum operators can be applied to transform these states.
 \begin{verbatim}
@@ -111,6 +116,7 @@ H(0)*H(1)*|00>
 >>> q = qapply(c)
 >>> measure_all(q)
 [(|00>, 1/4), (|01>, 1/4), (|10>, 1/4), (|11>, 1/4)]
+
 \end{verbatim}
 
 \begin{figure}[htbp]
@@ -125,6 +131,7 @@ Finally, there are also capabilities to plot circuit diagrams for simple circuit
 \begin{verbatim}
 >>> from sympy.physics.quantum.circuitplot import CircuitPlot
 >>> from sympy.physics.quantum.gate import H, CNOT
->>> CircuitPlot(CNOT(1,0)*H(1),2)
+>>> c = CircuitPlot(CNOT(1,0)*H(1),2)
+
 \end{verbatim}
 This results in Figure~\ref{fig-circuitplot-example}.

@@ -4,7 +4,17 @@ before_install:
 - sudo apt-get update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended
   texlive-latex-extra texlive-fonts-extra texlive-humanities texlive-science latex-xcolor
   dvipng texlive-latex-recommended python-pygments lmodern texlive-xetex
-- pip install sympy==1.0 numpy matplotlib --user
+
+- wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh -O miniconda.sh;
+- bash miniconda.sh -b -p $HOME/miniconda
+- export PATH="$HOME/miniconda/bin:$PATH"
+- hash -r
+- conda config --set always_yes yes --set changeps1 no
+- conda update -q conda
+- conda info -a
+- conda create -q -n test-environment python=2.7 sympy=1.0 numpy matplotlib
+- source activate test-environment
+
 script:
 - make
 - make test

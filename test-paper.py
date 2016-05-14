@@ -23,4 +23,4 @@ for file in files:
 with open(output_file, "w") as f:
     f.write(full_text)
 
-doctest.testfile(output_file)
+doctest.testfile(output_file, optionflags=doctest.NORMALIZE_WHITESPACE)

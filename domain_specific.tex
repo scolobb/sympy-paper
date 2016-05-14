@@ -76,6 +76,7 @@ A*B - B*A
 \end{verbatim}
 The commutator orders its objects in canonical order, factoring out commutative constants. The commutator objects can expand commutator expressions, and can properly apply adjoint operators.
 \begin{verbatim}
+>>> C = Operator('C')
 >>> Dagger(Commutator(C+B, A)).expand(commutator=True)
 [Dagger(A),Dagger(B)] + [Dagger(A),Dagger(C)]
 

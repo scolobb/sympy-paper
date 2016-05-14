@@ -12,5 +12,9 @@ authors.tex:
 pprint:
 	xelatex --halt-on-error pprint.tex
 
+test:
+	python test-paper.py
+
 clean:
 	(rm -rf *.ps *.log *.dvi *.aux *.*% *.lof *.lop *.lot *.toc *.idx *.ilg *.ind *.bbl *.blg *.cpt)
+

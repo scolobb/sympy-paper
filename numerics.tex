@@ -11,7 +11,6 @@ Since Python floating-point literals automatically evaluate to \texttt{double}
 1.10000000000000008881784197001
 >>> Float("1.1", 30)
 1.10000000000000000000000000000
-
 \end{verbatim}
 
 The preferred way to evaluate an expression numerically is with the
@@ -34,7 +33,6 @@ example (the input 25 specifies that 25 digits are sought):
 0
 >>> (cos(exp(-100)) - 1).evalf(25)
 -6.919482633683687653243407e-88
-
 \end{verbatim}
 
 The \texttt{evalf} method works with complex numbers and supports
@@ -73,7 +71,6 @@ context:
 >>> mpmath.mp.dps = 30    # 30 digits of precision
 >>> mpmath.mpf("0.1") + mpmath.exp(-50)
 0.100000000000000000000192874985
-
 \end{verbatim}
 
 For pure numerical computing, it is convenient to use mpmath directly
@@ -167,14 +164,12 @@ of precision when $x = 10000$), giving correct values:
 >>> mpmath.mp.dps = 15
 >>> mpmath.meijerg([[],[0]],[[-0.5,-1,-1.5],[]],10000)
 2.4392576907199564e-94
-
 \end{verbatim}
 
 Equivalently, with SymPy's interface this function can be evaluated as:
 \begin{verbatim}
 >>> meijerg([[],[0]],[[-S(1)/2,-1,-S(3)/2],[]],10000).evalf()
 2.43925769071996e-94
-
 \end{verbatim}
 
 We highlight the generalized hypergeometric functions and the Meijer

@@ -195,8 +195,8 @@ a matching algebraic number or optionally a linear combination
 of user-provided base constants (such as $\pi$).
 
 \begin{verbatim}
->>> x = 1 / (sin(pi/5)+sin(2*pi/5)+sin(3*pi/5)+sin(4*pi/5))**2
->>> nsimplify(x)
+>>> t = 1 / (sin(pi/5)+sin(2*pi/5)+sin(3*pi/5)+sin(4*pi/5))**2
+>>> nsimplify(t)
 -2*sqrt(5)/5 + 1
 >>> nsimplify(pi, tolerance=0.01)
 22/7

@@ -52,8 +52,6 @@ which is a superclass of all SymPy objects and
 provides common methods to all SymPy tree-elements.
 For example, consider the expression $xy + 2$:
 \begin{verbatim}
->>> from sympy import *
->>> x, y = symbols('x y')
 >>> expr = x*y + 2
 \end{verbatim}
 By order of operations, the parent of the expression tree for \texttt{expr} is
@@ -140,29 +138,29 @@ By default, SymPy performs all calculations assuming that variables are
 complex valued. This assumption makes it easier to treat mathematical problems
 in full generality.
 \begin{verbatim}
->>> x = Symbol('x')
->>> sqrt(x**2)
-sqrt(x**2)
+>>> t = Symbol('t')
+>>> sqrt(t**2)
+sqrt(t**2)
 \end{verbatim}
 
 By assuming the most general case, that symbols are complex by default, SymPy
 avoids performing mathematically invalid operations. However, in many cases
-users will wish to simplify expressions containing terms like $\sqrt{x^2}$.
+users will wish to simplify expressions containing terms like $\sqrt{t^2}$.
 
 Assumptions are set on \texttt{Symbol} objects when they are created. For
-instance \verb|Symbol('x', positive=True)| will create a symbol named
+instance \verb|Symbol('t', positive=True)| will create a symbol named
 \texttt{x} that is assumed to be positive.
 \begin{verbatim}
->>> x = Symbol('x', positive=True)
->>> sqrt(x**2)
-x
+>>> t = Symbol('t', positive=True)
+>>> sqrt(t**2)
+t
 \end{verbatim}
 Some common assumptions that SymPy allows are \texttt{positive},
 \texttt{negative}, \texttt{real}, \texttt{nonpositive}, \texttt{nonnegative},
 \texttt{real}, \texttt{integer}, and \texttt{commutative}~\footnote{If $A$ and
 $B$ are Symbols created with \texttt{commutative=False} then SymPy will keep
 $A\cdot B$ and $B\cdot A$ distinct.}. Assumptions on any object can be checked with the
-\verb|is_|\texttt{\textit{assumption}} attributes, like \verb|x.is_positive|.
+\verb|is_|\texttt{\textit{assumption}} attributes, like \verb|t.is_positive|.
 
 Assumptions are only needed to restrict a domain so that certain
 simplifications can be performed. It is not required to make the domain match

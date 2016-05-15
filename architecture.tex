@@ -17,7 +17,6 @@ variables before they can be used. This is typically done through the
 \texttt{symbols} function, which creates multiple symbols at once. For instance,
 \begin{verbatim}
 >>> x, y, z = symbols('x y z')
-
 \end{verbatim}
 creates three symbols representing variables named $x$, $y$, and $z$, assigned
 to Python variables of the same name. The Python variable names that symbols
@@ -30,7 +29,6 @@ mathematical notation. Note that in Python, exponentiation is \verb|**|, as:
 \begin{verbatim}
 >>> (x**2 - 2*x + 3)/y
 (x**2 - 2*x + 3)/y
-
 \end{verbatim}
 
 All SymPy expressions are immutable. This simplifies the design by allowing
@@ -58,7 +56,6 @@ For example, consider the expression $xy + 2$:
 >>> from sympy import *
 >>> x, y = symbols('x y')
 >>> expr = x*y + 2
-
 \end{verbatim}
 By order of operations, the parent of the expression tree for \texttt{expr} is
 an addition, so it is of type \texttt{Add}. The child nodes of \texttt{expr} are
@@ -68,7 +65,6 @@ an addition, so it is of type \texttt{Add}. The child nodes of \texttt{expr} are
 <class 'sympy.core.add.Add'>
 >>> expr.args
 (2, x*y)
-
 \end{verbatim}
 
 We can dig further into the expression tree to see the full expression. For
@@ -82,7 +78,6 @@ indicating that it is a leaf node.
 <class 'sympy.core.numbers.Integer'>
 >>> expr.args[0].args
 ()
-
 \end{verbatim}
 
 The function \texttt{srepr} returns a string representation of the object as
@@ -91,7 +86,6 @@ create the given expression.
 \begin{verbatim}
 >>> srepr(expr)
 "Add(Mul(Symbol('x'), Symbol('y')), Integer(2))"
-
 \end{verbatim}
 
 Every SymPy expression satisfies a key invariant, namely,
@@ -150,7 +144,6 @@ in full generality.
 >>> x = Symbol('x')
 >>> sqrt(x**2)
 sqrt(x**2)
-
 \end{verbatim}
 
 By assuming the most general case, that symbols are complex by default, SymPy
@@ -164,7 +157,6 @@ instance \verb|Symbol('x', positive=True)| will create a symbol named
 >>> x = Symbol('x', positive=True)
 >>> sqrt(x**2)
 x
-
 \end{verbatim}
 Some common assumptions that SymPy allows are \texttt{positive},
 \texttt{negative}, \texttt{real}, \texttt{nonpositive}, \texttt{nonnegative},
@@ -285,7 +277,6 @@ class gamma(Function)
             return self.func(self.args[0])*polygamma(0, self.args[0])
         else:
             raise ArgumentIndexError(self, argindex)
-
 \end{verbatim}
 The actual gamma function defined in SymPy has many more capabilities, such as
 evaluation at rational points and series expansion.

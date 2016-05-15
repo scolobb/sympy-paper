@@ -20,6 +20,8 @@ for file in files:
     with open(file, 'r') as f:
         full_text += "\n" + f.read()
 
+full_text = full_text.replace(r'\end{verbatim}', '')
+
 with open(output_file, "w") as f:
     f.write(full_text)
 

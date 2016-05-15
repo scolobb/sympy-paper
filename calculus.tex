@@ -7,7 +7,6 @@ Derivatives can be computed with the \verb|diff| function.
 >>> x = symbols("x")
 >>> diff(sin(x), x)
 cos(x)
-
 \end{verbatim}
 
 Unevaluated \verb|Derivative| objects are also supported.
@@ -15,14 +14,12 @@ Unevaluated \verb|Derivative| objects are also supported.
 >>> expr = Derivative(sin(x), x)
 >>> expr
 Derivative(sin(x), x)
-
 \end{verbatim}
 
 Unevaluated expressions can be evaluated with the \verb|doit| method.
 \begin{verbatim}
 >>> expr.doit()
 cos(x)
-
 \end{verbatim}
 
 % TODO: A more interesting example here
@@ -36,14 +33,12 @@ function, or the unevaluated \verb|Integral| objects.
 Integral(sin(x), x)
 >>> expr.doit()
 -cos(x)
-
 \end{verbatim}
 Definite integration can be calculated with the same method, by specifying a
 range of the integration variable. The following computes $\int_0^1\sin(x)\,dx$.
 \begin{verbatim}
 >>> integrate(sin(x), (x, 0, 1))
 -cos(1) + 1
-
 \end{verbatim}
 
 SymPy implements a combination of the Risch
@@ -69,7 +64,6 @@ $\lim\limits_{x\to \infty} x\sin(\frac{1}{x})=1$ (note that $\infty$ is
 \begin{verbatim}
 >>> limit(x*sin(1/x), x, oo)
 1
-
 \end{verbatim}
 As a more complicated example, SymPy computes $\lim\limits_{x\to 0}{\left(2 e^{\frac{1 - \cos{\left (x \right )}}{\sin{\left (x \right )}}} -
   1\right)}^{\frac{\sinh{\left (x \right )}}{\operatorname{atan}^{2}{\left (x
@@ -77,5 +71,4 @@ As a more complicated example, SymPy computes $\lim\limits_{x\to 0}{\left(2 e^{\
 \begin{verbatim}
 >>> limit((2*E**((1-cos(x))/sin(x))-1)**(sinh(x)/atan(x)**2), x, 0)
 E
-
 \end{verbatim}

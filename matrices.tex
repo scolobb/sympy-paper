@@ -7,7 +7,6 @@ SymPy supports matrices with symbolic expressions as elements.
 Matrix([
 [x, x + y],
 [y,     x]])
-
 \end{verbatim}
 
 All SymPy matrix types can do linear algebra including matrix addition,
@@ -23,7 +22,6 @@ compute the eigenvalues.
 \begin{verbatim}
 >>> A.eigenvals()
 {x + sqrt(y*(x + y)): 1, x - sqrt(y*(x + y)): 1}
-
 \end{verbatim}
 
 Internally these matrices store the elements as a list, making it a dense
@@ -39,13 +37,12 @@ and transpose are stored symbolically as matrix expressions.
 >>> m, n, p = symbols("m, n, p", integer=True)
 >>> R = MatrixSymbol("R", m, n)
 >>> S = MatrixSymbol("S", n, p)
->>> T = MatrixSymbol("t", m, p)
+>>> T = MatrixSymbol("T", m, p)
 >>> U = R*S + 2*T
 >>> U.shape
 (m, p)
 >>> U[0, 1]
-2*t[0, 1] + Sum(R[0, _k]*S[_k, 1], (_k, 0, n - 1))
-
+2*T[0, 1] + Sum(R[0, _k]*S[_k, 1], (_k, 0, n - 1))
 \end{verbatim}
 
 Block matrices are also supported in SymPy. \verb|BlockMatrix| elements can be any
@@ -68,5 +65,4 @@ Matrix([
 X[0, 0]
 >>> B.shape
 (m + n, m + n)
-
 \end{verbatim}

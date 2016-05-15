@@ -72,8 +72,6 @@ context:
 >>> import mpmath
 >>> mpmath.mp.dps = 30    # 30 digits of precision
 >>> mpmath.mpf("0.1") + mpmath.exp(-50)
-mpf('0.100000000000000000000192874984794')
->>> print(_)   # pretty-printed
 0.100000000000000000000192874985
 
 \end{verbatim}
@@ -168,7 +166,7 @@ of precision when $x = 10000$), giving correct values:
 \begin{verbatim}
 >>> mpmath.mp.dps = 15
 >>> mpmath.meijerg([[],[0]],[[-0.5,-1,-1.5],[]],10000)
-mpf('2.4392576907199564e-94')
+2.4392576907199564e-94
 
 \end{verbatim}
 

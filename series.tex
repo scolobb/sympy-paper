@@ -36,9 +36,9 @@ the use of an elementary function that calculates the Taylor expansion of the
 \begin{verbatim}
 >>> from sympy import ring
 >>> from sympy.polys.ring_series import rs_sin
->>> R, x = ring('x', QQ)
->>> rs_sin(x**2 + x, x, 5)
--1/2*x**4 - 1/6*x**3 + x**2 + x
+>>> R, t = ring('t', QQ)
+>>> rs_sin(t**2 + t, t, 5)
+-1/2*t**4 - 1/6*t**3 + t**2 + t
 \end{verbatim}
 
 The function \texttt{sympy.polys.rs\_series} makes use of these elementary

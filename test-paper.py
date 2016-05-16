@@ -28,8 +28,6 @@ files = ["introduction.tex",
          "tensors.tex"
         ]
 
-full_text = ""
-
 output_file = "test_full_paper.py"
 
 begin = "\\begin{verbatim}"
@@ -37,6 +35,8 @@ end = "\\end{verbatim}"
 skip = "% no-doctest\n"
 
 def main():
+    full_text = ""
+
     for file in files:
         with open(file, 'r') as f:
             s = f.read()

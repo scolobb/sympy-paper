@@ -97,8 +97,8 @@ Commutators can be expanded using common commutator identities:
 On top of this set of base objects, a number of specific quantum systems have been implemented. These include:
 
 \begin{itemize}
-	
-\item Position/momentum operators and states, raising/lowering operators and states, simple harmonic oscillator, density matrices, hydrogen atom.	
+
+\item Position/momentum operators and states, raising/lowering operators and states, simple harmonic oscillator, density matrices, hydrogen atom.
 
 \item Second quantized formalism of non-relativistic many-body quantum mechanics
 \cite{FetterWalecka2003}.
@@ -138,6 +138,7 @@ Qubit states can also be used in adjoint operations, tensor products, inner/oute
 >>> ip
 <0101|0101>
 >>> ip.doit()
+1
 \end{verbatim}
 Quantum gates (unitary operators) can be applied to transform these states and then classical measurements can be performed on the results:
 \begin{verbatim}
@@ -166,5 +167,5 @@ Here is a final example of creating a 3-qubit quantum fourier transform, decompo
 >>> fourier = QFT(0,3).decompose()
 >>> fourier
 SWAP(0,2)*H(0)*C((0),S(1))*H(1)*C((0),T(2))*C((1),S(2))*H(2)
->>> circuit_plot(fourier, nqubits=3)
+>>> c = circuit_plot(fourier, nqubits=3)
 \end{verbatim}

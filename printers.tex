@@ -7,7 +7,7 @@ this paper so far.
 \begin{verbatim}
 >>> phi0 = Symbol('phi0')
 >>> str(Integral(sqrt(phi0), phi0))
-Integral(sqrt(phi0 + 1), x)
+'Integral(sqrt(phi0), phi0)'
 \end{verbatim}
 
 Expressions can be printed with 2D monospace text with \verb|pprint|. This
@@ -15,6 +15,8 @@ uses Unicode characters to render mathematical symbols such as integral signs,
 square roots, and parentheses. Greek letters and subscripts in symbol names
 are rendered automatically.
 
+\noindent
+\includegraphics[width=1\textwidth]{pprint.pdf}
 Alternately, the \verb|use_unicode=False| flag can be set, which causes the
 expression to be printed using only ASCII characters.
 

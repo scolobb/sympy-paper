@@ -54,13 +54,14 @@ EmptySet()
 \begin{itemize}
 \item Infinitely many solutions
 \end{itemize}
+% no-doctest
 \begin{verbatim}
 >>> solveset(sin(x) - 1, x, domain=S.Reals)
 ImageSet(Lambda(_n, 2*_n*pi + pi/2), Integers())
 >>> solveset(x - x, x, domain=S.Reals)
 (-oo, oo)
 >>> solveset(x - x, x, domain=S.Complexes)
-Complexes((-oo, oo) x (-oo, oo), False)
+S.Complexes
 \end{verbatim}
 
 \begin{itemize}

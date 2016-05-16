@@ -66,10 +66,13 @@ respectively act as multiprecision substitutes for Python's \texttt{float} and
 \texttt{complex}. The floating-point precision is controlled by a global
 context:
 
+% no-doctest
 \begin{verbatim}
 >>> import mpmath
 >>> mpmath.mp.dps = 30    # 30 digits of precision
 >>> mpmath.mpf("0.1") + mpmath.exp(-50)
+mpf('0.100000000000000000000192874984794')
+>>> print(_)   # pretty-printed
 0.100000000000000000000192874985
 \end{verbatim}
 

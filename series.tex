@@ -57,7 +57,7 @@ there is no need to explicitly create a polynomial \texttt{ring}. An example:
 >>> from sympy.abc import a, b
 >>> from sympy import sin, cos
 >>> rs_series(sin(a + b), a, 4)
--1/2*(sin(b))*a**2 + (sin(b)) - 1/6*(cos(b))*a**3 + (cos(b))*a
+-1/2*(sin(b))*a**2 + (sin(b)) - 1/6*a**3*(cos(b)) + a*(cos(b))
 \end{verbatim}
 
 \subsubsection{Formal Power Series}

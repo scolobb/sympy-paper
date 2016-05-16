@@ -1,3 +1,4 @@
+import sympy
 from sympy.utilities.runtests import SymPyDocTestFinder, pdoctest, SymPyOutputChecker, SymPyDocTestRunner
 from sympy.core.compatibility import StringIO
 from sympy import pprint_use_unicode, init_printing
@@ -35,6 +36,8 @@ end = "\\end{verbatim}"
 skip = "% no-doctest\n"
 
 def main():
+    if sympy.__version__ != "1.0":
+        sys.exit("The doctests must be run against SymPy 1.0. Please install SymPy 1.0 and run them again.")
     full_text = ""
 
     for file in files:

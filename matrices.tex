@@ -5,8 +5,8 @@ SymPy supports matrices with symbolic expressions as elements.
 >>> A = Matrix(2, 2, [x, x + y, y, x])
 >>> A
 Matrix([
-[    x, x + y],
-[    y,     x]])
+[x, x + y],
+[y,     x]])
 \end{verbatim}
 
 All SymPy matrix types can do linear algebra including matrix addition,
@@ -37,9 +37,9 @@ and transpose are stored symbolically as matrix expressions.
 >>> m, n, p = symbols("m, n, p", integer=True)
 >>> R = MatrixSymbol("R", m, n)
 >>> S = MatrixSymbol("S", n, p)
->>> T = MatrixSymbol("t", m, p)
+>>> T = MatrixSymbol("T", m, p)
 >>> U = R*S + 2*T
->>> u.shape
+>>> U.shape
 (m, p)
 >>> U[0, 1]
 2*T[0, 1] + Sum(R[0, _k]*S[_k, 1], (_k, 0, n - 1))

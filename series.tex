@@ -36,9 +36,9 @@ the use of an elementary function that calculates the Taylor expansion of the
 \begin{verbatim}
 >>> from sympy import ring
 >>> from sympy.polys.ring_series import rs_sin
->>> R, x = ring('x', QQ)
->>> rs_sin(x**2 + x, x, 5)
--1/2*x**4 - 1/6*x**3 + x**2 + x
+>>> R, t = ring('t', QQ)
+>>> rs_sin(t**2 + t, t, 5)
+-1/2*t**4 - 1/6*t**3 + t**2 + t
 \end{verbatim}
 
 The function \texttt{sympy.polys.rs\_series} makes use of these elementary
@@ -51,12 +51,14 @@ difference increasing with the size of the series. The
 \texttt{sympy.polys.rs\_series} takes as input any SymPy expression and hence
 there is no need to explicitly create a polynomial \texttt{ring}. An example:
 
+% rs_series bug, output sometimes has a factored out
+% no-doctest
 \begin{verbatim}
 >>> from sympy.polys.ring_series import rs_series
 >>> from sympy.abc import a, b
 >>> from sympy import sin, cos
 >>> rs_series(sin(a + b), a, 4)
--1/2*(sin(b))*a**2 + (sin(b)) - 1/6*(cos(b))*a**3 + (cos(b))*a
+-1/2*(sin(b))*a**2 + (sin(b)) - 1/6*a**3*(cos(b)) + a*(cos(b))
 \end{verbatim}
 
 \subsubsection{Formal Power Series}

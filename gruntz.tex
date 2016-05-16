@@ -39,6 +39,8 @@ $\{e^x, e^{-x}, e^{x+2e^{-x}}\}$ is obtained. These are all subexpressions of%
 ~\eqref{gruntz_example_fn} and they all belong to the same comparability class.
 This calculation can be done using SymPy as follows:
 
+% dict_keys output order varies
+% no-doctest
 \begin{verbatim}
 >>> from sympy.series.gruntz import mrv
 >>> mrv(exp(x+2*exp(-x))-exp(x) + 1/x, x)[0].keys()

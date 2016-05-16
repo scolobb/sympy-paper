@@ -31,7 +31,7 @@ API also permits to check if a boolean expression is in any
 of the above mentioned forms.
 
 \begin{verbatim}
->>> from sympy import *
+>>> from sympy.logic.boolalg import is_dnf, is_cnf
 >>> x, y, z = symbols('x y z')
 >>> to_cnf((x & y) | z)
 And(Or(x, z), Or(y, z))
@@ -60,7 +60,7 @@ And(Not(b), a)
 >>> e1 = a & (b | c)
 >>> e2 = (x & y) | (x & z)
 >>> bool_map(e1, e2)
-(And(Or(b, c), a), {b: y, a: x, c: z})
+(And(Or(b, c), a), {a: x, b: y, c: z})
 \end{verbatim}
 
 \subsubsection{SAT solving}
@@ -78,5 +78,5 @@ literal scheme and VSIDS heuristic\cite{moskewicz2008method}.
 >>> satisfiable(a & (~a | b) & (~b | c) & ~c)
 False
 >>> satisfiable(a & (~a | b) & (~b | c) & c)
-{b: True, a: True, c: True}
+{a: True, b: True, c: True}
 \end{verbatim}

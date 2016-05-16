@@ -24,7 +24,7 @@ achieved using sets. It can consistently return various types of solutions.
 \end{itemize}
 \begin{verbatim}
 >>> solveset(x - 1)
->>> {1}
+{1}
 \end{verbatim}
 
 \begin{itemize}
@@ -54,6 +54,8 @@ EmptySet()
 \begin{itemize}
 \item Infinitely many solutions
 \end{itemize}
+% SymPy 1.0 sstr() prints S.Complexes incorrectly
+% no-doctest
 \begin{verbatim}
 >>> solveset(sin(x) - 1, x, domain=S.Reals)
 ImageSet(Lambda(_n, 2*_n*pi + pi/2), Integers())
@@ -71,7 +73,7 @@ determined and over determined problems.
 >>> A = Matrix([[1, 2, 3], [4, 5, 6], [7, 8, 10]])
 >>> b = Matrix([3, 6, 9])
 >>> linsolve((A, b), x, y, z)
-{(-1,2,0)}
+{(-1, 2, 0)}
 >>> linsolve(Matrix(([1, 1, 1, 1], [1, 1, 2, 3])), (x, y, z))
 {(-y - 1, y, 2)}
 \end{verbatim}
@@ -118,7 +120,7 @@ and a parabola.
 \item Transcendental Equation
 \end{itemize}
 \begin{verbatim}
->>> solve(x + log(x))**2 - 5*(x + log(x)) + 6, x)
+>>> solve((x + log(x))**2 - 5*(x + log(x)) + 6, x)
 [LambertW(exp(2)), LambertW(exp(3))]
 >>> solve(x**3 + exp(x))
 [-3*LambertW((-1)**(2/3)/3)]

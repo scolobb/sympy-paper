@@ -1,63 +1,40 @@
-
-% Calculus (differentiation, integration, limits). Note that algorithm
-% descriptions will go in the algorithms section.
-
-Derivatives can be computed with the \verb|diff| function.
-\begin{verbatim}
->>> diff(sin(x), x)
-cos(x)
-\end{verbatim}
-
-Unevaluated \verb|Derivative| objects are also supported.
-\begin{verbatim}
->>> expr = Derivative(sin(x), x)
->>> expr
-Derivative(sin(x), x)
-\end{verbatim}
-
-Unevaluated expressions can be evaluated with the \verb|doit| method.
-\begin{verbatim}
->>> expr.doit()
-cos(x)
-\end{verbatim}
-
-% TODO: A more interesting example here
-Integrals can be analogously, calculated either with the \verb|integrate|
-function, or the unevaluated \verb|Integral| objects.
+Integrals are calculated either with the \verb|integrate| function. SymPy
+implements a combination of the Risch
+algorithm~\cite{bronstein2005integration}, table lookups, a reimplementation
+of Manuel Bronstein's ``Poor Man's Integrator''~\cite{Bronstein2005pmint}, and
+an algorithm for computing integrals based on Meijer G-functions. These allow
+SymPy to compute a wide variety of indefinite and definite integrals.
+% TODO: What is the best citation for the Meijer G-function algorithm.
+% TODO: A more interesting examples here
 \begin{verbatim}
 >>> integrate(sin(x), x)
 -cos(x)
->>> expr = Integral(sin(x), x)
->>> expr
-Integral(sin(x), x)
->>> expr.doit()
--cos(x)
 \end{verbatim}
-Definite integration can be calculated with the same method, by specifying a
+Definite integrals are calculated with the same method, by specifying a
 range of the integration variable. The following computes $\int_0^1\sin(x)\,dx$.
 \begin{verbatim}
 >>> integrate(sin(x), (x, 0, 1))
 -cos(1) + 1
 \end{verbatim}
 
-SymPy implements a combination of the Risch
-algorithm~\cite{bronstein2005integration}, table lookups, a reimplementation
-of Manuel Bronstein's ``Poor Man's Integrator''~\cite{Bronstein2005pmint}, and
-an algorithm for computing integrals based on Meijer G-functions. These allow
-SymPy to compute a wide variety of indefinite and definite integrals.
-% TODO: What is the best citation for the Meijer G-function algorithm.
-% TODO: Add some examples here.
+Derivatives are computed with the \verb|diff| function. Derivatives are
+computed recursively using the various differentiation rules.
+\begin{verbatim}
+>>> diff(sin(x)*exp(x), x)
+exp(x)*sin(x) + exp(x)*cos(x)
+\end{verbatim}
 
-Summations and products are also supported, via the evaluated \verb|summation|
-and \verb|product| and unevaluated \verb|Sum| and \verb|Product|, and use the
-same syntax as \verb|integrate|. Summations are computed using a combination
-of Gosper's algorithm and an algorithm that uses Meijer G-functions. Products
+Summations and products are also supported, via \verb|summation| and
+\verb|product|. Summations are computed using a combination of Gosper's
+algorithm, an algorithm that uses Meijer G-functions, and heuristics. Products
 are computed via some heuristics.
 % TODO: Citations for Gosper and Meijer G-function algorithms
 % TODO: Are there other summation algorithms implemented?
+% TODO: A good summation example or two
 
-The limit module implements the Gruntz algorithm~\cite{Gruntz1996limits} for
-computing symbolic limits. For example, the following computes
+Limits are computed with the \verb|limit| function. The limit module
+implements the Gruntz algorithm~\cite{Gruntz1996limits} for computing symbolic
+limits. For example, the following computes
 $\lim\limits_{x\to \infty} x\sin(\frac{1}{x})=1$ (note that $\infty$ is
 \verb|oo| in SymPy).
 \begin{verbatim}
@@ -70,4 +47,12 @@ As a more complicated example, SymPy computes $\lim\limits_{x\to 0}{\left(2 e^{\
 \begin{verbatim}
 >>> limit((2*E**((1-cos(x))/sin(x))-1)**(sinh(x)/atan(x)**2), x, 0)
 E
+\end{verbatim}
+
+Integrals, derivatives, summations, products, and limits that can't be
+computed return unevaluated objects. These can also be created directly if the
+user chooses.
+\begin{verbatim}
+>>> integrate(x**x, x)
+Integral(x**x, x)
 \end{verbatim}

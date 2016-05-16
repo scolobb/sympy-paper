@@ -51,7 +51,7 @@ difference increasing with the size of the series. The
 \texttt{sympy.polys.rs\_series} takes as input any SymPy expression and hence
 there is no need to explicitly create a polynomial \texttt{ring}. An example:
 
-%no-doctest
+% no-doctest
 \begin{verbatim}
 >>> from sympy.polys.ring_series import rs_series
 >>> from sympy.abc import a, b
@@ -71,7 +71,6 @@ rather than just computing a few terms.
 The following example shows how to use \texttt{fps}:
 
 \begin{verbatim}
->>> x = symbols("x")
 >>> f = fps(sin(x), x, x0=0)
 >>> f.truncate(6)
 x - x**3/6 + x**5/120 + O(x**6)

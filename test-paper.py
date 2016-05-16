@@ -34,56 +34,60 @@ output_file = "test_full_paper.py"
 
 begin = "\\begin{verbatim}"
 end = "\\end{verbatim}"
-skip = "%no-doctest\n"
+skip = "% no-doctest\n"
 
-for file in files:
-    with open(file, 'r') as f:
-        s = f.read()
-        st = s.find(begin)
-        while st != -1:
-            if not (st >= len(skip)) or s[st - len(skip) : st] != skip:
-                full_text += s[st + len(begin) : s.find(end, st)]
-            st = s.find(begin, st+ len(begin))
+def main():
+    for file in files:
+        with open(file, 'r') as f:
+            s = f.read()
+            st = s.find(begin)
+            while st != -1:
+                if not (st >= len(skip)) or s[st - len(skip) : st] != skip:
+                    full_text += s[st + len(begin) : s.find(end, st)]
+                st = s.find(begin, st+ len(begin))
 
-full_text = full_text.replace(r'\end{verbatim}', '')
+    full_text = full_text.replace(r'\end{verbatim}', '')
 
-with open(output_file, "w") as f:
-    f.write("'''\n %s \n'''" % full_text)
+    with open(output_file, "w") as f:
+        f.write("'''\n %s \n'''" % full_text)
 
-# force pprint to be in ascii mode in doctests
-pprint_use_unicode(False)
+    # force pprint to be in ascii mode in doctests
+    pprint_use_unicode(False)
 
-# hook our nice, hash-stable strprinter
-init_printing(pretty_print=False)
+    # hook our nice, hash-stable strprinter
+    init_printing(pretty_print=False)
 
-import test_full_paper
+    import test_full_paper
 
-# find the doctest
-module = pdoctest._normalize_module(test_full_paper)
-tests = SymPyDocTestFinder().find(module)
-test = tests[0]
+    # find the doctest
+    module = pdoctest._normalize_module(test_full_paper)
+    tests = SymPyDocTestFinder().find(module)
+    test = tests[0]
 
-runner = SymPyDocTestRunner(optionflags=pdoctest.ELLIPSIS |
-        pdoctest.NORMALIZE_WHITESPACE |
-        pdoctest.IGNORE_EXCEPTION_DETAIL)
-runner._checker = SymPyOutputChecker()
+    runner = SymPyDocTestRunner(optionflags=pdoctest.ELLIPSIS |
+            pdoctest.NORMALIZE_WHITESPACE |
+            pdoctest.IGNORE_EXCEPTION_DETAIL)
+    runner._checker = SymPyOutputChecker()
 
-old = sys.stdout
-new = StringIO()
-sys.stdout = new
+    old = sys.stdout
+    new = StringIO()
+    sys.stdout = new
 
-future_flags = __future__.division.compiler_flag | __future__.print_function.compiler_flag
+    future_flags = __future__.division.compiler_flag | __future__.print_function.compiler_flag
 
-try:
-    f, t = runner.run(test, compileflags=future_flags,
-                      out=new.write, clear_globs=False)
-except KeyboardInterrupt:
-    raise
-finally:
-    sys.stdout = old
+    try:
+        f, t = runner.run(test, compileflags=future_flags,
+                          out=new.write, clear_globs=False)
+    except KeyboardInterrupt:
+        raise
+    finally:
+        sys.stdout = old
 
-if f > 0:
-    print(new.getvalue())
-    exit(1)
-else:
-    exit(0)
+    if f > 0:
+        print(new.getvalue())
+        return 1
+    else:
+        return 0
+
+if __name__ == '__main__':
+    sys.exit(main())

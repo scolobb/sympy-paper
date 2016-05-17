@@ -17,10 +17,9 @@ ease of use and readability. It also a very popular language for scientific
 computing and data science, with a wide range of useful
 libraries~\cite{oliphant2007python}. SymPy is itself used by many libraries
 and tools across many domains, such as Sage~\cite{SAGE} (pure mathematics),
-yt~\cite{2011ApJS..192....9T} (astronomy and astrophysics), PyDy
-% citation?
-(multibody
-dynamics), and SfePy~\cite{cimrman2014sfepy} (finite elements).
+yt~\cite{2011ApJS..192....9T} (astronomy and astrophysics),
+PyDy~\cite{gede2013constrained} (multibody dynamics), and
+SfePy~\cite{cimrman2014sfepy} (finite elements).
 
 Unlike many CASs, SymPy does not invent its own programming language. Python
 is used both for the internal implementation and the user interaction.
@@ -36,12 +35,10 @@ import SymPy alongside other Python libraries in their workflow, whether that
 is an interactive workflow or programmatic use as part of a larger system.
 
 Being developed as a library, SymPy does not have a built-in graphical user
-interface (GUI).  However, SymPy exposes a rich interactive display system,
+interface (GUI). However, SymPy exposes a rich interactive display system,
 including registering printers with Jupyter~\cite{perez2007ipython} frontends,
-including the Notebook and Qt Console, which will pretty print SymPy expressions
-using MathJax
-% citation
-or \LaTeX{} rendering.
+including the Notebook and Qt Console, which will pretty print SymPy
+expressions using MathJax~\cite{cervone2012mathjax} or \LaTeX{} rendering.
 
 Section~\ref{sec:architecture} discusses the architecture of SymPy. Following
 that, Section~\ref{sec:numerics} looks at the numerical features of SymPy and
